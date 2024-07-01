@@ -92,7 +92,7 @@
 </filter>
 <linearGradient id="paint0_linear_2862_278" x1="1.04308e-05" y1="320" x2="710.784" y2="26.0793" gradientUnits="userSpaceOnUse">
 <stop stop-color="#18E299" stop-opacity="0.09"/>
-<stop offset="0.729167" stop-color="#0D9373" stop-opacity="0.08"/>
+<stop offset="0.729167" stop-color="#2383F4" stop-opacity="0.08"/>
 </linearGradient>
 <radialGradient id="paint1_radial_2862_278" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(208.697 189.703) rotate(-10.029) scale(169.097 167.466)">
 <stop stop-color="#00B0BB"/>
