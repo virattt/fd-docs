@@ -7,12 +7,12 @@
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#2383F4",
+    "light": "#4e9bf6",
+    "dark": "#2383F4",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#2383F4",
+      "to": "#4e9bf6"
     }
   },
   "topbarLinks": [
@@ -43,8 +43,7 @@
       "group": "Get Started",
       "pages": [
         "introduction",
-        "quickstart",
-        "development"
+        "quickstart"
       ]
     },
     {
