@@ -13,11 +13,6 @@
       "url": "https://api.financialdatasets.ai"
     }
   ],
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
   "paths": {
     "/financials/income-statements": {
       "get": {
