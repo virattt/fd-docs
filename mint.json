@@ -27,7 +27,7 @@
   },
   "anchors": [
     {
-      "name": "Community",
+      "name": "Questions?",
       "icon": "discord",
       "url": "https://discord.gg/hTtb8wzgSQ"
     }
@@ -36,8 +36,7 @@
     {
       "group": "Get Started",
       "pages": [
-        "introduction",
-        "quickstart"
+        "introduction"
       ]
     },
     {

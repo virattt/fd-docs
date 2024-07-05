@@ -1,72 +1,82 @@
 ---
 title: Introduction
-description: 'Welcome to financial datasets.'
-icon: 'hand-wave'
+description: 'Welcome to financial datasets, a developer-friendly stock market API.'
+icon: 'code'
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.svg"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.svg"
-  alt="Hero Dark"
-/>
+### Overview
+You can use our data to power your AI financial agents,
+stock market analysis platforms, portfolio management tools, quantitative trading algorithms, and more.
 
-## Setting up
+We have data for <b>15,000+</b> public companies, going back <b>30+</b> years.
 
-The first step to world-class documentation is setting up your editing environments.
+You are welcome to save any data that you receive from our API.  Our platform is built by developers for developers.
 
-<CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
-  </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
+### Getting Started
+We are currently in beta mode and will launch later in July 2024.
 
-## Make it yours
+You can join our waitlist by signing up at [financialdatasets.ai](https://financialdatasets.ai).  Developers who are on the waitlist
+will get first access to our API when we launch.
 
-Update your docs to your brand and add valuable content for the best user conversion.
+In the meantime, we have created a free tier for developers to test out our API.  We have outlined a few code examples below to get you started.
 
-<CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/components/accordion"
-  >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/customers"
-  >
-    Check out our showcase of our favorite documentation
-  </Card>
-</CardGroup>
+### Code Examples
+In the beta, you can access financials for 10 companies:
+
+```python
+['AAPL', 'MSFT', 'BRK.B', 'NVDA', 'AMZN', 'META', 'LLY', 'AVGO', 'TSLA', 'GOOGL']
+```
+<CodeGroup>
+
+```python GET Income Statements
+import requests
+
+ticker = 'NVDA'     # stock ticker
+period = 'annual'   # possible values are 'annual', 'quarterly', or 'ttm'
+limit = 10          # number of statements to return
+url = f'https://api.financialdatasets.ai/financials/income-statements?ticker={ticker}&period={period}&limit={limit}'
+
+# make API request
+response = requests.get(url)
+
+# grab income_statements
+income_statements = response.json().get('income_statements')
+```
+
+```python GET Balance Sheets
+import requests
+
+ticker = 'NVDA'     # stock ticker
+period = 'annual'   # possible values are 'annual', 'quarterly', or 'ttm'
+limit = 10          # number of statements to return
+url = f'https://api.financialdatasets.ai/financials/balance-sheets?ticker={ticker}&period={period}&limit={limit}'
+
+# make API request
+response = requests.get(url)
+
+# grab balance_sheets
+balance_sheets = response.json().get('balance_sheets')
+```
+
+```python GET Cash Flow Statements
+import requests
+
+ticker = 'NVDA'     # stock ticker
+period = 'annual'   # possible values are 'annual', 'quarterly', or 'ttm'
+limit = 10          # number of statements to return
+url = f'https://api.financialdatasets.ai/financials/cash-flow-statements?ticker={ticker}&period={period}&limit={limit}'
+
+# make API request
+response = requests.get(url)
+
+# grab cash_flow_statements
+cash_flow_statements = response.json().get('cash_flow_statements')
+```
+
+</CodeGroup>
+
+### Feedback
+
+Please join our [Discord](https://discord.gg/hTtb8wzgSQ) community, hang out, and tell us how we can improve.
+
+We love developer feedback ❤️
