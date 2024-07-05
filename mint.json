@@ -42,9 +42,9 @@
     {
       "group": "Endpoints",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/endpoint/income-statements",
+        "api-reference/endpoint/balance-sheets",
+        "api-reference/endpoint/cash-flow-statements"
       ]
     }
   ],
