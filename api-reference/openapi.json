@@ -188,17 +188,111 @@
         "type": "object",
         "properties": {
           "ticker": {
-            "description": "The ticker symbol of the company.",
-            "type": "string"
+            "type": "string",
+            "description": "The ticker symbol of the company."
+          },
+          "calendar_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The date of the income statement."
+          },
+          "report_period": {
+            "type": "string",
+            "format": "date",
+            "description": "The reporting period of the income statement."
           },
           "period": {
-            "description": "The time period of the income statements.",
             "type": "string",
             "enum": [
-              "annual",
               "quarterly",
-              "ttm"
-            ]
+              "ttm",
+              "annual"
+            ],
+            "description": "The time period of the income statement."
+          },
+          "revenue": {
+            "type": "number",
+            "nullable": false
+          },
+          "cost_of_revenue": {
+            "type": "number",
+            "nullable": false
+          },
+          "gross_profit": {
+            "type": "number",
+            "nullable": false
+          },
+          "operating_expense": {
+            "type": "number",
+            "nullable": false
+          },
+          "selling_general_and_administrative_expenses": {
+            "type": "number",
+            "nullable": false
+          },
+          "research_and_development": {
+            "type": "number",
+            "nullable": false
+          },
+          "operating_income": {
+            "type": "number",
+            "nullable": false
+          },
+          "interest_expense": {
+            "type": "number",
+            "nullable": false
+          },
+          "ebit": {
+            "type": "number",
+            "nullable": false
+          },
+          "income_tax_expense": {
+            "type": "number",
+            "nullable": false
+          },
+          "net_income_discontinued_operations": {
+            "type": "number",
+            "nullable": false
+          },
+          "net_income_non_controlling_interests": {
+            "type": "number",
+            "nullable": false
+          },
+          "net_income": {
+            "type": "number",
+            "nullable": false
+          },
+          "net_income_common_stock": {
+            "type": "number",
+            "nullable": false
+          },
+          "preferred_dividends_impact": {
+            "type": "number",
+            "nullable": false
+          },
+          "consolidated_income": {
+            "type": "number",
+            "nullable": false
+          },
+          "earnings_per_share": {
+            "type": "number",
+            "nullable": false
+          },
+          "earnings_per_share_diluted": {
+            "type": "number",
+            "nullable": false
+          },
+          "dividends_per_common_share": {
+            "type": "number",
+            "nullable": false
+          },
+          "weighted_average_shares": {
+            "type": "number",
+            "nullable": false
+          },
+          "weighted_average_shares_diluted": {
+            "type": "number",
+            "nullable": false
           }
         }
       },
@@ -206,17 +300,128 @@
         "type": "object",
         "properties": {
           "ticker": {
-            "description": "The ticker symbol of the company.",
-            "type": "string"
+            "type": "string",
+            "description": "The ticker symbol of the company."
+          },
+          "calendar_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The date of the balance sheet."
+          },
+          "report_period": {
+            "type": "string",
+            "format": "date",
+            "description": "The reporting period of the balance sheet."
           },
           "period": {
-            "description": "The time period of the balance sheets.",
             "type": "string",
             "enum": [
-              "annual",
               "quarterly",
-              "ttm"
-            ]
+              "ttm",
+              "annual"
+            ],
+            "description": "The time period of the balance sheet."
+          },
+          "total_assets": {
+            "type": "number",
+            "nullable": false
+          },
+          "current_assets": {
+            "type": "number",
+            "nullable": false
+          },
+          "cash_and_equivalents": {
+            "type": "number",
+            "nullable": false
+          },
+          "inventory": {
+            "type": "number",
+            "nullable": false
+          },
+          "current_investments": {
+            "type": "number",
+            "nullable": false
+          },
+          "trade_and_non_trade_receivables": {
+            "type": "number",
+            "nullable": false
+          },
+          "non_current_assets": {
+            "type": "number",
+            "nullable": false
+          },
+          "property_plant_and_equipment": {
+            "type": "number",
+            "nullable": false
+          },
+          "goodwill_and_intangible_assets": {
+            "type": "number",
+            "nullable": false
+          },
+          "investments": {
+            "type": "number",
+            "nullable": false
+          },
+          "non_current_investments": {
+            "type": "number",
+            "nullable": false
+          },
+          "tax_assets": {
+            "type": "number",
+            "nullable": false
+          },
+          "total_liabilities": {
+            "type": "number",
+            "nullable": false
+          },
+          "current_liabilities": {
+            "type": "number",
+            "nullable": false
+          },
+          "current_debt": {
+            "type": "number",
+            "nullable": false
+          },
+          "trade_and_non_trade_payables": {
+            "type": "number",
+            "nullable": false
+          },
+          "deferred_revenue": {
+            "type": "number",
+            "nullable": false
+          },
+          "deposit_liabilities": {
+            "type": "number",
+            "nullable": false
+          },
+          "non_current_liabilities": {
+            "type": "number",
+            "nullable": false
+          },
+          "non_current_debt": {
+            "type": "number",
+            "nullable": false
+          },
+          "tax_liabilities": {
+            "type": "number",
+            "nullable": false,
+            "default": 0
+          },
+          "shareholders_equity": {
+            "type": "number",
+            "nullable": false
+          },
+          "retained_earnings": {
+            "type": "number",
+            "nullable": false
+          },
+          "accumulated_other_comprehensive_income": {
+            "type": "number",
+            "nullable": false
+          },
+          "total_debt": {
+            "type": "number",
+            "nullable": false
           }
         }
       },
@@ -224,33 +429,79 @@
         "type": "object",
         "properties": {
           "ticker": {
-            "description": "The ticker symbol of the company.",
-            "type": "string"
+            "type": "string",
+            "description": "The ticker symbol of the company."
+          },
+          "calendar_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The date of the cash flow statement."
+          },
+          "report_period": {
+            "type": "string",
+            "format": "date",
+            "description": "The reporting period of the cash flow statement."
           },
           "period": {
-            "description": "The time period of the cash flow statements.",
             "type": "string",
             "enum": [
-              "annual",
               "quarterly",
-              "ttm"
-            ]
-          }
-        }
-      },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
+              "ttm",
+              "annual"
+            ],
+            "description": "The time period of the cash flow statement."
           },
-          "message": {
-            "type": "string"
+          "net_cash_flow_from_operations": {
+            "type": "number",
+            "nullable": false
+          },
+          "depreciation_and_amortization": {
+            "type": "number",
+            "nullable": false
+          },
+          "share_based_compensation": {
+            "type": "number",
+            "nullable": false
+          },
+          "net_cash_flow_from_investing": {
+            "type": "number",
+            "nullable": false
+          },
+          "capital_expenditure": {
+            "type": "number",
+            "nullable": false
+          },
+          "business_acquisitions_and_disposals": {
+            "type": "number",
+            "nullable": false
+          },
+          "investment_acquisitions_and_disposals": {
+            "type": "number",
+            "nullable": false
+          },
+          "net_cash_flow_from_financing": {
+            "type": "number",
+            "nullable": false
+          },
+          "issuance_or_repayment_of_debt_securities": {
+            "type": "number",
+            "nullable": false
+          },
+          "issuance_or_purchase_of_equity_shares": {
+            "type": "number",
+            "nullable": false
+          },
+          "dividends_and_other_cash_distributions": {
+            "type": "number",
+            "nullable": false
+          },
+          "change_in_cash_and_equivalents": {
+            "type": "number",
+            "nullable": false
+          },
+          "effect_of_exchange_rate_changes": {
+            "type": "number",
+            "nullable": false
           }
         }
       }
