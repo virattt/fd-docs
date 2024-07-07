@@ -207,87 +207,108 @@
           },
           "revenue": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The total revenue of the company."
           },
           "cost_of_revenue": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The cost of revenue of the company."
           },
           "gross_profit": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The gross profit of the company."
           },
           "operating_expense": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The operating expenses of the company."
           },
           "selling_general_and_administrative_expenses": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The selling, general, and administrative expenses of the company."
           },
           "research_and_development": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The research and development expenses of the company."
           },
           "operating_income": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The operating income of the company."
           },
           "interest_expense": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The interest expenses of the company."
           },
           "ebit": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The earnings before interest and taxes of the company."
           },
           "income_tax_expense": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The income tax expenses of the company."
           },
           "net_income_discontinued_operations": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The net income from discontinued operations of the company."
           },
           "net_income_non_controlling_interests": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The net income from non-controlling interests of the company."
           },
           "net_income": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The net income of the company."
           },
           "net_income_common_stock": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The net income available to common stockholders of the company."
           },
           "preferred_dividends_impact": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The impact of preferred dividends on the net income of the company."
           },
           "consolidated_income": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The consolidated income of the company."
           },
           "earnings_per_share": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The earnings per share of the company."
           },
           "earnings_per_share_diluted": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The diluted earnings per share of the company."
           },
           "dividends_per_common_share": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The dividends per common share of the company."
           },
           "weighted_average_shares": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The weighted average shares of the company."
           },
           "weighted_average_shares_diluted": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The diluted weighted average shares of the company."
           }
         }
       },
@@ -319,104 +340,128 @@
           },
           "total_assets": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The total assets of the company."
           },
           "current_assets": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The current assets of the company."
           },
           "cash_and_equivalents": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The cash and equivalents of the company."
           },
           "inventory": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The inventory of the company."
           },
           "current_investments": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The current investments of the company."
           },
           "trade_and_non_trade_receivables": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The trade and non-trade receivables of the company."
           },
           "non_current_assets": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The non-current assets of the company."
           },
           "property_plant_and_equipment": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The property, plant, and equipment of the company."
           },
           "goodwill_and_intangible_assets": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The goodwill and intangible assets of the company."
           },
           "investments": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The investments of the company."
           },
           "non_current_investments": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The non-current investments of the company."
           },
           "tax_assets": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The tax assets of the company."
           },
           "total_liabilities": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The total liabilities of the company."
           },
           "current_liabilities": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The current liabilities of the company."
           },
           "current_debt": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The current debt of the company."
           },
           "trade_and_non_trade_payables": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The trade and non-trade payables of the company."
           },
           "deferred_revenue": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The deferred revenue of the company."
           },
           "deposit_liabilities": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The deposit liabilities of the company."
           },
           "non_current_liabilities": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The non-current liabilities of the company."
           },
           "non_current_debt": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The non-current debt of the company."
           },
           "tax_liabilities": {
             "type": "number",
             "nullable": false,
-            "default": 0
+            "description": "The tax liabilities of the company."
           },
           "shareholders_equity": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The shareholders' equity of the company."
           },
           "retained_earnings": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The retained earnings of the company."
           },
           "accumulated_other_comprehensive_income": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The accumulated other comprehensive income of the company."
           },
           "total_debt": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The total debt of the company."
           }
         }
       },
@@ -448,55 +493,68 @@
           },
           "net_cash_flow_from_operations": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The net cash flow from operations of the company."
           },
           "depreciation_and_amortization": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The depreciation and amortization of the company."
           },
           "share_based_compensation": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The share-based compensation of the company."
           },
           "net_cash_flow_from_investing": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The net cash flow from investing of the company."
           },
           "capital_expenditure": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The capital expenditure of the company."
           },
           "business_acquisitions_and_disposals": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The business acquisitions and disposals of the company."
           },
           "investment_acquisitions_and_disposals": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The investment acquisitions and disposals of the company."
           },
           "net_cash_flow_from_financing": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The net cash flow from financing of the company."
           },
           "issuance_or_repayment_of_debt_securities": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The issuance or repayment of debt securities of the company."
           },
           "issuance_or_purchase_of_equity_shares": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The issuance or purchase of equity shares of the company."
           },
           "dividends_and_other_cash_distributions": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The dividends and other cash distributions of the company."
           },
           "change_in_cash_and_equivalents": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The change in cash and equivalents of the company."
           },
           "effect_of_exchange_rate_changes": {
             "type": "number",
-            "nullable": false
+            "nullable": false,
+            "description": "The effect of exchange rate changes of the company."
           }
         }
       }
