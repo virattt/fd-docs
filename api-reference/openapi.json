@@ -13,6 +13,11 @@
       "url": "https://api.financialdatasets.ai"
     }
   ],
+  "security": [
+    {
+      "X-API-KEY": []
+    }
+  ],
   "paths": {
     "/financials/income-statements": {
       "get": {
@@ -178,6 +183,14 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "X-API-KEY": {
+        "type": "apiKey",
+        "name": "X-API-KEY",
+        "description": "API key for authentication.",
+        "in": "header"
+      }
+    },
     "schemas": {
       "income_statement": {
         "type": "object",
