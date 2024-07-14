@@ -13,19 +13,16 @@ stock analysis platforms, quantitative trading algorithms, and more.
 You are welcome to save any data that you receive from our API.  Our platform is built by developers for developers.
 
 ### Getting Started
-We are currently in beta mode and will launch later in July 2024.
+We are currently in an open beta mode and will launch later in July 2024.
 
-You can join our waitlist by signing up at [financialdatasets.ai](https://financialdatasets.ai).  Developers who are on the waitlist
-will get first access to our API when we launch.
+You can create an account and <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
 
-In the meantime, we have created a free tier for developers to test out our API.  We have outlined a few code examples below to get you started.
+In the beta, you can access financials for the companies in the S&P 500 index.
+
+We have outlined a few code examples below to get you started.
 
 ### Code Examples
-In the beta, you can access financials for 10 companies:
 
-```python
-['AAPL', 'MSFT', 'BRK.B', 'NVDA', 'AMZN', 'META', 'LLY', 'AVGO', 'TSLA', 'GOOGL']
-```
 <CodeGroup>
 
 ```python GET Income Statements
@@ -34,10 +31,17 @@ import requests
 ticker = 'NVDA'     # stock ticker
 period = 'annual'   # possible values are 'annual', 'quarterly', or 'ttm'
 limit = 10          # number of statements to return
+
+# create the URL
 url = f'https://api.financialdatasets.ai/financials/income-statements?ticker={ticker}&period={period}&limit={limit}'
 
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
 # make API request
-response = requests.get(url)
+response = requests.get(url, headers=headers)
 
 # grab income_statements
 income_statements = response.json().get('income_statements')
@@ -49,10 +53,17 @@ import requests
 ticker = 'NVDA'     # stock ticker
 period = 'annual'   # possible values are 'annual', 'quarterly', or 'ttm'
 limit = 10          # number of statements to return
+
+# create the URL
 url = f'https://api.financialdatasets.ai/financials/balance-sheets?ticker={ticker}&period={period}&limit={limit}'
 
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
 # make API request
-response = requests.get(url)
+response = requests.get(url, headers=headers)
 
 # grab balance_sheets
 balance_sheets = response.json().get('balance_sheets')
@@ -64,10 +75,17 @@ import requests
 ticker = 'NVDA'     # stock ticker
 period = 'annual'   # possible values are 'annual', 'quarterly', or 'ttm'
 limit = 10          # number of statements to return
+
+# create the URL
 url = f'https://api.financialdatasets.ai/financials/cash-flow-statements?ticker={ticker}&period={period}&limit={limit}'
 
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
 # make API request
-response = requests.get(url)
+response = requests.get(url, headers=headers)
 
 # grab cash_flow_statements
 cash_flow_statements = response.json().get('cash_flow_statements')
