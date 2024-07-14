@@ -13,11 +13,11 @@ stock analysis platforms, quantitative trading algorithms, and more.
 You are welcome to save any data that you receive from our API.  Our platform is built by developers for developers.
 
 ### Getting Started
-We are currently in an open beta mode and will launch later in July 2024.
+We are currently in an open beta and will launch fully in late July 2024.
 
 You can create an account and <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
 
-In the open beta, you can access financials for all companies in the S&P 500 index.
+During the open beta, you can access financials for all companies in the <b>S&P 500</b> index.
 
 We have outlined a few code examples below to get you started.
 
@@ -43,7 +43,7 @@ headers = {
 # make API request
 response = requests.get(url, headers=headers)
 
-# grab income_statements
+# parse income_statements
 income_statements = response.json().get('income_statements')
 ```
 
@@ -65,7 +65,7 @@ headers = {
 # make API request
 response = requests.get(url, headers=headers)
 
-# grab balance_sheets
+# parse balance_sheets
 balance_sheets = response.json().get('balance_sheets')
 ```
 
@@ -87,7 +87,7 @@ headers = {
 # make API request
 response = requests.get(url, headers=headers)
 
-# grab cash_flow_statements
+# parse cash_flow_statements
 cash_flow_statements = response.json().get('cash_flow_statements')
 ```
 
