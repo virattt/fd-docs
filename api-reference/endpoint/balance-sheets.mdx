@@ -2,3 +2,49 @@
 title: 'Balance Sheets'
 openapi: 'GET /financials/balance-sheets'
 ---
+
+### 👋  Overview
+We have balance sheets for <b>16,000+</b> public companies, going back <b>30+</b> years.
+
+Any balance sheets that you receive from our API is yours to keep. You may save the data that you receive to minimize repeat API calls.
+
+To get started, please create an account and can get your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+###  🚀  Getting Started
+There are two steps to successfully make an API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `ticker`, `period` and `limit` to filter the data.
+
+**Note**: `ticker` and `period` are required.  By default, `limit` is `10`.
+
+### 💻  Example
+
+```python Balance Sheets
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'NVDA'     # stock ticker
+period = 'annual'   # possible values are 'annual', 'quarterly', or 'ttm'
+limit = 30          # number of statements to return
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/financials/balance-sheets'
+    f'?ticker={ticker}'
+    f'&period={period}'
+    f'&limit={limit}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse balance_sheets from the response
+balance_sheets = response.json().get('balance_sheets')
+```
