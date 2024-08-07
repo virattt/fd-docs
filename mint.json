@@ -40,11 +40,25 @@
       ]
     },
     {
-      "group": "Endpoints",
+      "group": "API Endpoints",
       "pages": [
-        "api-reference/endpoint/income-statements",
-        "api-reference/endpoint/balance-sheets",
-        "api-reference/endpoint/cash-flow-statements"
+        {
+          "group": "Financials",
+          "icon": "dollar-sign",
+          "pages": [
+            "api-reference/endpoint/financials/income-statements",
+            "api-reference/endpoint/financials/balance-sheets",
+            "api-reference/endpoint/financials/cash-flow-statements"
+          ]
+        },
+        {
+          "group": "SEC Filings",
+          "icon": "file",
+          "pages": [
+            "api-reference/endpoint/filings/filings_by_ticker",
+            "api-reference/endpoint/filings/filings_by_cik"
+          ]
+        }
       ]
     }
   ],

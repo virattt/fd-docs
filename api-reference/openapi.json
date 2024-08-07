@@ -19,6 +19,43 @@
     }
   ],
   "paths": {
+    "/filings": {
+      "get": {
+        "description": "Get SEC filings for a company.",
+        "parameters": [
+          {
+            "name": "cik",
+            "in": "query",
+            "description": "The Central Index Key (CIK) of the company.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol of the company.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SEC filings response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/filings_response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/financials/income-statements": {
       "get": {
         "description": "Get income statements for a ticker.",
@@ -58,14 +95,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Income statement response",
+            "description": "Income statements response",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/income_statement"
-                  }
+                  "$ref": "#/components/schemas/income_statement_response"
                 }
               }
             }
@@ -112,14 +146,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Balance sheet response",
+            "description": "Balance sheets response",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/balance_sheet"
-                  }
+                  "$ref": "#/components/schemas/balance_sheet_response"
                 }
               }
             }
@@ -166,14 +197,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Cash flow statement response",
+            "description": "Cash flow statements response",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/cash_flow_statement"
-                  }
+                  "$ref": "#/components/schemas/cash_flow_statement_response"
                 }
               }
             }
@@ -192,6 +220,50 @@
       }
     },
     "schemas": {
+      "income_statement_response": {
+        "type": "object",
+        "properties": {
+          "income_statements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/income_statement"
+            }
+          }
+        }
+      },
+      "balance_sheet_response": {
+        "type": "object",
+        "properties": {
+          "balance_sheets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/balance_sheet"
+            }
+          }
+        }
+      },
+      "cash_flow_statement_response": {
+        "type": "object",
+        "properties": {
+          "cash_flow_statements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/cash_flow_statement"
+            }
+          }
+        }
+      },
+      "filings_response": {
+        "type": "object",
+        "properties": {
+          "filings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/filing"
+            }
+          }
+        }
+      },
       "income_statement": {
         "type": "object",
         "properties": {
@@ -568,6 +640,37 @@
             "type": "number",
             "nullable": false,
             "description": "The effect of exchange rate changes of the company."
+          }
+        }
+      },
+      "filing": {
+        "type": "object",
+        "properties": {
+          "cik": {
+            "type": "integer",
+            "description": "The Central Index Key (CIK) of the company."
+          },
+          "accession_number": {
+            "type": "string",
+            "description": "The accession number of the filing."
+          },
+          "filing_type": {
+            "type": "string",
+            "description": "The type of the SEC filing (e.g., 10-Q, 8-K)."
+          },
+          "report_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The date of the report."
+          },
+          "ticker": {
+            "type": "string",
+            "description": "The ticker symbol of the company."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the SEC filing."
           }
         }
       }

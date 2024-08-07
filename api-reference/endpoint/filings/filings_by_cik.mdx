@@ -1,0 +1,47 @@
+---
+title: 'Filings (by CIK)'
+openapi: 'GET /filings'
+---
+
+### 👋  Overview
+We have SEC filings for <b>10,000+</b> public companies.
+
+Any SEC filings that you receive from our API is yours to keep. You may save the data to minimize repeat API calls.
+
+To get started, please create an account and can get your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `ticker` or `cik` to filter the data.
+3. Execute the API request.
+
+**Note**: You must provide either the `ticker` or `cik` are required
+
+### 💻  Example
+
+```python Filings
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+cik = '0000320193'
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/filings'
+    f'?cik={cik}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse filings from the response
+filings = response.json().get('filings')
+```
