@@ -208,6 +208,34 @@
           }
         }
       }
+    },
+    "/prices/snapshot": {
+      "get": {
+        "description": "Get real-time price snapshot for a ticker.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol of the company.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Price snapshot response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/price_snapshot_response"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -261,6 +289,14 @@
             "items": {
               "$ref": "#/components/schemas/filing"
             }
+          }
+        }
+      },
+      "price_snapshot_response": {
+        "type": "object",
+        "properties": {
+          "snapshot": {
+            "$ref": "#/components/schemas/price_snapshot"
           }
         }
       },
@@ -671,6 +707,36 @@
             "type": "string",
             "format": "uri",
             "description": "The URL of the SEC filing."
+          }
+        }
+      },
+      "price_snapshot": {
+        "type": "object",
+        "properties": {
+          "price": {
+            "type": "number",
+            "description": "The current price of the stock."
+          },
+          "ticker": {
+            "type": "string",
+            "description": "The ticker symbol of the company."
+          },
+          "day_change": {
+            "type": "number",
+            "description": "The price change since the previous trading day's close."
+          },
+          "day_change_percent": {
+            "type": "number",
+            "description": "The percentage price change since the previous trading day's close."
+          },
+          "time": {
+            "type": "string",
+            "description": "The timestamp of the price snapshot in human-readable format."
+          },
+          "time_nanoseconds": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The timestamp of the price snapshot in nanoseconds."
           }
         }
       }

@@ -1,12 +1,12 @@
 ---
-title: 'Filings (by ticker)'
-openapi: 'GET /filings'
+title: 'Snapshot'
+openapi: 'GET /prices/snapshot'
 ---
 
 ### 👋  Overview
-We have SEC filings for <b>10,000+</b> public companies.
+We have real-time prices for <b>30,000+</b> stocks.
 
-Any SEC filings that you receive from our API is yours to keep. You may save the data to minimize repeat API calls.
+Any price data that you receive from our API is yours to keep. You may save the data to minimize repeat API calls.
 
 To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
 
@@ -15,14 +15,14 @@ You will use the API key to authenticate your API requests.
 ###  🚀  Getting Started
 There are only 3 steps for making a successful API call:
 1. Add your API key to the header of the request as `X-API-KEY`.
-2. Add query params like `ticker` or `cik` to filter the data.
+2. Add query params like `ticker` to filter the data.
 3. Execute the API request.
 
-**Note**: You must provide either the `ticker` or `cik` are required
+**Note**: You must provide the `ticker`.
 
 ### 💻  Example
 
-```python Filings
+```python Price Snapshot
 import requests
 
 # add your API key to the headers
@@ -35,13 +35,13 @@ ticker = 'AAPL'
 
 # create the URL
 url = (
-    f'https://api.financialdatasets.ai/filings'
+    f'https://api.financialdatasets.ai/prices/snapshot'
     f'?ticker={ticker}'
 )
 
 # make API request
 response = requests.get(url, headers=headers)
 
-# parse filings from the response
-filings = response.json().get('filings')
+# parse snapshot from the response
+snapshot = response.json().get('snapshot')
 ```

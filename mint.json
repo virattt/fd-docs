@@ -52,6 +52,13 @@
           ]
         },
         {
+          "group": "Prices",
+          "icon": "chart-line",
+          "pages": [
+            "api-reference/endpoint/prices/snapshot"
+          ]
+        },
+        {
           "group": "SEC Filings",
           "icon": "file",
           "pages": [
