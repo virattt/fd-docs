@@ -35,7 +35,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "The ticker symbol of the company.",
+            "description": "The ticker symbol.",
             "required": false,
             "schema": {
               "type": "string"
@@ -63,7 +63,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "The ticker symbol of the company.",
+            "description": "The ticker symbol.",
             "required": true,
             "schema": {
               "type": "string"
@@ -114,7 +114,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "The ticker symbol of the company.",
+            "description": "The ticker symbol.",
             "required": true,
             "schema": {
               "type": "string"
@@ -165,7 +165,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "The ticker symbol of the company.",
+            "description": "The ticker symbol.",
             "required": true,
             "schema": {
               "type": "string"
@@ -211,12 +211,12 @@
     },
     "/prices/snapshot": {
       "get": {
-        "description": "Get real-time price snapshot for a ticker.",
+        "description": "Get the real-time price snapshot for a ticker.",
         "parameters": [
           {
             "name": "ticker",
             "in": "query",
-            "description": "The ticker symbol of the company.",
+            "description": "The ticker symbol.",
             "required": true,
             "schema": {
               "type": "string"
@@ -305,7 +305,7 @@
         "properties": {
           "ticker": {
             "type": "string",
-            "description": "The ticker symbol of the company."
+            "description": "The ticker symbol."
           },
           "calendar_date": {
             "type": "string",
@@ -438,7 +438,7 @@
         "properties": {
           "ticker": {
             "type": "string",
-            "description": "The ticker symbol of the company."
+            "description": "The ticker symbol."
           },
           "calendar_date": {
             "type": "string",
@@ -591,7 +591,7 @@
         "properties": {
           "ticker": {
             "type": "string",
-            "description": "The ticker symbol of the company."
+            "description": "The ticker symbol."
           },
           "calendar_date": {
             "type": "string",
@@ -701,7 +701,7 @@
           },
           "ticker": {
             "type": "string",
-            "description": "The ticker symbol of the company."
+            "description": "The ticker symbol."
           },
           "url": {
             "type": "string",
@@ -719,7 +719,7 @@
           },
           "ticker": {
             "type": "string",
-            "description": "The ticker symbol of the company."
+            "description": "The ticker symbol."
           },
           "day_change": {
             "type": "number",
