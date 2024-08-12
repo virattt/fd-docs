@@ -236,6 +236,94 @@
           }
         }
       }
+    },
+    "/prices": {
+      "get": {
+        "description": "Get historical price data for a ticker to power stock charts and analyze price movements.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "interval",
+            "in": "query",
+            "description": "The time interval for the price data.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "second",
+                "minute",
+                "day",
+                "week",
+                "month",
+                "quarter",
+                "year"
+              ]
+            }
+          },
+          {
+            "name": "interval_multiplier",
+            "in": "query",
+            "description": "The multiplier for the interval.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "The start date for the price data (format: YYYY-MM-DD).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "The end date for the price data (format: YYYY-MM-DD).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of price records to return (default: 5000, max: 5000).",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5000,
+              "default": 5000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Historical price data response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/prices_response"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -297,6 +385,17 @@
         "properties": {
           "snapshot": {
             "$ref": "#/components/schemas/price_snapshot"
+          }
+        }
+      },
+      "prices_response": {
+        "type": "object",
+        "properties": {
+          "prices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/price"
+            }
           }
         }
       },
@@ -737,6 +836,45 @@
             "type": "integer",
             "format": "int64",
             "description": "The timestamp of the price snapshot in nanoseconds."
+          }
+        }
+      },
+      "price": {
+        "type": "object",
+        "properties": {
+          "ticker": {
+            "type": "string",
+            "description": "The ticker symbol."
+          },
+          "open": {
+            "type": "number",
+            "description": "The open price of the ticker in the given time period."
+          },
+          "close": {
+            "type": "number",
+            "description": "The close price of the ticker in the given time period."
+          },
+          "high": {
+            "type": "number",
+            "description": "The high price of the ticker in the given time period."
+          },
+          "low": {
+            "type": "number",
+            "description": "The low price of the ticker in the given time period."
+          },
+          "volume": {
+            "type": "integer",
+            "format": "number",
+            "description": "The volume of the ticker in the given time period."
+          },
+          "time": {
+            "type": "string",
+            "description": "The human-readable time format of the price."
+          },
+          "time_milliseconds": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The UNIX millisecond timestamp of the price."
           }
         }
       }
