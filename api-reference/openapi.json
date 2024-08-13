@@ -842,10 +842,6 @@
       "price": {
         "type": "object",
         "properties": {
-          "ticker": {
-            "type": "string",
-            "description": "The ticker symbol."
-          },
           "open": {
             "type": "number",
             "description": "The open price of the ticker in the given time period."
