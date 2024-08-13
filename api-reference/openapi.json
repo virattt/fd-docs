@@ -613,6 +613,11 @@
             "nullable": false,
             "description": "The non-current investments of the company."
           },
+          "outstanding_shares": {
+            "type": "number",
+            "nullable": false,
+            "description": "The outstanding shares of the company."
+          },
           "tax_assets": {
             "type": "number",
             "nullable": false,
