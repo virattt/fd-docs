@@ -19,6 +19,34 @@
     }
   ],
   "paths": {
+    "/company/facts": {
+      "get": {
+        "description": "Get company facts filings for a ticker.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SEC filings response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/company_facts_response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/filings": {
       "get": {
         "description": "Get SEC filings for a company.",
@@ -366,6 +394,14 @@
             "items": {
               "$ref": "#/components/schemas/cash_flow_statement"
             }
+          }
+        }
+      },
+      "company_facts_response": {
+        "type": "object",
+        "properties": {
+          "company_facts": {
+            "$ref": "#/components/schemas/company_facts"
           }
         }
       },
@@ -780,6 +816,53 @@
             "type": "number",
             "nullable": false,
             "description": "The effect of exchange rate changes of the company."
+          }
+        }
+      },
+      "company_facts": {
+        "type": "object",
+        "properties": {
+          "ticker": {
+            "type": "string",
+            "description": "The ticker symbol of the company."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the company."
+          },
+          "cik": {
+            "type": "string",
+            "description": "The Central Index Key (CIK) of the company."
+          },
+          "market_cap": {
+            "type": "number",
+            "description": "The market capitalization of the company."
+          },
+          "number_of_employees": {
+            "type": "number",
+            "description": "The number of employees at the company."
+          },
+          "sic_code": {
+            "type": "string",
+            "description": "The Standard Industrial Classification (SIC) code of the company."
+          },
+          "sic_description": {
+            "type": "string",
+            "description": "The description of the Standard Industrial Classification (SIC) code."
+          },
+          "website_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the company's website."
+          },
+          "listing_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The date the company was listed on the stock exchange."
+          },
+          "is_active": {
+            "type": "boolean",
+            "description": "Whether the company is currently active."
           }
         }
       },

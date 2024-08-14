@@ -43,6 +43,13 @@
       "group": "Endpoints",
       "pages": [
         {
+          "group": "Company",
+          "icon": "building",
+          "pages": [
+            "api-reference/endpoint/company/facts"
+          ]
+        },
+        {
           "group": "Financials",
           "icon": "dollar-sign",
           "pages": [
