@@ -59,19 +59,19 @@
           ]
         },
         {
+          "group": "Prices",
+          "icon": "chart-line",
+          "pages": [
+            "api-reference/endpoint/prices/historical",
+            "api-reference/endpoint/prices/snapshot"
+          ]
+        },
+        {
           "group": "SEC Filings",
           "icon": "file",
           "pages": [
             "api-reference/endpoint/filings/filings_by_ticker",
             "api-reference/endpoint/filings/filings_by_cik"
-          ]
-        },
-        {
-          "group": "Stock Prices",
-          "icon": "chart-line",
-          "pages": [
-            "api-reference/endpoint/prices/historical",
-            "api-reference/endpoint/prices/snapshot"
           ]
         }
       ]

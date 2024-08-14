@@ -267,7 +267,7 @@
     },
     "/prices": {
       "get": {
-        "description": "Get historical price data for a ticker to power stock charts and analyze price movements.",
+        "description": "Get ranged price data for a ticker to power stock charts and analyze price movements.",
         "parameters": [
           {
             "name": "ticker",
@@ -341,7 +341,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Historical price data response",
+            "description": "Price data response",
             "content": {
               "application/json": {
                 "schema": {
