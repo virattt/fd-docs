@@ -265,6 +265,57 @@
         }
       }
     },
+    "/financials": {
+      "get": {
+        "description": "Get all financial statements for a ticker.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "description": "The time period of the financial statements.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "annual",
+                "quarterly",
+                "ttm"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of financial statements to return.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Financial statements response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/financials_response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/prices": {
       "get": {
         "description": "Get ranged price data for a ticker to power stock charts and analyze price movements.",
@@ -364,6 +415,34 @@
       }
     },
     "schemas": {
+      "financials_response": {
+        "type": "object",
+        "properties": {
+          "financials": {
+            "type": "object",
+            "properties": {
+              "income_statements": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/income_statement"
+                }
+              },
+              "balance_sheets": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/balance_sheet"
+                }
+              },
+              "cash_flow_statements": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/cash_flow_statement"
+                }
+              }
+            }
+          }
+        }
+      },
       "income_statement_response": {
         "type": "object",
         "properties": {

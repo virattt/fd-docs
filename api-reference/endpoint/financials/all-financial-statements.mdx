@@ -1,0 +1,67 @@
+---
+title: 'All Financial Statements'
+openapi: 'GET /financials'
+---
+
+### 👋  Overview
+This endpoint aggregates all financial statements for a ticker into a single API call.
+
+So, instead of calling 3 endpoints to get income statements, balance sheets, and cash flow statements, you can call this endpoint once and get all financial statements in one go.
+
+The endpoint returns the following financial statements:
+- [Income Statements](/api-reference/endpoint/financials/income-statements)
+- [Balance Sheets](/api-reference/endpoint/financials/balance-sheets)
+- [Cash Flow Statements](/api-reference/endpoint/financials/cash-flow-statements)
+
+Any data that you receive from our API is yours to keep. You may save the data to minimize repeat API calls.
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `ticker`, `period` and `limit` to filter the data.
+3. Execute the API request.
+
+**Note**: `ticker` and `period` are required.  By default, `limit` is `10`.
+
+### 💻  Example
+
+```python All Financial Statements
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'NVDA'     # stock ticker
+period = 'annual'   # possible values are 'annual', 'quarterly', or 'ttm'
+limit = 30          # number of statements to return
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/financials/'
+    f'?ticker={ticker}'
+    f'&period={period}'
+    f'&limit={limit}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse financials from the response
+financials = response.json().get('financials')
+
+# get income statements
+income_statements = financials.get('income_statements')
+
+# get balance sheets
+balance_sheets = financials.get('balance_sheets')
+
+# get cash flow statements
+cash_flow_statements = financials.get('cash_flow_statements')
+```
