@@ -18,8 +18,6 @@ There are only 3 steps for making a successful API call:
 2. Add query params like `ticker` to filter the data.
 3. Execute the API request.
 
-**Note**: You must provide the `ticker`.
-
 ### 💻  Example
 
 ```python Prices
@@ -32,16 +30,24 @@ headers = {
 
 # set your query params
 ticker = 'AAPL'
+interval = 'minute'         # possible values are {'second', 'minute', 'day', 'week', 'month', 'quarter', 'year'}
+interval_multiplier = 5     # every 5 minutes
+start_date = '2024-01-02'
+end_date = '2024-01-05'
 
 # create the URL
 url = (
     f'https://api.financialdatasets.ai/prices/'
-    f'?ticker={ticker}'
+  f'?ticker={ticker}'
+  f'&interval={interval}'
+  f'&interval_multiplier={interval_multiplier}'
+  f'&start_date={start_date}'
+  f'&end_date={end_date}'
 )
 
 # make API request
 response = requests.get(url, headers=headers)
 
 # parse prices from the response
-snapshot = response.json().get('prices')
+prices = response.json().get('prices')
 ```
