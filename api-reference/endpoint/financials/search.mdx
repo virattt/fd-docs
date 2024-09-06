@@ -1,0 +1,71 @@
+---
+title: 'Search'
+
+openapi: 'POST /financials/search'
+---
+
+### 👋  Overview
+The Financials Search API lets you search for financial data across income statements, balance sheets,
+and cash flow statements for <b>16,000+</b> public companies, going back <b>30+</b> years.
+
+Any data that you receive from our API is yours to keep. You may save the data to minimize repeat API calls.
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Prepare a JSON body with your search criteria, including `period`, `limit`, and `filters`.
+3. Execute the API request to the /financials/search endpoint using a POST method.
+
+Note: `filters` is required. By default, `period` is `"ttm"` and `limit` is 100.
+
+### 💻  Example
+
+```python Financials Search
+import requests
+import json
+
+# Add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here",
+    "Content-Type": "application/json"
+}
+
+# Prepare the request body
+body = {
+    "period": "ttm",
+    "limit": 5,
+    "filters": [
+        {
+            "field": "revenue",
+            "operator": "gte",
+            "value": 10000000
+        },
+        {
+            "field": "net_income",
+            "operator": "gte",
+            "value": 10000000
+        }
+    ]
+}
+
+# Create the URL
+url = 'https://api.financialdatasets.ai/financials/search'
+
+# Make API request
+response = requests.post(url, headers=headers, data=json.dumps(body))
+
+# Parse search results from the response
+search_results = response.json().get('search_results')
+
+# Print the results
+for result in search_results:
+    print(f"Ticker: {result['ticker']}")
+    print(f"Report Period: {result['report_period']}")
+    print(f"Revenue: ${result['revenue']:,.0f}")
+    print(f"Net Income: ${result['net_income']:,.0f}")
+    print("---")
+```

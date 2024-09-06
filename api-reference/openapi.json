@@ -19,6 +19,33 @@
     }
   ],
   "paths": {
+    "/financials/search": {
+      "post": {
+        "description": "Search for financial data across income statements, balance sheets, and cash flow statements.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/financials_search_request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful search response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/financials_search_response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/company/facts": {
       "get": {
         "description": "Get company facts filings for a ticker.",
@@ -415,6 +442,109 @@
       }
     },
     "schemas": {
+      "financials_search_request": {
+        "type": "object",
+        "required": [
+          "filters"
+        ],
+        "properties": {
+          "period": {
+            "type": "string",
+            "enum": [
+              "annual",
+              "quarterly",
+              "ttm"
+            ],
+            "default": "ttm",
+            "description": "The time period for the financial data."
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 100,
+            "description": "The maximum number of results to return."
+          },
+          "filters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "field",
+                "operator",
+                "value"
+              ],
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "description": "The financial metric to filter on."
+                },
+                "operator": {
+                  "type": "string",
+                  "enum": [
+                    "gt",
+                    "lt",
+                    "gte",
+                    "lte",
+                    "eq"
+                  ],
+                  "description": "The comparison operator."
+                },
+                "value": {
+                  "type": "number",
+                  "description": "The value to compare against."
+                }
+              }
+            },
+            "minItems": 1,
+            "description": "An array of filter objects to apply to the search."
+          },
+          "order": {
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "default": "desc",
+            "description": "The order of the results based on the report_period."
+          }
+        }
+      },
+      "financials_search_response": {
+        "type": "object",
+        "properties": {
+          "search_results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ticker": {
+                  "type": "string",
+                  "description": "The ticker symbol of the company."
+                },
+                "report_period": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "The reporting period of the financial data."
+                },
+                "period": {
+                  "type": "string",
+                  "enum": [
+                    "annual",
+                    "quarterly",
+                    "ttm"
+                  ],
+                  "description": "The time period of the financial data."
+                }
+              },
+              "additionalProperties": {
+                "type": "number",
+                "description": "Additional financial metrics based on the search criteria."
+              }
+            }
+          }
+        }
+      },
       "financials_response": {
         "type": "object",
         "properties": {
