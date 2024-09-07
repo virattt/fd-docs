@@ -22,6 +22,112 @@ There are only 3 steps for making a successful API call:
 
 Note: `filters` is required. By default, `period` is `"ttm"` and `limit` is 100.
 
+### 📊  Filters
+You can filter the search results by adding one or more filters.
+
+Each filter consists of a `field`, an `operator`, and a `value`.
+
+The `operator` must be one of:
+- `"eq"` (equal to)
+- `"gt"` (greater than)
+- `"gte"` (greater than or equal to)
+- `"lt"` (less than)
+- `"lte"` (less than or equal to)
+
+The `value` must be a number like `1000000`.
+
+The `field` must be one of the following from the income statement, balance sheet, or cash flow statement:
+
+<CodeGroup>
+
+```python Income Statement
+# List of valid filter fields for the income statement
+fields = [
+    "consolidated_income",
+    "cost_of_revenue",
+    "dividends_per_common_share",
+    "earnings_per_share",
+    "earnings_per_share_diluted",
+    "ebit",
+    "ebit_usd",
+    "earnings_per_share_usd",
+    "gross_profit",
+    "income_tax_expense",
+    "interest_expense",
+    "net_income",
+    "net_income_common_stock",
+    "net_income_common_stock_usd",
+    "net_income_discontinued_operations",
+    "net_income_non_controlling_interests",
+    "operating_expense",
+    "operating_income",
+    "preferred_dividends_impact",
+    "research_and_development",
+    "revenue",
+    "revenue_usd",
+    "selling_general_and_administrative_expenses",
+    "weighted_average_shares",
+    "weighted_average_shares_diluted",
+]
+```
+
+```python Balance Sheet
+# List of valid filter fields for the balance sheet
+fields = [
+    "accumulated_other_comprehensive_income",
+    "cash_and_equivalents",
+    "cash_and_equivalents_usd",
+    "current_assets",
+    "current_debt",
+    "current_investments",
+    "current_liabilities",
+    "deferred_revenue",
+    "deposit_liabilities",
+    "goodwill_and_intangible_assets",
+    "inventory",
+    "investments",
+    "non_current_assets",
+    "non_current_debt",
+    "non_current_investments",
+    "non_current_liabilities",
+    "outstanding_shares",
+    "property_plant_and_equipment",
+    "retained_earnings",
+    "shareholders_equity",
+    "shareholders_equity_usd",
+    "tax_assets",
+    "tax_liabilities",
+    "total_assets",
+    "total_debt",
+    "total_debt_usd",
+    "total_liabilities",
+    "trade_and_non_trade_payables",
+    "trade_and_non_trade_receivables",
+]
+```
+
+```python Cash Flow Statement
+# List of valid filter fields for the cash flow statement
+fields = [
+    "business_acquisitions_and_disposals",
+    "capital_expenditure",
+    "change_in_cash_and_equivalents",
+    "depreciation_and_amortization",
+    "dividends_and_other_cash_distributions",
+    "effect_of_exchange_rate_changes",
+    "investment_acquisitions_and_disposals",
+    "issuance_or_purchase_of_equity_shares",
+    "issuance_or_repayment_of_debt_securities",
+    "net_cash_flow_from_financing",
+    "net_cash_flow_from_investing",
+    "net_cash_flow_from_operations",
+    "share_based_compensation",
+]
+```
+
+</CodeGroup>
+
+
 ### 💻  Example
 
 ```python Financials Search
@@ -40,15 +146,20 @@ body = {
     "limit": 5,
     "filters": [
         {
-            "field": "revenue",
+            "field": "revenue", # from income statement
             "operator": "gte",
-            "value": 10000000
+            "value": 100000000
         },
         {
-            "field": "net_income",
-            "operator": "gte",
+            "field": "total_debt", # from balance sheet
+            "operator": "eq",
+            "value": 0
+        },
+        {
+            "field": "capital_expenditure", # from cash flow statement
+            "operator": "lt",
             "value": 10000000
-        }
+        },
     ]
 }
 
@@ -66,6 +177,7 @@ for result in search_results:
     print(f"Ticker: {result['ticker']}")
     print(f"Report Period: {result['report_period']}")
     print(f"Revenue: ${result['revenue']:,.0f}")
-    print(f"Net Income: ${result['net_income']:,.0f}")
+    print(f"Total Debt: ${result['total_debt']:,.0f}")
+    print(f"Capital Expenditure: ${result['capital_expenditure']:,.0f}")
     print("---")
 ```
