@@ -23,7 +23,7 @@ There are only 3 steps for making a successful API call:
 Note: `filters` is required. By default, `period` is `"ttm"` and `limit` is 100.
 
 ### 📊  Filters
-You can filter the search results by adding one or more filters.
+You can filter the search results by adding one or more `filters`.
 
 Each filter consists of a `field`, an `operator`, and a `value`.
 
@@ -126,6 +126,10 @@ fields = [
 ```
 
 </CodeGroup>
+
+You may specify multiple filters to narrow down the search results.
+
+We charge $0.01 per 10 filters per search. For example, if you use 5 filters, you will be charged $0.01. If you use 15 filters, you will be charged $0.02, and so on.
 
 
 ### 💻  Example
