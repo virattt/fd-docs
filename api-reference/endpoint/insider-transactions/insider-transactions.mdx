@@ -1,0 +1,58 @@
+---
+title: 'Insider Transactions'
+openapi: 'GET /insider-transactions'
+---
+
+### 👋  Overview
+The insider transactions API lets you access the stock buys and sales of public company insiders like CEOs, CFOs, and Directors.
+
+In addition to the stock buys and sales, you can also access the current ownership stakes of insiders.
+
+This data is useful for understanding the sentiment of company insiders. For example, you can answer questions like:
+- How many shares of Nvidia does Jensen Huang own?
+- How many shares of Microsoft did Satya Nadella buy last quarter?
+- How many shares of Apple has Tim Cook sold over the past year?
+
+We have insider transactions for <b>15,000+</b> public companies, going back <b>10+</b> years.
+
+Any data that you receive from our API is yours to keep. You may save the data to minimize repeat API calls.
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `ticker` and `limit` to filter the data.
+3. Execute the API request.
+
+**Note**: `ticker` is required required.  By default, `limit` is `100`.
+
+### 💻  Example
+
+```python Insider Transactions
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'NVDA'     # stock ticker
+limit = 100         # number of transactions to return
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/insider-transactions'
+    f'?ticker={ticker}'
+    f'&limit={limit}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse insider_transactions from the response
+insider_transactions = response.json().get('insider_transactions')
+```

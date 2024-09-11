@@ -61,6 +61,13 @@
           ]
         },
         {
+          "group": "Insider Transactions",
+          "icon": "briefcase",
+          "pages": [
+            "api-reference/endpoint/insider-transactions/insider-transactions"
+          ]
+        },
+        {
           "group": "Prices",
           "icon": "chart-line",
           "pages": [

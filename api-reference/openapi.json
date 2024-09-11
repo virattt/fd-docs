@@ -46,6 +46,74 @@
         }
       }
     },
+    "/insider-transactions": {
+      "get": {
+        "description": "Get insider transactions for a specific ticker.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol of the company.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of transactions to return (default: 10).",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful insider transactions response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/insider_transactions_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error_response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error_response"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error_response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/company/facts": {
       "get": {
         "description": "Get company facts filings for a ticker.",
@@ -545,6 +613,17 @@
           }
         }
       },
+      "insider_transactions_response": {
+        "type": "object",
+        "properties": {
+          "insider_transactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/insider_transaction"
+            }
+          }
+        }
+      },
       "financials_response": {
         "type": "object",
         "properties": {
@@ -641,6 +720,78 @@
             "items": {
               "$ref": "#/components/schemas/price"
             }
+          }
+        }
+      },
+      "error_response": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "A short error message."
+          },
+          "message": {
+            "type": "string",
+            "description": "A more detailed error message."
+          }
+        }
+      },
+      "insider_transaction": {
+        "type": "object",
+        "properties": {
+          "ticker": {
+            "type": "string",
+            "description": "The ticker symbol of the company."
+          },
+          "issuer": {
+            "type": "string",
+            "description": "The name of the issuing company."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the insider."
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the insider."
+          },
+          "is_board_director": {
+            "type": "boolean",
+            "description": "Whether the insider is a board director."
+          },
+          "transaction_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The date of the transaction."
+          },
+          "transaction_shares": {
+            "type": "number",
+            "description": "The number of shares involved in the transaction."
+          },
+          "transaction_price_per_share": {
+            "type": "number",
+            "description": "The price per share in the transaction."
+          },
+          "transaction_value": {
+            "type": "number",
+            "description": "The total value of the transaction."
+          },
+          "shares_owned_before_transaction": {
+            "type": "number",
+            "description": "The number of shares owned before the transaction."
+          },
+          "shares_owned_after_transaction": {
+            "type": "number",
+            "description": "The number of shares owned after the transaction."
+          },
+          "security_title": {
+            "type": "string",
+            "description": "The title of the security involved in the transaction."
+          },
+          "filing_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The date the transaction was filed."
           }
         }
       },
