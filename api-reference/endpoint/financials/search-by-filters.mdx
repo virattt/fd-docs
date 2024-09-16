@@ -44,6 +44,8 @@ There are 3 steps for making a successful API call:
 2. Prepare a JSON body with your search criteria, including `period`, `limit`, and `filters`.
 3. Execute the API request to the /financials/search endpoint using a POST method.
 
+The `period` can be one of `"ttm"` (trailing twelve months), `"annual"`, or `"quarterly"`.
+
 Note: `filters` is required. By default, `period` is `"ttm"` and `limit` is 100.
 
 ### 🔎  Filters
