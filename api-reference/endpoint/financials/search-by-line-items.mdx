@@ -1,0 +1,192 @@
+---
+title: 'Search (by line items)'
+
+openapi: 'POST /financials/search/line-items'
+---
+
+### 👋  Overview
+This endpoint lets you search for <b>specific</b> financial metrics by specifying a set of `line_items` in your request.
+
+You can search by any line item that is listed below in the [Line Items](#line-items) section.
+
+For example, you can search for `net_income` and `total_debt` for NVDA and AAPL and receive the following response:
+
+```json
+{
+  "search_results": [
+    {
+      "ticker": "NVDA",
+      "report_period": "2024-07-28",
+      "period": "ttm",
+      "net_income": 53008000000,
+      "total_debt": 9765000000
+    },
+    {
+      "ticker": "AAPL",
+      "report_period": "2024-06-29",
+      "period": "ttm",
+      "net_income": 101956000000,
+      "total_debt": 101304000000
+    }
+  ]
+}
+```
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+The Financials Search API lets you search for financial data across income statements, balance sheets,
+and cash flow statements for <b>16,000+</b> public companies, going back <b>30+</b> years.
+
+###  🚀  Getting Started
+There are 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Prepare a JSON body with your search criteria, including `tickers`, `line_items`, `period`, and `limit`.
+3. Execute the API request to the /financials/search endpoint using a POST method.
+
+The `limit` is the maximum number of data points to return per ticker.  For example, if you have 2 tickers and set the limit to 3, you will get 6 data points in total, 3 per ticker.
+
+Note: `tickers` and `line_items` are required. By default, `period` is `"ttm"` and `limit` is 1.
+
+### 🔎  Line Items
+This endpoint lets you request data for specific `line_items` for a list of tickers.
+
+You may specify multiple `line_items` to narrow down the search results.
+
+You can also mix-and-match `line_items` from different financial statements. For example, you can search for `net_income` from the income statement and `total_debt` from the balance sheet.
+
+Each line item consists of a key. The key is the name of the financial metric that you want to search for.
+
+We charge \$0.01 per 10 line items per search. For example, 5 line items costs \$0.01, 15 line items costs \$0.02, and so on.
+<CodeGroup>
+
+```python Income Statement
+# List of valid line_items for the income statement
+line_items = [
+    "consolidated_income",
+    "cost_of_revenue",
+    "dividends_per_common_share",
+    "earnings_per_share",
+    "earnings_per_share_diluted",
+    "ebit",
+    "ebit_usd",
+    "earnings_per_share_usd",
+    "gross_profit",
+    "income_tax_expense",
+    "interest_expense",
+    "net_income",
+    "net_income_common_stock",
+    "net_income_common_stock_usd",
+    "net_income_discontinued_operations",
+    "net_income_non_controlling_interests",
+    "operating_expense",
+    "operating_income",
+    "preferred_dividends_impact",
+    "research_and_development",
+    "revenue",
+    "revenue_usd",
+    "selling_general_and_administrative_expenses",
+    "weighted_average_shares",
+    "weighted_average_shares_diluted",
+]
+```
+
+```python Balance Sheet
+# List of valid line_items for the balance sheet
+line_items = [
+    "accumulated_other_comprehensive_income",
+    "cash_and_equivalents",
+    "cash_and_equivalents_usd",
+    "current_assets",
+    "current_debt",
+    "current_investments",
+    "current_liabilities",
+    "deferred_revenue",
+    "deposit_liabilities",
+    "goodwill_and_intangible_assets",
+    "inventory",
+    "investments",
+    "non_current_assets",
+    "non_current_debt",
+    "non_current_investments",
+    "non_current_liabilities",
+    "outstanding_shares",
+    "property_plant_and_equipment",
+    "retained_earnings",
+    "shareholders_equity",
+    "shareholders_equity_usd",
+    "tax_assets",
+    "tax_liabilities",
+    "total_assets",
+    "total_debt",
+    "total_debt_usd",
+    "total_liabilities",
+    "trade_and_non_trade_payables",
+    "trade_and_non_trade_receivables",
+]
+```
+
+```python Cash Flow Statement
+# List of valid line line_items for the cash flow statement
+line_items = [
+    "business_acquisitions_and_disposals",
+    "capital_expenditure",
+    "change_in_cash_and_equivalents",
+    "depreciation_and_amortization",
+    "dividends_and_other_cash_distributions",
+    "effect_of_exchange_rate_changes",
+    "investment_acquisitions_and_disposals",
+    "issuance_or_purchase_of_equity_shares",
+    "issuance_or_repayment_of_debt_securities",
+    "net_cash_flow_from_financing",
+    "net_cash_flow_from_investing",
+    "net_cash_flow_from_operations",
+    "share_based_compensation",
+]
+```
+
+</CodeGroup>
+
+
+
+### 💻  Example
+
+```python Financials Search
+import requests
+import json
+
+# Add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here",
+    "Content-Type": "application/json"
+}
+
+# Prepare the request body
+body = {
+  "period": "ttm",
+  "tickers": ["NVDA", "AAPL"],
+  "limit": 1,
+  "line_items": [
+    "net_income",
+    "total_debt"
+  ]
+}
+
+# Create the URL
+url = 'https://api.financialdatasets.ai/financials/search/line-items'
+
+# Make API request
+response = requests.post(url, headers=headers, data=json.dumps(body))
+
+# Parse search results, which are ordered by report period, newest to oldest
+search_results = response.json().get('search_results')
+
+# Print the results
+for result in search_results:
+    print(f"Ticker: {result['ticker']}")
+    print(f"Report Period: {result['report_period']}")
+    print(f"Revenue: ${result['net_income']:,.0f}")
+    print(f"Total Debt: ${result['total_debt']:,.0f}")
+    print("---")
+```

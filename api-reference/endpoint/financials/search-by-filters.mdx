@@ -1,28 +1,52 @@
 ---
-title: 'Search'
+title: 'Search (by filters)'
 
 openapi: 'POST /financials/search'
 ---
 
 ### 👋  Overview
-The Financials Search API lets you search for financial data across income statements, balance sheets,
-and cash flow statements for <b>16,000+</b> public companies, going back <b>30+</b> years.
+This endpoint lets you search for companies based on a set of `filters` that you specify. You can filter by any financial metric that is listed below in the [Filters](#filters) section.
 
-Any data that you receive from our API is yours to keep. You may save the data to minimize repeat API calls.
+For example, you can search for companies with revenue greater than \$100 million and capital expenditure less than \$10 million and receive the following response:
+
+```json
+{
+  "search_results": [
+    {
+      "ticker": "ORCL",
+      "report_period": "2024-08-31",
+      "period": "ttm",
+      "revenue": 53815000000,
+      "capital_expenditure": -7855000000
+    },
+    {
+      "ticker": "PLAY",
+      "report_period": "2024-08-06",
+      "period": "ttm",
+      "revenue": 2211100000,
+      "capital_expenditure": -424400000
+    }
+  ]
+}
+```
+
 
 To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
 
 You will use the API key to authenticate your API requests.
 
+The Financials Search API lets you search for financial data across income statements, balance sheets,
+and cash flow statements for <b>16,000+</b> public companies, going back <b>30+</b> years.
+
 ###  🚀  Getting Started
-There are only 3 steps for making a successful API call:
+There are 3 steps for making a successful API call:
 1. Add your API key to the header of the request as `X-API-KEY`.
 2. Prepare a JSON body with your search criteria, including `period`, `limit`, and `filters`.
 3. Execute the API request to the /financials/search endpoint using a POST method.
 
 Note: `filters` is required. By default, `period` is `"ttm"` and `limit` is 100.
 
-### 📊  Filters
+### 🔎  Filters
 You can filter the search results by adding one or more `filters`.
 
 You may specify multiple `filters` to narrow down the search results.
@@ -157,8 +181,8 @@ body = {
         },
         {
             "field": "total_debt", # from balance sheet
-            "operator": "eq",
-            "value": 0
+            "operator": "lte",
+            "value": 1
         },
         {
             "field": "capital_expenditure", # from cash flow statement
