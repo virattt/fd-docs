@@ -143,7 +143,7 @@
     },
     "/company/facts": {
       "get": {
-        "description": "Get company facts filings for a ticker.",
+        "description": "Get company facts for a ticker.",
         "parameters": [
           {
             "name": "ticker",
