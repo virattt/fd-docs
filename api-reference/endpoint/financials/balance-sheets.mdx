@@ -4,9 +4,13 @@ openapi: 'GET /financials/balance-sheets'
 ---
 
 ### 👋  Overview
-We have balance sheets for <b>16,000+</b> public companies, going back <b>30+</b> years.
+The balance sheets API provides balance sheet data for a given stock ticker.
 
-Any data that you receive from our API is yours to keep. You may save the data to minimize repeat API calls.
+Balance sheets are financial statements that summarize a company's assets, liabilities, and shareholders' equity at a specific point in time.
+
+You can filter the data by `ticker`, `period`, and `limit`.
+
+The `period` parameter can be set to `annual`, `quarterly`, or `ttm` (trailing twelve months). The `limit` parameter is used to specify the number of statements to return.
 
 To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
 

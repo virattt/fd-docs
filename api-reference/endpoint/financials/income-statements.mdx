@@ -4,9 +4,13 @@ openapi: 'GET /financials/income-statements'
 ---
 
 ### 👋  Overview
-We have income statements for <b>16,000+</b> public companies, going back <b>30+</b> years.
+The income statements API provides income statements for a given stock ticker.
 
-Any data that you receive from our API is yours to keep. You may save the data to minimize repeat API calls.
+Income statements are financial statements that provide information about a company's revenues, expenses, and profits over a specific period.
+
+You can filter the data by `ticker`, `period`, and `limit`.
+
+The `period` parameter can be set to `annual`, `quarterly`, or `ttm` (trailing twelve months). The `limit` parameter is used to specify the number of statements to return.
 
 To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
 

@@ -4,9 +4,13 @@ openapi: 'GET /financials/cash-flow-statements'
 ---
 
 ### 👋  Overview
-We have cash flow statements for <b>16,000+</b> public companies, going back <b>30+</b> years.
+The cash flow statemenet API provides a company's cash inflows and outflows over a specific period.
 
-Any data that you receive from our API is yours to keep. You may save the data to minimize repeat API calls.
+Cash flow tatements are divided into three sections: operating activities, investing activities, and financing activities.
+
+You can filter the data by `ticker`, `period`, and `limit`.
+
+The `period` parameter can be set to `annual`, `quarterly`, or `ttm` (trailing twelve months). The `limit` parameter is used to specify the number of statements to return.
 
 To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
 
