@@ -206,6 +206,56 @@
         }
       }
     },
+    "/financials/segmented": {
+      "get": {
+        "description": "Get detailed, segmented financial data for a ticker.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "description": "The date or time period to which the reported financial data relates in ISO 8601 format (YYYY-MM-DD).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "annual",
+                "quarterly"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of financial statements to return.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Segmented financial statements response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/segmented_financials_response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/financials/income-statements": {
       "get": {
         "description": "Get income statements for a ticker.",
@@ -722,6 +772,17 @@
           }
         }
       },
+      "segmented_financials_response": {
+        "type": "object",
+        "properties": {
+          "segmented_financials": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/segmented_financial_statement"
+            }
+          }
+        }
+      },
       "income_statement_response": {
         "type": "object",
         "properties": {
@@ -862,6 +923,53 @@
             "type": "string",
             "format": "date",
             "description": "The date the transaction was filed."
+          }
+        }
+      },
+      "segmented_financial_statement": {
+        "type": "object",
+        "properties": {
+          "ticker": {
+            "type": "string",
+            "description": "The ticker symbol."
+          },
+          "report_period": {
+            "type": "string",
+            "format": "date",
+            "description": "The reporting period of the financial statement."
+          },
+          "period": {
+            "type": "string",
+            "enum": [
+              "quarterly",
+              "annual"
+            ],
+            "description": "The time period of the financial statement."
+          },
+          "items": {
+            "type": "array",
+            "description": "An array of financial metrics from SEC filings (10-Ks and 10-Qs) in XBRL format",
+            "items": {
+              "type": "object",
+              "properties": {
+                "axis": {
+                  "type": "string",
+                  "description": "Represents the dimensional context of the reported data, often used by companies to categorize or segment information according to SEC reporting requirements."
+                },
+                "key": {
+                  "type": "string",
+                  "description": "A unique identifier for the financial metric, typically using the XBRL taxonomy. It specifies the particular financial concept being reported."
+                },
+                "value": {
+                  "type": "number",
+                  "description": "The numerical amount reported for the specified financial metric, expressed in the company's reporting currency; default is USD."
+                },
+                "period": {
+                  "type": "string",
+                  "description": "The date or time period to which the reported financial data relates in ISO 8601 format (YYYY-MM-DD)."
+                }
+              }
+            }
           }
         }
       },

@@ -1,0 +1,115 @@
+---
+title: 'Segmented Financials'
+openapi: 'GET /financials/segmented'
+---
+
+### 👋  Overview
+The segmented financials API provides as-reported, granular financial data for a given stock ticker.
+
+This includes financial data segmented by:
+- product lines
+- business segments
+- geographical regions, etc.
+
+For [example](https://api.financialdatasets.ai/financials/segmented/?ticker=AAPL&limit=1&period=annual), Apple Inc. reports segmented financials for its different product lines like iPhone, Mac, iPad, and wearables.
+
+Apple also reports segmented financials for its different geographical regions like the Americas, Europe, and China:
+```json
+{
+  "segmented_financials": [
+    {
+      "ticker": "AAPL",
+      "report_period": "2023-09-30",
+      "period": "annual",
+      "items": [
+        "...",
+        {
+          "key": "aapl:IPhoneMember",
+          "axis": "srt:ProductOrServiceAxis",
+          "value": 200583000000,
+          "period": "2022-09-25 to 2023-09-30"
+        },
+        {
+          "key": "aapl:MacMember",
+          "axis": "srt:ProductOrServiceAxis",
+          "value": 29357000000,
+          "period": "2022-09-25 to 2023-09-30"
+        },
+        {
+          "key": "aapl:IPadMember",
+          "axis": "srt:ProductOrServiceAxis",
+          "value": 28300000000,
+          "period": "2022-09-25 to 2023-09-30"
+        },
+        {
+          "key": "aapl:AmericasSegmentMember",
+          "axis": "us-gaap:StatementBusinessSegmentsAxis",
+          "value": 60508000000,
+          "period": "2022-09-25 to 2023-09-30"
+        },
+        {
+          "key": "aapl:EuropeSegmentMember",
+          "axis": "us-gaap:StatementBusinessSegmentsAxis",
+          "value": 36098000000,
+          "period": "2022-09-25 to 2023-09-30"
+        },
+        {
+          "key": "aapl:GreaterChinaSegmentMember",
+          "axis": "us-gaap:StatementBusinessSegmentsAxis",
+          "value": 30328000000,
+          "period": "2022-09-25 to 2023-09-30"
+        },
+        "..."
+      ]
+    }
+  ]
+}
+```
+
+This data is pulled directly from XBRL filings (10-Ks and 10-Qs).  We have included the original XBRL tags in the response for your reference.
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `ticker`, `period` and `limit` to filter the data.
+3. Execute the API request.
+
+You can filter the data by `ticker`, `period`, and `limit`.
+
+The `period` parameter can be set to `"annual"` or `"quarterly"`. The `limit` parameter is used to specify the number of statements to return.
+
+**Note**: `ticker` and `period` are required.  By default, `limit` is `5`.
+
+### 💻  Example
+
+```python Segmented Financials
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = "AAPL"     # stock ticker
+period = "annual"   # possible values are "annual" or "quarterly"
+limit = 5           # number of filings to return
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/financials/segmented/'
+    f'?ticker={ticker}'
+    f'&period={period}'
+    f'&limit={limit}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse segmented_financials from the response
+segmented_financials = response.json().get('segmented_financials')
+```
