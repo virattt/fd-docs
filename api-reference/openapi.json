@@ -1376,6 +1376,10 @@
             "type": "number",
             "description": "The market capitalization of the company."
           },
+          "weighted_average_shares": {
+            "type": "number",
+            "description": "The weighted average shares of the company."
+          },
           "number_of_employees": {
             "type": "number",
             "description": "The number of employees at the company."
