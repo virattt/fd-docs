@@ -999,6 +999,10 @@
             ],
             "description": "The time period of the income statement."
           },
+          "currency": {
+            "type": "string",
+            "description": "The currency in which the financial data is reported."
+          },
           "revenue": {
             "type": "number",
             "nullable": false,
@@ -1131,6 +1135,10 @@
               "annual"
             ],
             "description": "The time period of the balance sheet."
+          },
+          "currency": {
+            "type": "string",
+            "description": "The currency in which the financial data is reported."
           },
           "total_assets": {
             "type": "number",
@@ -1289,6 +1297,10 @@
               "annual"
             ],
             "description": "The time period of the cash flow statement."
+          },
+          "currency": {
+            "type": "string",
+            "description": "The currency in which the financial data is reported."
           },
           "net_cash_flow_from_operations": {
             "type": "number",
