@@ -8,7 +8,7 @@ The balance sheets API provides balance sheet data for a given stock ticker.
 
 Balance sheets are financial statements that summarize a company's assets, liabilities, and shareholders' equity at a specific point in time.
 
-You can filter the data by `ticker`, `period`, and `limit`.
+You can filter the data by `ticker`, `period`, `limit`, and `cik`.
 
 The `period` parameter can be set to `annual`, `quarterly`, or `ttm` (trailing twelve months). The `limit` parameter is used to specify the number of statements to return.
 
@@ -22,7 +22,7 @@ There are only 3 steps for making a successful API call:
 2. Add query params like `ticker`, `period` and `limit` to filter the data.
 3. Execute the API request.
 
-**Note**: `ticker` and `period` are required.  By default, `limit` is `10`.
+**Note**: `ticker` and `period` are required. Alternatively, you can use `cik` instead of `ticker` as a company identifier in your request.  By default, `limit` is `10`.
 
 ### 💻  Example
 

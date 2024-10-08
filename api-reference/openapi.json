@@ -291,6 +291,15 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "name": "cik",
+            "in": "query",
+            "description": "The Central Index Key (CIK) of the company.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -342,6 +351,15 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "name": "cik",
+            "in": "query",
+            "description": "The Central Index Key (CIK) of the company.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -392,6 +410,15 @@
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "cik",
+            "in": "query",
+            "description": "The Central Index Key (CIK) of the company.",
+            "required": false,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -471,6 +498,15 @@
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "cik",
+            "in": "query",
+            "description": "The Central Index Key (CIK) of the company.",
+            "required": false,
+            "schema": {
+              "type": "string"
             }
           }
         ],
