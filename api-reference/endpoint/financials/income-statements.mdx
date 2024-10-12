@@ -16,6 +16,10 @@ To get started, please create an account and grab your <b>API key</b> at [financ
 
 You will use the API key to authenticate your API requests.
 
+### 📊 Available Tickers
+You can fetch a list of available tickers with a `GET` request to:
+https://api.financialdatasets.ai/financials/income-statements/tickers/
+
 ###  🚀  Getting Started
 There are only 3 steps for making a successful API call:
 1. Add your API key to the header of the request as `X-API-KEY`.
@@ -52,7 +56,3 @@ response = requests.get(url, headers=headers)
 # parse income_statements from the response
 income_statements = response.json().get('income_statements')
 ```
-
-### 📊 Available Tickers
-You can fetch a list of available tickers with a `GET` request to:
-https://api.financialdatasets.ai/financials/income-statements/tickers/

@@ -19,6 +19,10 @@ To get started, please create an account and grab your <b>API key</b> at [financ
 
 You will use the API key to authenticate your API requests.
 
+### 📊 Available Tickers
+You can fetch a list of available tickers with a `GET` request to:
+https://api.financialdatasets.ai/financials/tickers/
+
 ###  🚀  Getting Started
 There are only 3 steps for making a successful API call:
 1. Add your API key to the header of the request as `X-API-KEY`.
@@ -64,7 +68,3 @@ balance_sheets = financials.get('balance_sheets')
 # get cash flow statements
 cash_flow_statements = financials.get('cash_flow_statements')
 ```
-
-### 📊 Available Tickers
-You can fetch a list of available tickers with a `GET` request to:
-https://api.financialdatasets.ai/financials/tickers/
