@@ -25,7 +25,6 @@ There are only 3 steps for making a successful API call:
 **Note**: `ticker` and `period` are required. Alternatively, you can use `cik` instead of `ticker` as a company identifier in your request.  By default, `limit` is `10`.
 
 ### 💻  Example
-
 ```python Balance Sheets
 import requests
 
@@ -53,3 +52,7 @@ response = requests.get(url, headers=headers)
 # parse balance_sheets from the response
 balance_sheets = response.json().get('balance_sheets')
 ```
+
+### 📊 Available Tickers
+You can fetch a list of available tickers with a `GET` request to:
+https://api.financialdatasets.ai/financials/balance-sheets/tickers/

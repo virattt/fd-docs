@@ -25,7 +25,6 @@ There are only 3 steps for making a successful API call:
 **Note**: `ticker` and `period` are required. Alternatively, you can use `cik` instead of `ticker` as a company identifier in your request.  By default, `limit` is `10`.
 
 ### 💻  Example
-
 ```python Cash Flow Statements
 import requests
 
@@ -53,3 +52,7 @@ response = requests.get(url, headers=headers)
 # parse cash_flow_statements from the response
 cash_flow_statements = response.json().get('cash_flow_statements')
 ```
+
+### 📊 Available Tickers
+You can fetch a list of available tickers with a `GET` request to:
+https://api.financialdatasets.ai/financials/cash-flow-statements/tickers/

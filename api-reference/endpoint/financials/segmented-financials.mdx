@@ -87,7 +87,6 @@ The `period` parameter can be set to `"annual"` or `"quarterly"`. The `limit` pa
 **Note**: `ticker` and `period` are required. Alternatively, you can use `cik` instead of `ticker` as a company identifier in your request.  By default, `limit` is `10`.
 
 ### 💻  Example
-
 ```python Segmented Financials
 import requests
 
@@ -115,3 +114,7 @@ response = requests.get(url, headers=headers)
 # parse segmented_financials from the response
 segmented_financials = response.json().get('segmented_financials')
 ```
+
+### 📊 Available Tickers
+You can fetch a list of available tickers with a `GET` request to:
+https://api.financialdatasets.ai/financials/segmented/tickers/
