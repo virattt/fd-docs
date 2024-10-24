@@ -782,6 +782,10 @@
                     "ttm"
                   ],
                   "description": "The time period of the financial data."
+                },
+                "currency": {
+                  "type": "string",
+                  "description": "The currency of the financial data."
                 }
               },
               "additionalProperties": {
