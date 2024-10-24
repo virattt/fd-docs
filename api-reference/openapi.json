@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "financial datasets API",
-    "description": "A developer-friendly stock market API.",
+    "title": "Financial Datasets API",
+    "description": "Stock market API with real-time and historical financial data for 30,000+ tickers over 30+ years.  Financial statements, equity prices, insider transactions, SEC filings, and more.",
     "license": {
       "name": "MIT"
     },
@@ -655,6 +655,29 @@
             "default": 100,
             "description": "The maximum number of results to return."
           },
+          "order_by": {
+            "type": "string",
+            "enum": [
+              "ticker",
+              "report_period"
+            ],
+            "default": "ticker",
+            "description": "The field to order the results by."
+          },
+          "currency": {
+            "type": "string",
+            "enum": [
+              "USD",
+              "EUR",
+              "GBP",
+              "JPY",
+              "CHF",
+              "AUD",
+              "CAD",
+              "SEK"
+            ],
+            "description": "The currency of the financial data."
+          },
           "filters": {
             "type": "array",
             "items": {
@@ -688,15 +711,6 @@
             },
             "minItems": 1,
             "description": "An array of filter objects to apply to the search."
-          },
-          "order": {
-            "type": "string",
-            "enum": [
-              "asc",
-              "desc"
-            ],
-            "default": "desc",
-            "description": "The order of the results based on the report_period."
           }
         }
       },

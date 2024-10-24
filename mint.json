@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "financial datasets",
+  "name": "Financial Datasets",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -57,9 +57,7 @@
             "api-reference/endpoint/financials/balance-sheets",
             "api-reference/endpoint/financials/cash-flow-statements",
             "api-reference/endpoint/financials/segmented-financials",
-            "api-reference/endpoint/financials/all-financial-statements",
-            "api-reference/endpoint/financials/search-by-filters",
-            "api-reference/endpoint/financials/search-by-line-items"
+            "api-reference/endpoint/financials/all-financial-statements"
           ]
         },
         {
@@ -75,6 +73,14 @@
           "pages": [
             "api-reference/endpoint/prices/historical",
             "api-reference/endpoint/prices/snapshot"
+          ]
+        },
+        {
+          "group": "Search",
+          "icon": "magnifying-glass",
+          "pages": [
+            "api-reference/endpoint/financials/search-by-filters",
+            "api-reference/endpoint/financials/search-by-line-items"
           ]
         },
         {
