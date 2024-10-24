@@ -659,10 +659,12 @@
             "type": "string",
             "enum": [
               "ticker",
-              "report_period"
+              "-ticker",
+              "report_period",
+              "-report_period"
             ],
             "default": "ticker",
-            "description": "The field to order the results by."
+            "description": "The field to order the results by.  Use -field to order in descending order."
           },
           "currency": {
             "type": "string",
