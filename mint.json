@@ -40,7 +40,7 @@
       ]
     },
     {
-      "group": "Endpoints",
+      "group": "Our APIs",
       "pages": [
         {
           "group": "Company",
@@ -65,6 +65,13 @@
           "icon": "briefcase",
           "pages": [
             "api-reference/endpoint/insider-transactions/insider-transactions"
+          ]
+        },
+        {
+          "group": "Options",
+          "icon": "money-bill-transfer",
+          "pages": [
+            "api-reference/endpoint/options/chain"
           ]
         },
         {

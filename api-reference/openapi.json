@@ -620,6 +620,63 @@
           }
         }
       }
+    },
+    "/options/chain": {
+      "get": {
+        "description": "Get real-time options chain data for actively traded US equities.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol of the company.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "strike_price",
+            "in": "query",
+            "description": "The strike price of the options contract.",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "option_type",
+            "in": "query", 
+            "description": "The type of option contract (call or put).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["call", "put"]
+            }
+          },
+          {
+            "name": "expiration_date",
+            "in": "query",
+            "description": "The expiration date of the options contract (YYYY-MM-DD).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Options chain response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/options_chain_response"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1578,6 +1635,107 @@
             "type": "integer",
             "format": "int64",
             "description": "The UNIX millisecond timestamp of the price."
+          }
+        }
+      },
+      "options_chain_response": {
+        "type": "object",
+        "properties": {
+          "options_chain": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ticker": {
+                  "type": "string",
+                  "description": "The option contract identifier."
+                },
+                "type": {
+                  "type": "string",
+                  "enum": ["Call", "Put"],
+                  "description": "The type of option contract."
+                },
+                "strike_price": {
+                  "type": "number",
+                  "description": "The strike price of the option contract."
+                },
+                "expiration_date": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "The expiration date of the option contract."
+                },
+                "shares_per_contract": {
+                  "type": "integer",
+                  "description": "The number of shares per contract."
+                },
+                "volume": {
+                  "type": "integer",
+                  "description": "The trading volume of the option contract."
+                },
+                "open_interest": {
+                  "type": "integer",
+                  "description": "The number of open contracts."
+                },
+                "bid_price": {
+                  "type": "number",
+                  "description": "The highest price a buyer is willing to pay."
+                },
+                "bid_size": {
+                  "type": "integer",
+                  "description": "The quantity of contracts at the bid price."
+                },
+                "ask_price": {
+                  "type": "number",
+                  "description": "The lowest price a seller is willing to accept."
+                },
+                "ask_size": {
+                  "type": "integer",
+                  "description": "The quantity of contracts at the ask price."
+                },
+                "last_trade_price": {
+                  "type": "number",
+                  "description": "The price of the last executed trade."
+                },
+                "last_trade_size": {
+                  "type": "integer",
+                  "description": "The size of the last executed trade."
+                },
+                "last_trade_time": {
+                  "type": "string",
+                  "description": "The time of the last trade in human-readable format."
+                },
+                "last_trade_time_nanoseconds": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "The time of the last trade in nanoseconds."
+                },
+                "implied_volatility": {
+                  "type": "number",
+                  "nullable": true,
+                  "description": "The implied volatility of the option contract."
+                },
+                "delta": {
+                  "type": "number",
+                  "nullable": true,
+                  "description": "The delta of the option contract."
+                },
+                "gamma": {
+                  "type": "number",
+                  "nullable": true,
+                  "description": "The gamma of the option contract."
+                },
+                "theta": {
+                  "type": "number",
+                  "nullable": true,
+                  "description": "The theta of the option contract."
+                },
+                "vega": {
+                  "type": "number",
+                  "nullable": true,
+                  "description": "The vega of the option contract."
+                }
+              }
+            }
           }
         }
       }

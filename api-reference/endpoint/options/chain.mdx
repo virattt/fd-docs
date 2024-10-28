@@ -1,0 +1,57 @@
+---
+title: 'Chain'
+openapi: 'GET /options/chain'
+---
+
+### 👋  Overview
+We provide real-time options chain data for all actively traded US equities.
+
+An options chain is a list of all available options contracts for a given stock ticker, organized by expiration dates and strike prices. Each option contract includes key data like bid/ask prices, open interest, and volume.
+
+You can filter the data by `ticker`, `strike_price`, `option_type`, and `expiration_date`.
+
+The `option_type` parameter can be set to `"call"` or `"put"` and the `expiration_date` parameter should be in YYYY-MM-DD format.
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `ticker`, `strike_price`, `option_type`, and `expiration_date` to filter the data.
+3. Execute the API request.
+
+**Note**: You must provide the `ticker`.
+
+### 💻  Example
+
+```python Options Chain
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'AAPL'
+strike_price = 235  # optional
+option_type = 'call'  # optional, possible values are 'call' or 'put'
+expiration_date = '2024-12-20' # optional, must be in YYYY-MM-DD format
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/options/chain'
+    f'?ticker={ticker}'
+    f'&strike_price={strike_price}'
+    f'&option_type={option_type}'
+    f'&expiration_date={expiration_date}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse options chain from the response
+options_chain = response.json().get('options_chain')
+```
