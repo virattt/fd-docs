@@ -1708,31 +1708,6 @@
                   "type": "integer",
                   "format": "int64",
                   "description": "The time of the last trade in nanoseconds."
-                },
-                "implied_volatility": {
-                  "type": "number",
-                  "nullable": true,
-                  "description": "The implied volatility of the option contract."
-                },
-                "delta": {
-                  "type": "number",
-                  "nullable": true,
-                  "description": "The delta of the option contract."
-                },
-                "gamma": {
-                  "type": "number",
-                  "nullable": true,
-                  "description": "The gamma of the option contract."
-                },
-                "theta": {
-                  "type": "number",
-                  "nullable": true,
-                  "description": "The theta of the option contract."
-                },
-                "vega": {
-                  "type": "number",
-                  "nullable": true,
-                  "description": "The vega of the option contract."
                 }
               }
             }
