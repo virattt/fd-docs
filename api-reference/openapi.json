@@ -623,7 +623,7 @@
     },
     "/options/chain": {
       "get": {
-        "description": "Get real-time options chain data for actively traded US equities.",
+        "description": "Get real-time options chain data for actively traded equities.",
         "parameters": [
           {
             "name": "ticker",
