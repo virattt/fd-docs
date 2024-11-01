@@ -1,21 +1,21 @@
 ---
-title: 'Segmented Revenue'
-openapi: 'GET /financials/segmented-revenue'
+title: 'Segmented Revenues'
+openapi: 'GET /financials/segmented-revenues'
 ---
 
 ### 👋  Overview
-The segmented revenue API provides as-reported, granular revenue data for a given stock ticker.
+The segmented revenues API provides as-reported, granular revenue data for a given stock ticker.
 
 This includes revenue data segmented by:
 - product lines
 - business segments
 - geographical regions
 
-For [example](https://api.financialdatasets.ai/financials/segmented/?ticker=AAPL&limit=1&period=annual), Apple Inc. reports segmented revenue for its different product lines like iPhone, Mac, iPad, and wearables.
+For [example](https://api.financialdatasets.ai/financials/segmented-revenues/?ticker=AAPL&limit=1&period=annual), Apple Inc. reports segmented revenue for its different product lines like iPhone, Mac, iPad, and wearables.
 
 Apple also reports segmented revenue for its different geographical regions like the Americas, Europe, and China.
 
-The segmented revenue API lets you easily access this data in a structured format:
+The segmented revenues API lets you easily access this data in a structured format:
 ```json
 {
   "segmented_revenues": [
@@ -91,7 +91,7 @@ The `period` parameter can be set to `"annual"` or `"quarterly"`. The `limit` pa
 **Note**: `ticker` and `period` are required. Alternatively, you can use `cik` instead of `ticker` as a company identifier in your request.  By default, `limit` is `5`.
 
 ### 💻  Example
-```python Segmented Revenue
+```python Segmented Revenues
 import requests
 
 # add your API key to the headers
@@ -106,7 +106,7 @@ limit = 5           # number of statements to return
 
 # create the URL
 url = (
-    f'https://api.financialdatasets.ai/financials/segmented-revenue/'
+    f'https://api.financialdatasets.ai/financials/segmented-revenues/'
     f'?ticker={ticker}'
     f'&period={period}'
     f'&limit={limit}'
