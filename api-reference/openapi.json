@@ -894,13 +894,13 @@
           }
         }
       },
-      "segmented_revenue_response": {
+      "segmented_revenues_response": {
         "type": "object",
         "properties": {
-          "segmented_revenue": {
+          "segmented_revenues": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/segmented_revenue"
+              "$ref": "#/components/schemas/segmented_revenues"
             }
           }
         }
@@ -1048,7 +1048,7 @@
           }
         }
       },
-      "segmented_revenue": {
+      "segmented_revenues": {
         "type": "object",
         "properties": {
           "ticker": {

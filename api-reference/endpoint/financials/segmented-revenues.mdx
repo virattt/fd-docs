@@ -18,7 +18,7 @@ Apple also reports segmented revenue for its different geographical regions like
 The segmented revenue API lets you easily access this data in a structured format:
 ```json
 {
-  "segmented_revenue": [
+  "segmented_revenues": [
     {
       "ticker": "AAPL",
       "report_period": "2023-09-30",
@@ -115,6 +115,6 @@ url = (
 # make API request
 response = requests.get(url, headers=headers)
 
-# parse segmented_revenue from the response
-segmented_revenue = response.json().get('segmented_revenue')
+# parse segmented_revenues from the response
+segmented_revenues = response.json().get('segmented_revenues')
 ```
