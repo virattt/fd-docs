@@ -1089,6 +1089,18 @@
                 "segment": {
                   "type": "string",
                   "description": "The label for the revenue segment."
+                },
+                "start_period": {
+                  "type": "string",
+                  "format": "date",
+                  "nullable": true,
+                  "description": "The start period of the revenue segment.  Only provided for quarterly data."
+                },
+                "end_period": {
+                  "type": "string",
+                  "format": "date",
+                  "nullable": true,
+                  "description": "The end period of the revenue segment.  Only provided for quarterly data."
                 }
               }
             }
