@@ -206,7 +206,7 @@
         }
       }
     },
-    "/financials/segmented-revenue": {
+    "/financials/segmented-revenues": {
       "get": {
         "description": "Get detailed, segmented revenue data for a ticker.",
         "parameters": [
