@@ -56,8 +56,8 @@
             "api-reference/endpoint/financials/income-statements",
             "api-reference/endpoint/financials/balance-sheets",
             "api-reference/endpoint/financials/cash-flow-statements",
-            "api-reference/endpoint/financials/segmented-financials",
-            "api-reference/endpoint/financials/all-financial-statements"
+            "api-reference/endpoint/financials/all-financial-statements",
+            "api-reference/endpoint/financials/segmented-revenue"
           ]
         },
         {
