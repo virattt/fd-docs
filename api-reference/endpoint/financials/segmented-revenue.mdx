@@ -1,24 +1,24 @@
 ---
-title: 'Segmented Financials'
-openapi: 'GET /financials/segmented'
+title: 'Segmented Revenue'
+openapi: 'GET /financials/segmented-revenue'
 ---
 
 ### 👋  Overview
-The segmented financials API provides as-reported, granular financial data for a given stock ticker.
+The segmented revenue API provides as-reported, granular revenue data for a given stock ticker.
 
-This includes financial data segmented by:
+This includes revenue data segmented by:
 - product lines
 - business segments
-- geographical regions, etc.
+- geographical regions
 
-For [example](https://api.financialdatasets.ai/financials/segmented/?ticker=AAPL&limit=1&period=annual), Apple Inc. reports segmented financials for its different product lines like iPhone, Mac, iPad, and wearables.
+For [example](https://api.financialdatasets.ai/financials/segmented/?ticker=AAPL&limit=1&period=annual), Apple Inc. reports segmented revenue for its different product lines like iPhone, Mac, iPad, and wearables.
 
-Apple also reports segmented financials for its different geographical regions like the Americas, Europe, and China.
+Apple also reports segmented revenue for its different geographical regions like the Americas, Europe, and China.
 
-The segmented financials API lets you easily access this data in a structured format:
+The segmented revenue API lets you easily access this data in a structured format:
 ```json
 {
-  "segmented_financials": [
+  "segmented_revenue": [
     {
       "ticker": "AAPL",
       "report_period": "2023-09-30",
@@ -29,37 +29,37 @@ The segmented financials API lets you easily access this data in a structured fo
           "key": "aapl:IPhoneMember",
           "axis": "srt:ProductOrServiceAxis",
           "value": 200583000000,
-          "period": "2022-09-25 to 2023-09-30"
+          "segment": "IPhone"
         },
         {
           "key": "aapl:MacMember",
           "axis": "srt:ProductOrServiceAxis",
           "value": 29357000000,
-          "period": "2022-09-25 to 2023-09-30"
+          "segment": "Mac"
         },
         {
           "key": "aapl:IPadMember",
           "axis": "srt:ProductOrServiceAxis",
           "value": 28300000000,
-          "period": "2022-09-25 to 2023-09-30"
+          "segment": "IPad"
         },
         {
           "key": "aapl:AmericasSegmentMember",
           "axis": "us-gaap:StatementBusinessSegmentsAxis",
           "value": 60508000000,
-          "period": "2022-09-25 to 2023-09-30"
+          "segment": "AmericasSegment"
         },
         {
           "key": "aapl:EuropeSegmentMember",
           "axis": "us-gaap:StatementBusinessSegmentsAxis",
           "value": 36098000000,
-          "period": "2022-09-25 to 2023-09-30"
+          "segment": "EuropeSegment"
         },
         {
           "key": "aapl:GreaterChinaSegmentMember",
           "axis": "us-gaap:StatementBusinessSegmentsAxis",
           "value": 30328000000,
-          "period": "2022-09-25 to 2023-09-30"
+          "segment": "GreaterChinaSegment"
         },
         "..."
       ]
@@ -68,7 +68,7 @@ The segmented financials API lets you easily access this data in a structured fo
 }
 ```
 
-This data is pulled directly from XBRL filings (10-Ks and 10-Qs).  We have included the original XBRL tags in the response for your reference.
+This data is pulled directly from XBRL filings (10-Ks and 10-Qs).  We have included the original XBRL tags like key and axis in the response for your reference.
 
 To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
 
@@ -76,7 +76,7 @@ You will use the API key to authenticate your API requests.
 
 ### 📊 Available Tickers
 You can fetch a list of available tickers with a `GET` request to:
-https://api.financialdatasets.ai/financials/segmented/tickers/
+https://api.financialdatasets.ai/financials/segmented-revenue/tickers/
 
 ###  🚀  Getting Started
 There are only 3 steps for making a successful API call:
@@ -88,10 +88,10 @@ You can filter the data by `ticker`, `period`, `limit`, and `cik`.
 
 The `period` parameter can be set to `"annual"` or `"quarterly"`. The `limit` parameter is used to specify the number of statements to return.
 
-**Note**: `ticker` and `period` are required. Alternatively, you can use `cik` instead of `ticker` as a company identifier in your request.  By default, `limit` is `10`.
+**Note**: `ticker` and `period` are required. Alternatively, you can use `cik` instead of `ticker` as a company identifier in your request.  By default, `limit` is `5`.
 
 ### 💻  Example
-```python Segmented Financials
+```python Segmented Revenue
 import requests
 
 # add your API key to the headers
@@ -102,11 +102,11 @@ headers = {
 # set your query params
 ticker = "AAPL"     # stock ticker
 period = "annual"   # possible values are "annual" or "quarterly"
-limit = 5           # number of filings to return
+limit = 5           # number of statements to return
 
 # create the URL
 url = (
-    f'https://api.financialdatasets.ai/financials/segmented/'
+    f'https://api.financialdatasets.ai/financials/segmented-revenue/'
     f'?ticker={ticker}'
     f'&period={period}'
     f'&limit={limit}'
@@ -115,6 +115,6 @@ url = (
 # make API request
 response = requests.get(url, headers=headers)
 
-# parse segmented_financials from the response
-segmented_financials = response.json().get('segmented_financials')
+# parse segmented_revenue from the response
+segmented_revenue = response.json().get('segmented_revenue')
 ```

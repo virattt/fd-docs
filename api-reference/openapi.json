@@ -206,9 +206,9 @@
         }
       }
     },
-    "/financials/segmented": {
+    "/financials/segmented-revenue": {
       "get": {
-        "description": "Get detailed, segmented financial data for a ticker.",
+        "description": "Get detailed, segmented revenue data for a ticker.",
         "parameters": [
           {
             "name": "ticker",
@@ -222,7 +222,7 @@
           {
             "name": "period",
             "in": "query",
-            "description": "The date or time period to which the reported financial data relates in ISO 8601 format (YYYY-MM-DD).",
+            "description": "The date or time period to which the reported revenue data relates in ISO 8601 format (YYYY-MM-DD).",
             "required": true,
             "schema": {
               "type": "string",
@@ -235,7 +235,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "The maximum number of financial statements to return.",
+            "description": "The maximum number of revenue statements to return.",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -253,11 +253,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Segmented financial statements response",
+            "description": "Segmented revenue response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/segmented_financials_response"
+                  "$ref": "#/components/schemas/segmented_revenue_response"
                 }
               }
             }
@@ -894,13 +894,13 @@
           }
         }
       },
-      "segmented_financials_response": {
+      "segmented_revenue_response": {
         "type": "object",
         "properties": {
-          "segmented_financials": {
+          "segmented_revenue": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/segmented_financial_statement"
+              "$ref": "#/components/schemas/segmented_revenue"
             }
           }
         }
@@ -1048,7 +1048,7 @@
           }
         }
       },
-      "segmented_financial_statement": {
+      "segmented_revenue": {
         "type": "object",
         "properties": {
           "ticker": {
@@ -1058,7 +1058,7 @@
           "report_period": {
             "type": "string",
             "format": "date",
-            "description": "The reporting period of the financial statement."
+            "description": "The reporting period of the revenue."
           },
           "period": {
             "type": "string",
@@ -1066,11 +1066,11 @@
               "quarterly",
               "annual"
             ],
-            "description": "The time period of the financial statement."
+            "description": "The time period of the revenue."
           },
           "items": {
             "type": "array",
-            "description": "An array of financial metrics from SEC filings (10-Ks and 10-Qs) in XBRL format",
+            "description": "An array of revenue segments from SEC filings (10-Ks and 10-Qs) in XBRL format",
             "items": {
               "type": "object",
               "properties": {
@@ -1086,9 +1086,9 @@
                   "type": "number",
                   "description": "The numerical amount reported for the specified financial metric, expressed in the company's reporting currency; default is USD."
                 },
-                "period": {
+                "segment": {
                   "type": "string",
-                  "description": "The date or time period to which the reported financial data relates in ISO 8601 format (YYYY-MM-DD)."
+                  "description": "The label for the revenue segment."
                 }
               }
             }
