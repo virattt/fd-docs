@@ -3,7 +3,8 @@
   "name": "Financial Datasets",
   "logo": {
     "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "light": "/logo/light.svg",
+    "href": "https://financialdatasets.ai"
   },
   "favicon": "/favicon.svg",
   "colors": {
