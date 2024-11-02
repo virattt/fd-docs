@@ -2,15 +2,45 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Financial Datasets API",
-    "description": "Stock market API with real-time and historical financial data for 30,000+ tickers over 30+ years.  Financial statements, equity prices, insider transactions, SEC filings, and more.",
+    "description": "Stock market API with real-time and historical financial data for 30,000+ tickers over 30+ years. Financial statements, equity prices, insider transactions, SEC filings, and more.",
+    "version": "1.0.0",
     "license": {
-      "name": "MIT"
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
     },
-    "version": "1.0.0"
+    "contact": {
+      "name": "API Support",
+      "url": "https://financialdatasets.ai/support",
+      "email": "support@financialdatasets.ai"
+    },
+    "termsOfService": "https://financialdatasets.ai/terms"
   },
   "servers": [
     {
-      "url": "https://api.financialdatasets.ai"
+      "url": "https://api.financialdatasets.ai/v1",
+      "description": "Production server"
+    },
+    {
+      "url": "https://sandbox-api.financialdatasets.ai/v1",
+      "description": "Sandbox server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Financial Statements",
+      "description": "Access to income statements, balance sheets, and cash flow statements"
+    },
+    {
+      "name": "Market Data",
+      "description": "Real-time and historical price data"
+    },
+    {
+      "name": "Company Information",
+      "description": "Company facts, filings and insider transactions"
+    },
+    {
+      "name": "Options",
+      "description": "Options chain data"
     }
   ],
   "security": [
@@ -21,13 +51,16 @@
   "paths": {
     "/financials/search": {
       "post": {
+        "tags": ["Financial Statements"],
+        "operationId": "searchFinancials",
+        "summary": "Search financial statements",
         "description": "Search for financial data across income statements, balance sheets, and cash flow statements using filters.",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/search_filters_request"
+                "$ref": "#/components/schemas/SearchFiltersRequest"
               }
             }
           }
@@ -38,23 +71,35 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/financials_search_response"
+                  "$ref": "#/components/schemas/FinancialsSearchResponse"
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
           }
         }
       }
     },
     "/financials/search/line-items": {
       "post": {
+        "tags": ["Financial Statements"],
+        "operationId": "searchLineItems",
+        "summary": "Search specific financial metrics",
         "description": "Search for specific financial metrics across income statements, balance sheets, and cash flow statements.",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/search_line_items_request"
+                "$ref": "#/components/schemas/SearchLineItemsRequest"
               }
             }
           }
@@ -65,16 +110,28 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/financials_search_response"
+                  "$ref": "#/components/schemas/FinancialsSearchResponse"
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
           }
         }
       }
     },
     "/insider-transactions": {
       "get": {
+        "tags": ["Company Information"],
+        "operationId": "getInsiderTransactions",
+        "summary": "Get insider transactions",
         "description": "Get insider transactions for a specific ticker.",
         "parameters": [
           {
@@ -103,7 +160,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/insider_transactions_response"
+                  "$ref": "#/components/schemas/InsiderTransactionsResponse"
                 }
               }
             }
@@ -113,7 +170,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error_response"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -123,7 +180,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error_response"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -133,7 +190,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/error_response"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -143,6 +200,9 @@
     },
     "/company/facts": {
       "get": {
+        "tags": ["Company Information"],
+        "operationId": "getCompanyFacts",
+        "summary": "Get company facts",
         "description": "Get company facts for a ticker.",
         "parameters": [
           {
@@ -161,7 +221,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/company_facts_response"
+                  "$ref": "#/components/schemas/CompanyFactsResponse"
                 }
               }
             }
@@ -171,6 +231,9 @@
     },
     "/filings": {
       "get": {
+        "tags": ["Company Information"],
+        "operationId": "getFilings",
+        "summary": "Get SEC filings",
         "description": "Get SEC filings for a company.",
         "parameters": [
           {
@@ -198,7 +261,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/filings_response"
+                  "$ref": "#/components/schemas/FilingsResponse"
                 }
               }
             }
@@ -208,6 +271,9 @@
     },
     "/financials/segmented-revenues": {
       "get": {
+        "tags": ["Financial Statements"],
+        "operationId": "getSegmentedRevenues",
+        "summary": "Get segmented revenue data",
         "description": "Get detailed, segmented revenue data for a ticker.",
         "parameters": [
           {
@@ -257,7 +323,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/segmented_revenue_response"
+                  "$ref": "#/components/schemas/SegmentedRevenuesResponse"
                 }
               }
             }
@@ -267,6 +333,9 @@
     },
     "/financials/income-statements": {
       "get": {
+        "tags": ["Financial Statements"],
+        "operationId": "getIncomeStatements",
+        "summary": "Get income statements",
         "description": "Get income statements for a ticker.",
         "parameters": [
           {
@@ -317,7 +386,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/income_statement_response"
+                  "$ref": "#/components/schemas/IncomeStatementResponse"
                 }
               }
             }
@@ -327,6 +396,9 @@
     },
     "/financials/balance-sheets": {
       "get": {
+        "tags": ["Financial Statements"],
+        "operationId": "getBalanceSheets",
+        "summary": "Get balance sheets",
         "description": "Get balance sheets for a ticker.",
         "parameters": [
           {
@@ -377,7 +449,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/balance_sheet_response"
+                  "$ref": "#/components/schemas/BalanceSheetResponse"
                 }
               }
             }
@@ -387,6 +459,9 @@
     },
     "/financials/cash-flow-statements": {
       "get": {
+        "tags": ["Financial Statements"],
+        "operationId": "getCashFlowStatements",
+        "summary": "Get cash flow statements",
         "description": "Get cash flow statements for a ticker.",
         "parameters": [
           {
@@ -437,7 +512,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/cash_flow_statement_response"
+                  "$ref": "#/components/schemas/CashFlowStatementResponse"
                 }
               }
             }
@@ -447,6 +522,9 @@
     },
     "/prices/snapshot": {
       "get": {
+        "tags": ["Market Data"],
+        "operationId": "getPriceSnapshot",
+        "summary": "Get price snapshot",
         "description": "Get the real-time price snapshot for a ticker.",
         "parameters": [
           {
@@ -465,7 +543,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/price_snapshot_response"
+                  "$ref": "#/components/schemas/PriceSnapshotResponse"
                 }
               }
             }
@@ -475,6 +553,9 @@
     },
     "/financials": {
       "get": {
+        "tags": ["Financial Statements"],
+        "operationId": "getAllFinancialStatements",
+        "summary": "Get all financial statements",
         "description": "Get all financial statements for a ticker.",
         "parameters": [
           {
@@ -525,7 +606,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/financials_response"
+                  "$ref": "#/components/schemas/FinancialsResponse"
                 }
               }
             }
@@ -535,6 +616,9 @@
     },
     "/prices": {
       "get": {
+        "tags": ["Market Data"],
+        "operationId": "getPrices",
+        "summary": "Get historical price data",
         "description": "Get ranged price data for a ticker to power stock charts and analyze price movements.",
         "parameters": [
           {
@@ -613,7 +697,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/prices_response"
+                  "$ref": "#/components/schemas/PricesResponse"
                 }
               }
             }
@@ -623,6 +707,9 @@
     },
     "/options/chain": {
       "get": {
+        "tags": ["Options"],
+        "operationId": "getOptionsChain",
+        "summary": "Get options chain data",
         "description": "Get real-time options chain data for actively traded equities.",
         "parameters": [
           {
@@ -670,7 +757,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/options_chain_response"
+                  "$ref": "#/components/schemas/OptionsChainResponse"
                 }
               }
             }
@@ -689,7 +776,7 @@
       }
     },
     "schemas": {
-      "search_filters_request": {
+      "SearchFiltersRequest": {
         "type": "object",
         "required": [
           "filters"
@@ -773,7 +860,7 @@
           }
         }
       },
-      "search_line_items_request": {
+      "SearchLineItemsRequest": {
         "type": "object",
         "required": [
           "line_items",
@@ -816,7 +903,7 @@
           }
         }
       },
-      "financials_search_response": {
+      "FinancialsSearchResponse": {
         "type": "object",
         "properties": {
           "search_results": {
@@ -855,128 +942,7 @@
           }
         }
       },
-      "insider_transactions_response": {
-        "type": "object",
-        "properties": {
-          "insider_transactions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/insider_transaction"
-            }
-          }
-        }
-      },
-      "financials_response": {
-        "type": "object",
-        "properties": {
-          "financials": {
-            "type": "object",
-            "properties": {
-              "income_statements": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/income_statement"
-                }
-              },
-              "balance_sheets": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/balance_sheet"
-                }
-              },
-              "cash_flow_statements": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/cash_flow_statement"
-                }
-              }
-            }
-          }
-        }
-      },
-      "segmented_revenues_response": {
-        "type": "object",
-        "properties": {
-          "segmented_revenues": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/segmented_revenues"
-            }
-          }
-        }
-      },
-      "income_statement_response": {
-        "type": "object",
-        "properties": {
-          "income_statements": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/income_statement"
-            }
-          }
-        }
-      },
-      "balance_sheet_response": {
-        "type": "object",
-        "properties": {
-          "balance_sheets": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/balance_sheet"
-            }
-          }
-        }
-      },
-      "cash_flow_statement_response": {
-        "type": "object",
-        "properties": {
-          "cash_flow_statements": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/cash_flow_statement"
-            }
-          }
-        }
-      },
-      "company_facts_response": {
-        "type": "object",
-        "properties": {
-          "company_facts": {
-            "$ref": "#/components/schemas/company_facts"
-          }
-        }
-      },
-      "filings_response": {
-        "type": "object",
-        "properties": {
-          "filings": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/filing"
-            }
-          }
-        }
-      },
-      "price_snapshot_response": {
-        "type": "object",
-        "properties": {
-          "snapshot": {
-            "$ref": "#/components/schemas/price_snapshot"
-          }
-        }
-      },
-      "prices_response": {
-        "type": "object",
-        "properties": {
-          "prices": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/price"
-            }
-          }
-        }
-      },
-      "error_response": {
+      "ErrorResponse": {
         "type": "object",
         "properties": {
           "error": {
@@ -989,7 +955,136 @@
           }
         }
       },
-      "insider_transaction": {
+      "PriceSnapshotResponse": {
+        "type": "object",
+        "properties": {
+          "snapshot": {
+            "$ref": "#/components/schemas/PriceSnapshot"
+          }
+        }
+      },
+      "InsiderTransactionsResponse": {
+        "type": "object",
+        "properties": {
+          "insider_transactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InsiderTransaction"
+            }
+          }
+        }
+      },
+      "FinancialsResponse": {
+        "type": "object",
+        "properties": {
+          "financials": {
+            "type": "object",
+            "properties": {
+              "income_statements": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/IncomeStatement"
+                }
+              },
+              "balance_sheets": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/BalanceSheet"
+                }
+              },
+              "cash_flow_statements": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CashFlowStatement"
+                }
+              }
+            }
+          }
+        }
+      },
+      "SegmentedRevenuesResponse": {
+        "type": "object",
+        "properties": {
+          "segmented_revenues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SegmentedRevenues"
+            }
+          }
+        }
+      },
+      "IncomeStatementResponse": {
+        "type": "object",
+        "properties": {
+          "income_statements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IncomeStatement"
+            }
+          }
+        }
+      },
+      "BalanceSheetResponse": {
+        "type": "object",
+        "properties": {
+          "balance_sheets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BalanceSheet"
+            }
+          }
+        }
+      },
+      "CashFlowStatementResponse": {
+        "type": "object",
+        "properties": {
+          "cash_flow_statements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CashFlowStatement"
+            }
+          }
+        }
+      },
+      "CompanyFactsResponse": {
+        "type": "object",
+        "properties": {
+          "company_facts": {
+            "$ref": "#/components/schemas/CompanyFacts"
+          }
+        }
+      },
+      "FilingsResponse": {
+        "type": "object",
+        "properties": {
+          "filings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Filing"
+            }
+          }
+        }
+      },
+      "PriceSnapshotResponse": {
+        "type": "object",
+        "properties": {
+          "snapshot": {
+            "$ref": "#/components/schemas/PriceSnapshot"
+          }
+        }
+      },
+      "PricesResponse": {
+        "type": "object",
+        "properties": {
+          "prices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Price"
+            }
+          }
+        }
+      },
+      "InsiderTransaction": {
         "type": "object",
         "properties": {
           "ticker": {
@@ -1048,7 +1143,7 @@
           }
         }
       },
-      "segmented_revenues": {
+      "SegmentedRevenues": {
         "type": "object",
         "properties": {
           "ticker": {
@@ -1107,7 +1202,7 @@
           }
         }
       },
-      "income_statement": {
+      "IncomeStatement": {
         "type": "object",
         "properties": {
           "ticker": {
@@ -1244,7 +1339,7 @@
           }
         }
       },
-      "balance_sheet": {
+      "BalanceSheet": {
         "type": "object",
         "properties": {
           "ticker": {
@@ -1406,7 +1501,7 @@
           }
         }
       },
-      "cash_flow_statement": {
+      "CashFlowStatement": {
         "type": "object",
         "properties": {
           "ticker": {
@@ -1503,7 +1598,7 @@
           }
         }
       },
-      "company_facts": {
+      "CompanyFacts": {
         "type": "object",
         "properties": {
           "ticker": {
@@ -1554,7 +1649,7 @@
           }
         }
       },
-      "filing": {
+      "Filing": {
         "type": "object",
         "properties": {
           "cik": {
@@ -1585,7 +1680,7 @@
           }
         }
       },
-      "price_snapshot": {
+      "PriceSnapshot": {
         "type": "object",
         "properties": {
           "price": {
@@ -1615,7 +1710,7 @@
           }
         }
       },
-      "price": {
+      "Price": {
         "type": "object",
         "properties": {
           "open": {
@@ -1650,7 +1745,7 @@
           }
         }
       },
-      "options_chain_response": {
+      "OptionsChainResponse": {
         "type": "object",
         "properties": {
           "options_chain": {
@@ -1722,6 +1817,50 @@
                   "description": "The time of the last trade in nanoseconds."
                 }
               }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "UnauthorizedError": {
+        "description": "API key is missing or invalid",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": "Unauthorized",
+              "message": "Invalid API key provided"
+            }
+          }
+        }
+      },
+      "NotFoundError": {
+        "description": "The specified resource was not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": "Not Found",
+              "message": "Ticker XXXX not found"
+            }
+          }
+        }
+      },
+      "PaymentRequiredError": {
+        "description": "The request requires a paid subscription",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": "Payment Required",
+              "message": "This endpoint requires a paid subscription. Please upgrade your plan."
             }
           }
         }
