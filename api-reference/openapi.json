@@ -836,7 +836,7 @@
               "properties": {
                 "field": {
                   "type": "string",
-                  "description": "The financial metric to filter on."
+                  "description": "The criteria to filter on.  For financial metric fields, use 'gt', 'lt', 'gte', 'lte', 'eq' operators.  For 'ticker' and 'cik' fields, use the 'in' operator to filter against multiple values."
                 },
                 "operator": {
                   "type": "string",
@@ -845,13 +845,25 @@
                     "lt",
                     "gte",
                     "lte",
-                    "eq"
+                    "eq", 
+                    "in"
                   ],
-                  "description": "The comparison operator."
+                  "description": "The comparison operator. The 'in' operator can only be used with a field value of 'ticker' or 'cik' and lets you filter against multiple values."
                 },
                 "value": {
-                  "type": "number",
-                  "description": "The value to compare against."
+                  "oneOf": [
+                    {
+                      "type": "number",
+                      "description": "The value to compare against for single-value operators (gt, lt, gte, lte, eq)"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Array of ticker or cik values to compare against when using the 'in' operator"
+                    }
+                  ]
                 }
               }
             },
