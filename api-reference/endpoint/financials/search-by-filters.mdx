@@ -159,9 +159,10 @@ fields = [
 
 
 
-### 💻  Example
+### 💻  Examples
 
-```python Financials Search
+<CodeGroup>
+```python Filter by Metrics
 import requests
 import json
 
@@ -175,6 +176,7 @@ headers = {
 body = {
     "period": "ttm",
     "limit": 5,
+    "currency": "USD",
     "filters": [
         {
             "field": "revenue", # from income statement
@@ -212,3 +214,97 @@ for result in search_results:
     print(f"Capital Expenditure: ${result['capital_expenditure']:,.0f}")
     print("---")
 ```
+
+```python Filter by Metrics and Tickers
+import requests
+import json
+
+# Add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here",
+    "Content-Type": "application/json"
+}
+
+# Prepare the request body
+body = {
+    "period": "annual",
+    "limit": 5,
+    "currency": "USD",
+    "filters": [
+        {
+            "field": "revenue", # from income statement
+            "operator": "gte",
+            "value": 100000000
+        },
+        {
+            "field": "ticker", # filter by multiple tickers
+            "operator": "in",
+            "value": ["AAPL", "GOOGL", "MSFT", "NVDA", "TSLA"]
+        },
+    ]
+}
+
+# Create the URL
+url = 'https://api.financialdatasets.ai/financials/search'
+
+# Make API request
+response = requests.post(url, headers=headers, data=json.dumps(body))
+
+# Parse search results from the response
+search_results = response.json().get('search_results')
+
+# Print the results
+for result in search_results:
+    print(f"Ticker: {result['ticker']}")
+    print(f"Report Period: {result['report_period']}")
+    print(f"Revenue: ${result['revenue']:,.0f}")
+    print("---")
+```
+
+```python Filter by Metrics and CIKs
+import requests
+import json
+
+# Add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here",
+    "Content-Type": "application/json"
+}
+
+# Prepare the request body
+body = {
+    "period": "annual",
+    "limit": 5,
+    "currency": "USD",
+    "filters": [
+        {
+            "field": "revenue", # from income statement
+            "operator": "gte",
+            "value": 100000000
+        },
+        {
+            "field": "cik", # filter by multiple CIKs
+            "operator": "in",
+            "value": ["0001067983", "0001067983", "0001067983", "0001067983", "0001067983"]
+        },
+    ]
+}
+
+# Create the URL
+url = 'https://api.financialdatasets.ai/financials/search'
+
+# Make API request
+response = requests.post(url, headers=headers, data=json.dumps(body))
+
+# Parse search results from the response
+search_results = response.json().get('search_results')
+
+# Print the results
+for result in search_results:
+    print(f"Ticker: {result['ticker']}")
+    print(f"Report Period: {result['report_period']}")
+    print(f"Revenue: ${result['revenue']:,.0f}")
+    print("---")
+
+```
+</CodeGroup>
