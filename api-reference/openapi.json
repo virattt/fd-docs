@@ -17,11 +17,11 @@
   },
   "servers": [
     {
-      "url": "https://api.financialdatasets.ai/v1",
+      "url": "https://api.financialdatasets.ai/",
       "description": "Production server"
     },
     {
-      "url": "https://sandbox-api.financialdatasets.ai/v1",
+      "url": "https://sandbox-api.financialdatasets.ai/",
       "description": "Sandbox server"
     }
   ],
