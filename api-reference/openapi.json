@@ -760,6 +760,43 @@
           }
         }
       }
+    },
+    "/financial-metrics/snapshot": {
+      "get": {
+        "tags": ["Financial Metrics"],
+        "operationId": "getFinancialMetricsSnapshot",
+        "summary": "Get financial metrics snapshot",
+        "description": "Get a comprehensive snapshot of key financial metrics and ratios for a ticker, including valuation, profitability, efficiency, liquidity, leverage, growth, and per share metrics.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol of the company.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Financial metrics snapshot response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FinancialMetricsSnapshotResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1709,7 +1746,7 @@
           },
           "time": {
             "type": "string",
-            "description": "The timestamp of the price snapshot in human-readable format."
+            "description": "The timestamp of the price snapshot in human-readable format in UTC."
           },
           "time_nanoseconds": {
             "type": "integer",
@@ -1744,7 +1781,7 @@
           },
           "time": {
             "type": "string",
-            "description": "The human-readable time format of the price."
+            "description": "The human-readable time format of the price in UTC."
           },
           "time_milliseconds": {
             "type": "integer",
@@ -1817,7 +1854,7 @@
                 },
                 "last_trade_time": {
                   "type": "string",
-                  "description": "The time of the last trade in human-readable format."
+                  "description": "The time of the last trade in human-readable format in UTC."
                 },
                 "last_trade_time_nanoseconds": {
                   "type": "integer",
@@ -1826,6 +1863,127 @@
                 }
               }
             }
+          }
+        }
+      },
+      "FinancialMetricsSnapshotResponse": {
+        "type": "object",
+        "properties": {
+          "ticker": {
+            "type": "string",
+            "description": "The ticker symbol of the company."
+          },
+          "market_cap": {
+            "type": "number",
+            "description": "The market capitalization of the company."
+          },
+          "enterprise_value": {
+            "type": "number",
+            "description": "The total value of the company (market cap + debt - cash)."
+          },
+          "pe_ratio": {
+            "type": "number",
+            "description": "Price to earnings ratio."
+          },
+          "pb_ratio": {
+            "type": "number",
+            "description": "Price to book ratio."
+          },
+          "ps_ratio": {
+            "type": "number",
+            "description": "Price to sales ratio."
+          },
+          "ev_ebitda_ratio": {
+            "type": "number",
+            "description": "Enterprise value to EBITDA ratio."
+          },
+          "ev_revenue_ratio": {
+            "type": "number",
+            "description": "Enterprise value to revenue ratio."
+          },
+          "gross_margin": {
+            "type": "number",
+            "description": "Gross profit as a percentage of revenue."
+          },
+          "operating_margin": {
+            "type": "number",
+            "description": "Operating income as a percentage of revenue."
+          },
+          "net_margin": {
+            "type": "number",
+            "description": "Net income as a percentage of revenue."
+          },
+          "return_on_equity": {
+            "type": "number",
+            "description": "Net income as a percentage of shareholders' equity."
+          },
+          "return_on_assets": {
+            "type": "number",
+            "description": "Net income as a percentage of total assets."
+          },
+          "return_on_invested_capital": {
+            "type": "number",
+            "description": "Net operating profit after taxes as a percentage of invested capital."
+          },
+          "asset_turnover": {
+            "type": "number",
+            "description": "Revenue divided by average total assets."
+          },
+          "inventory_turnover": {
+            "type": "number",
+            "description": "Cost of goods sold divided by average inventory."
+          },
+          "current_ratio": {
+            "type": "number",
+            "description": "Current assets divided by current liabilities."
+          },
+          "quick_ratio": {
+            "type": "number",
+            "description": "Quick assets divided by current liabilities."
+          },
+          "cash_ratio": {
+            "type": "number",
+            "description": "Cash and cash equivalents divided by current liabilities."
+          },
+          "debt_to_equity": {
+            "type": "number",
+            "description": "Total debt divided by shareholders' equity."
+          },
+          "debt_to_assets": {
+            "type": "number",
+            "description": "Total debt divided by total assets."
+          },
+          "interest_coverage": {
+            "type": "number",
+            "description": "Operating income divided by interest expense."
+          },
+          "revenue_growth": {
+            "type": "number",
+            "description": "Year-over-year growth in revenue."
+          },
+          "earnings_growth": {
+            "type": "number",
+            "description": "Year-over-year growth in earnings."
+          },
+          "book_value_growth": {
+            "type": "number",
+            "description": "Year-over-year growth in book value."
+          },
+          "payout_ratio": {
+            "type": "number",
+            "description": "Dividends paid as a percentage of net income."
+          },
+          "earnings_per_share": {
+            "type": "number",
+            "description": "Net income divided by weighted average shares outstanding."
+          },
+          "book_value_per_share": {
+            "type": "number",
+            "description": "Shareholders' equity divided by shares outstanding."
+          },
+          "free_cash_flow_per_share": {
+            "type": "number",
+            "description": "Free cash flow divided by shares outstanding."
           }
         }
       }

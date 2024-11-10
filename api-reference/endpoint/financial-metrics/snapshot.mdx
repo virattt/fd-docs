@@ -1,0 +1,47 @@
+---
+title: 'Snapshot'
+openapi: 'GET /financial-metrics/snapshot'
+---
+
+### 👋  Overview
+We have real-time financial metrics for <b>10,000+</b> stocks.
+
+Any data that you receive from our API is yours to keep. You may save the data to minimize repeat API calls.
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `ticker` to filter the data.
+3. Execute the API request.
+
+**Note**: You must provide the `ticker`.
+
+### 💻  Example
+
+```python Financial Metrics Snapshot
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'AAPL'
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/financial-metrics/snapshot'
+    f'?ticker={ticker}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse snapshot from the response
+snapshot = response.json().get('snapshot')
+```

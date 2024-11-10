@@ -62,6 +62,13 @@
           ]
         },
         {
+          "group": "Financial Metrics",
+          "icon": "chart-line",
+          "pages": [
+            "api-reference/endpoint/financial-metrics/snapshot"
+          ]
+        },
+        {
           "group": "Insider Transactions",
           "icon": "briefcase",
           "pages": [
