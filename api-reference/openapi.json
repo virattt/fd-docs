@@ -128,7 +128,7 @@
         "tags": ["Company Information"],
         "operationId": "getInsiderTransactions",
         "summary": "Get insider transactions",
-        "description": "Get insider transactions for a specific ticker.",
+        "description": "Get insider trades like purchases, sales, and holdings for a ticker.",
         "parameters": [
           {
             "name": "ticker",
@@ -766,7 +766,7 @@
         "tags": ["Financial Metrics"],
         "operationId": "getFinancialMetricsSnapshot",
         "summary": "Get financial metrics snapshot",
-        "description": "Get a comprehensive snapshot of key financial metrics and ratios for a ticker, including valuation, profitability, efficiency, liquidity, leverage, growth, and per share metrics.",
+        "description": "Get a real-time snapshot of key financial metrics and ratios for a ticker, including valuation, profitability, efficiency, liquidity, leverage, growth, and per share metrics.",
         "parameters": [
           {
             "name": "ticker",

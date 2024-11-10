@@ -51,7 +51,14 @@
           ]
         },
         {
-          "group": "Financials",
+          "group": "Financial Metrics",
+          "icon": "calculator",
+          "pages": [
+            "api-reference/endpoint/financial-metrics/snapshot"
+          ]
+        },
+        {
+          "group": "Financial Statements",
           "icon": "dollar-sign",
           "pages": [
             "api-reference/endpoint/financials/income-statements",
@@ -59,13 +66,6 @@
             "api-reference/endpoint/financials/cash-flow-statements",
             "api-reference/endpoint/financials/all-financial-statements",
             "api-reference/endpoint/financials/segmented-revenues"
-          ]
-        },
-        {
-          "group": "Financial Metrics",
-          "icon": "chart-line",
-          "pages": [
-            "api-reference/endpoint/financial-metrics/snapshot"
           ]
         },
         {
