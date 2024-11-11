@@ -1000,14 +1000,6 @@
           }
         }
       },
-      "PriceSnapshotResponse": {
-        "type": "object",
-        "properties": {
-          "snapshot": {
-            "$ref": "#/components/schemas/PriceSnapshot"
-          }
-        }
-      },
       "InsiderTransactionsResponse": {
         "type": "object",
         "properties": {
