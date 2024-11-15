@@ -47,7 +47,9 @@
   "paths": {
     "/financials/search": {
       "post": {
-        "tags": ["Financial Statements"],
+        "tags": [
+          "Financial Statements"
+        ],
         "operationId": "searchFinancials",
         "summary": "Search financial statements",
         "description": "Search for financial data across income statements, balance sheets, and cash flow statements using filters.",
@@ -72,6 +74,9 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
           "401": {
             "$ref": "#/components/responses/UnauthorizedError"
           },
@@ -86,7 +91,9 @@
     },
     "/financials/search/line-items": {
       "post": {
-        "tags": ["Financial Statements"],
+        "tags": [
+          "Financial Statements"
+        ],
         "operationId": "searchLineItems",
         "summary": "Search specific financial metrics",
         "description": "Search for specific financial metrics across income statements, balance sheets, and cash flow statements.",
@@ -111,6 +118,9 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
           "401": {
             "$ref": "#/components/responses/UnauthorizedError"
           },
@@ -125,7 +135,9 @@
     },
     "/insider-transactions": {
       "get": {
-        "tags": ["Company Information"],
+        "tags": [
+          "Company Information"
+        ],
         "operationId": "getInsiderTransactions",
         "summary": "Get insider transactions",
         "description": "Get insider trades like purchases, sales, and holdings for a ticker.",
@@ -162,41 +174,25 @@
             }
           },
           "400": {
-            "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequestError"
           },
           "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/UnauthorizedError"
           },
           "402": {
-            "description": "Payment required",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
           }
         }
       }
     },
     "/company/facts": {
       "get": {
-        "tags": ["Company Information"],
+        "tags": [
+          "Company Information"
+        ],
         "operationId": "getCompanyFacts",
         "summary": "Get company facts",
         "description": "Get company facts for a ticker.",
@@ -213,7 +209,7 @@
         ],
         "responses": {
           "200": {
-            "description": "SEC filings response",
+            "description": "Company facts response",
             "content": {
               "application/json": {
                 "schema": {
@@ -221,13 +217,24 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
           }
         }
       }
     },
     "/filings": {
       "get": {
-        "tags": ["Company Information"],
+        "tags": [
+          "Company Information"
+        ],
         "operationId": "getFilings",
         "summary": "Get SEC filings",
         "description": "Get SEC filings for a company.",
@@ -261,13 +268,27 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
           }
         }
       }
     },
     "/financials/segmented-revenues": {
       "get": {
-        "tags": ["Financial Statements"],
+        "tags": [
+          "Financial Statements"
+        ],
         "operationId": "getSegmentedRevenues",
         "summary": "Get segmented revenue data",
         "description": "Get detailed, segmented revenue data for a ticker.",
@@ -323,13 +344,27 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
           }
         }
       }
     },
     "/financials/income-statements": {
       "get": {
-        "tags": ["Financial Statements"],
+        "tags": [
+          "Financial Statements"
+        ],
         "operationId": "getIncomeStatements",
         "summary": "Get income statements",
         "description": "Get income statements for a ticker.",
@@ -386,13 +421,27 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
           }
         }
       }
     },
     "/financials/balance-sheets": {
       "get": {
-        "tags": ["Financial Statements"],
+        "tags": [
+          "Financial Statements"
+        ],
         "operationId": "getBalanceSheets",
         "summary": "Get balance sheets",
         "description": "Get balance sheets for a ticker.",
@@ -449,13 +498,27 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
           }
         }
       }
     },
     "/financials/cash-flow-statements": {
       "get": {
-        "tags": ["Financial Statements"],
+        "tags": [
+          "Financial Statements"
+        ],
         "operationId": "getCashFlowStatements",
         "summary": "Get cash flow statements",
         "description": "Get cash flow statements for a ticker.",
@@ -512,13 +575,27 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
           }
         }
       }
     },
     "/prices/snapshot": {
       "get": {
-        "tags": ["Market Data"],
+        "tags": [
+          "Market Data"
+        ],
         "operationId": "getPriceSnapshot",
         "summary": "Get price snapshot",
         "description": "Get the real-time price snapshot for a ticker.",
@@ -543,13 +620,27 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
           }
         }
       }
     },
     "/financials": {
       "get": {
-        "tags": ["Financial Statements"],
+        "tags": [
+          "Financial Statements"
+        ],
         "operationId": "getAllFinancialStatements",
         "summary": "Get all financial statements",
         "description": "Get all financial statements for a ticker.",
@@ -606,13 +697,27 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
           }
         }
       }
     },
     "/prices": {
       "get": {
-        "tags": ["Market Data"],
+        "tags": [
+          "Market Data"
+        ],
         "operationId": "getPrices",
         "summary": "Get historical price data",
         "description": "Get ranged price data for a ticker to power stock charts and analyze price movements.",
@@ -697,13 +802,27 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
           }
         }
       }
     },
     "/options/chain": {
       "get": {
-        "tags": ["Options"],
+        "tags": [
+          "Options"
+        ],
         "operationId": "getOptionsChain",
         "summary": "Get options chain data",
         "description": "Get real-time options chain data for actively traded equities.",
@@ -728,12 +847,15 @@
           },
           {
             "name": "option_type",
-            "in": "query", 
+            "in": "query",
             "description": "The type of option contract (call or put).",
             "required": false,
             "schema": {
               "type": "string",
-              "enum": ["call", "put"]
+              "enum": [
+                "call",
+                "put"
+              ]
             }
           },
           {
@@ -757,13 +879,27 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
           }
         }
       }
     },
     "/financial-metrics/snapshot": {
       "get": {
-        "tags": ["Financial Metrics"],
+        "tags": [
+          "Financial Metrics"
+        ],
         "operationId": "getFinancialMetricsSnapshot",
         "summary": "Get financial metrics snapshot",
         "description": "Get a real-time snapshot of key financial metrics and ratios for a ticker, including valuation, profitability, efficiency, liquidity, leverage, growth, and per share metrics.",
@@ -789,8 +925,14 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
           "401": {
             "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
           },
           "404": {
             "$ref": "#/components/responses/NotFoundError"
@@ -878,7 +1020,7 @@
                     "lt",
                     "gte",
                     "lte",
-                    "eq", 
+                    "eq",
                     "in"
                   ],
                   "description": "The comparison operator. The 'in' operator can only be used with a field value of 'ticker' or 'cik' and lets you filter against multiple values."
@@ -1796,7 +1938,10 @@
                 },
                 "type": {
                   "type": "string",
-                  "enum": ["Call", "Put"],
+                  "enum": [
+                    "Call",
+                    "Put"
+                  ],
                   "description": "The type of option contract."
                 },
                 "strike_price": {
@@ -1981,8 +2126,22 @@
       }
     },
     "responses": {
+      "BadRequestError": {
+        "description": "Bad request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": "Bad Request",
+              "message": "Invalid request parameters"
+            }
+          }
+        }
+      },
       "UnauthorizedError": {
-        "description": "API key is missing or invalid",
+        "description": "Unauthorized",
         "content": {
           "application/json": {
             "schema": {
