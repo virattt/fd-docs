@@ -2135,10 +2135,6 @@
             "type": "number",
             "description": "Total debt divided by total assets."
           },
-          "interest_coverage": {
-            "type": "number",
-            "description": "Operating income divided by interest expense."
-          },
           "revenue_growth": {
             "type": "number",
             "description": "Year-over-year growth in revenue."
