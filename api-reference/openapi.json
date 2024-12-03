@@ -902,7 +902,7 @@
         ],
         "operationId": "getFinancialMetrics",
         "summary": "Get financial metrics",
-        "description": "Get historical financial metrics and ratios for a ticker, including valuation, profitability, efficiency, liquidity, leverage, growth, and per share metrics.",
+        "description": "Get financial metrics for a ticker, including valuation, profitability, efficiency, liquidity, leverage, growth, and per share metrics.",
         "parameters": [
           {
             "name": "ticker",
