@@ -1,0 +1,59 @@
+---
+title: 'Historical'
+openapi: 'GET /financial-metrics'
+---
+
+### 👋  Overview
+The historical financial metrics API provides historical financial metrics and ratios for a given stock ticker.
+
+Financial metrics include a company's valuation, profitability, efficiency, liquidity, leverage, growth, and per share metrics over a specified period.
+
+You can filter the data by `ticker`, `period`, `limit`, 
+
+The `period` parameter can be set to `annual`, `quarterly`, or `ttm` (trailing twelve months). The `limit` parameter is used to specify the number of periods to return.
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+### 📊 Available Tickers
+You can fetch a list of available tickers with a `GET` request to:
+https://api.financialdatasets.ai/financial-metrics/tickers/
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `ticker` to filter the data.
+3. Execute the API request.
+
+**Note**: `ticker` and `period` are required. By default, `limit` is `4`.
+
+### 💻  Example
+
+```python Financial Metrics
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'NVDA'     # stock ticker
+period = 'annual'   # possible values are 'annual', 'quarterly', or 'ttm'
+limit = 30          # number of periods to return
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/financial-metrics'
+    f'?ticker={ticker}'
+    f'&period={period}'
+    f'&limit={limit}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse financial_metrics from the response
+financial_metrics = response.json().get('financial_metrics')
+```

@@ -895,6 +895,51 @@
         }
       }
     },
+    "/financial-metrics": {
+      "get": {
+        "tags": [
+          "Financial Metrics"
+        ],
+        "operationId": "getFinancialMetrics",
+        "summary": "Get financial metrics",
+        "description": "Get historical financial metrics and ratios for a ticker, including valuation, profitability, efficiency, liquidity, leverage, growth, and per share metrics.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol of the company.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The historical financial metrics and ratios for a ticker",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FinancialMetricsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
     "/financial-metrics/snapshot": {
       "get": {
         "tags": [
@@ -916,11 +961,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Financial metrics snapshot response",
+            "description": "The current financial metrics snapshot for a ticker",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FinancialMetricsSnapshotResponse"
+                  "$ref": "#/components/schemas/FinancialMetricsResponse"
                 }
               }
             }
@@ -2003,7 +2048,7 @@
           }
         }
       },
-      "FinancialMetricsSnapshotResponse": {
+      "FinancialMetricsResponse": {
         "type": "object",
         "properties": {
           "ticker": {
@@ -2018,23 +2063,23 @@
             "type": "number",
             "description": "The total value of the company (market cap + debt - cash)."
           },
-          "pe_ratio": {
+          "price_to_earnings_ratio": {
             "type": "number",
             "description": "Price to earnings ratio."
           },
-          "pb_ratio": {
+          "price_to_book_ratio": {
             "type": "number",
             "description": "Price to book ratio."
           },
-          "ps_ratio": {
+          "price_to_sales_ratio": {
             "type": "number",
             "description": "Price to sales ratio."
           },
-          "ev_ebitda_ratio": {
+          "enterprise_value_to_ebitda_ratio": {
             "type": "number",
             "description": "Enterprise value to EBITDA ratio."
           },
-          "ev_revenue_ratio": {
+          "enterprise_value_to_revenue_ratio": {
             "type": "number",
             "description": "Enterprise value to revenue ratio."
           },

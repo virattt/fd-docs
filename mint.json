@@ -54,6 +54,7 @@
           "group": "Financial Metrics",
           "icon": "calculator",
           "pages": [
+            "api-reference/endpoint/financial-metrics/historical",
             "api-reference/endpoint/financial-metrics/snapshot"
           ]
         },
