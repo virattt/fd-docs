@@ -1961,11 +1961,6 @@
           "time": {
             "type": "string",
             "description": "The human-readable time format of the price in UTC."
-          },
-          "time_milliseconds": {
-            "type": "integer",
-            "format": "int64",
-            "description": "The UNIX millisecond timestamp of the price."
           }
         }
       },
