@@ -1926,11 +1926,6 @@
           "time": {
             "type": "string",
             "description": "The timestamp of the price snapshot in human-readable format in UTC."
-          },
-          "time_nanoseconds": {
-            "type": "integer",
-            "format": "int64",
-            "description": "The timestamp of the price snapshot in nanoseconds."
           }
         }
       },
@@ -2032,11 +2027,6 @@
                 "last_trade_time": {
                   "type": "string",
                   "description": "The time of the last trade in human-readable format in UTC."
-                },
-                "last_trade_time_nanoseconds": {
-                  "type": "integer",
-                  "format": "int64",
-                  "description": "The time of the last trade in nanoseconds."
                 }
               }
             }
