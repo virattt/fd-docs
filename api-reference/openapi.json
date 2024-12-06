@@ -912,6 +912,29 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "description": "The time period for the financial data.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "annual",
+                "quarterly",
+                "ttm"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of results to return.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "responses": {
