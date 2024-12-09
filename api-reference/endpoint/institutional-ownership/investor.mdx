@@ -1,0 +1,63 @@
+---
+title: 'Holdings (by investor)'
+openapi: 'GET /institutional-ownership'
+---
+
+### 👋  Overview
+The institutional ownership API provides access to the equity holdings of investment managers overseeing $100M+ in assets. 
+
+This quarterly data comes directly from Form 13F filings and includes tickers, share quantities, estimated holding prices, and market values.
+
+You can use this data to:
+- Track position changes of major hedge funds and asset managers
+- Identify emerging sector rotations and market themes
+- Build investment strategies based on institutional money flows
+- Monitor industry concentration and portfolio overlap
+
+Note: Form 13F filings have a 45-day lag from quarter end and only include long positions in SEC-registered securities.
+
+Any data that you receive from our API is yours to keep. You may save the data to minimize repeat API calls.
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+### 📊 Available Investors
+You can fetch a list of available investors with a `GET` request to:
+https://api.financialdatasets.ai/institutional-ownership/investors/
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `investor` and `limit` to filter the data.
+3. Execute the API request.
+
+**Note**: `investor` is required required.  By default, `limit` is `10`.
+
+### 💻  Example
+
+```python Institutional Ownership
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+investor = 'BERKSHIRE_HATHAWAY_INC'     # investor name
+limit = 100                             # number of transactions to return
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/institutional-ownership/'
+    f'?investor={investor}'
+    f'&limit={limit}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse institutional_ownership from the response
+institutional_ownership = response.json().get('institutional_ownership')
+```

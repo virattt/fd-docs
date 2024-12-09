@@ -70,10 +70,17 @@
           ]
         },
         {
-          "group": "Insider Transactions",
+          "group": "Institutional Ownership",
+          "icon": "chart-pie",
+          "pages": [
+            "api-reference/endpoint/institutional-ownership/investor"
+          ]
+        },
+        {
+          "group": "Insider Trades",
           "icon": "briefcase",
           "pages": [
-            "api-reference/endpoint/insider-transactions/insider-transactions"
+            "api-reference/endpoint/insider-trades/insider-trades"
           ]
         },
         {
@@ -103,8 +110,8 @@
           "group": "SEC Filings",
           "icon": "file",
           "pages": [
-            "api-reference/endpoint/filings/filings_by_ticker",
-            "api-reference/endpoint/filings/filings_by_cik"
+            "api-reference/endpoint/filings/ticker",
+            "api-reference/endpoint/filings/cik"
           ]
         }
       ]

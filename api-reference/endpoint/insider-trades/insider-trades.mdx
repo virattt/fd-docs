@@ -1,6 +1,6 @@
 ---
-title: 'Insider Transactions'
-openapi: 'GET /insider-transactions'
+title: 'Insider Trades'
+openapi: 'GET /insider-trades'
 ---
 
 ### 👋  Overview
@@ -21,7 +21,7 @@ You will use the API key to authenticate your API requests.
 
 ### 📊 Available Tickers
 You can fetch a list of available tickers with a `GET` request to:
-https://api.financialdatasets.ai/insider-transactions/tickers/
+https://api.financialdatasets.ai/insider-trades/tickers/
 
 ###  🚀  Getting Started
 There are only 3 steps for making a successful API call:
@@ -33,7 +33,7 @@ There are only 3 steps for making a successful API call:
 
 ### 💻  Example
 
-```python Insider Transactions
+```python Insider Trades
 import requests
 
 # add your API key to the headers
@@ -47,7 +47,7 @@ limit = 100         # number of transactions to return
 
 # create the URL
 url = (
-    f'https://api.financialdatasets.ai/insider-transactions'
+    f'https://api.financialdatasets.ai/insider-trades'
     f'?ticker={ticker}'
     f'&limit={limit}'
 )
@@ -55,6 +55,6 @@ url = (
 # make API request
 response = requests.get(url, headers=headers)
 
-# parse insider_transactions from the response
-insider_transactions = response.json().get('insider_transactions')
+# parse insider_trades from the response
+insider_trades = response.json().get('insider_trades')
 ```

@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Financial Datasets API",
-    "description": "Stock market API with real-time and historical financial data for 30,000+ tickers over 30+ years. Financial statements, equity prices, insider transactions, SEC filings, and more.",
+    "description": "Stock market API with real-time and historical financial data for 30,000+ tickers over 30+ years. Financial statements, equity prices, insider trades, SEC filings, and more.",
     "version": "1.0.0",
     "license": {
       "name": "MIT",
@@ -32,11 +32,15 @@
     },
     {
       "name": "Company Information",
-      "description": "Company facts, filings and insider transactions"
+      "description": "Company facts like ticker, name, and description"
     },
     {
       "name": "Options",
       "description": "Options chain data"
+    },
+    {
+      "name": "Institutional Ownership",
+      "description": "Equity holdings of investment managers"
     }
   ],
   "security": [
@@ -133,14 +137,14 @@
         }
       }
     },
-    "/insider-transactions": {
+    "/insider-trades": {
       "get": {
         "tags": [
-          "Company Information"
+          "Insider Trades"
         ],
-        "operationId": "getInsiderTransactions",
-        "summary": "Get insider transactions",
-        "description": "Get insider trades like purchases, sales, and holdings for a ticker.",
+        "operationId": "getInsiderTrades",
+        "summary": "Get insider trades",
+        "description": "Get insider trades like buys and sells for a ticker by a company insider.",
         "parameters": [
           {
             "name": "ticker",
@@ -164,11 +168,66 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful insider transactions response",
+            "description": "Insider trades response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/InsiderTransactionsResponse"
+                  "$ref": "#/components/schemas/InsiderTradesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
+    "/institutional-ownership": {
+      "get": {
+        "tags": [
+          "Institutional Ownership"
+        ],
+        "operationId": "getInstitutionalOwnership",
+        "summary": "Get the equity holdings of an investment manager",
+        "description": "Get the equity holdings of an investment manager",
+        "parameters": [
+          {
+            "name": "investor",
+            "in": "query",
+            "description": "The name of the investment manager",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of holdings to return (default: 10).",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Institutional ownership response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InstitutionalOwnershipResponse"
                 }
               }
             }
@@ -1210,13 +1269,24 @@
           }
         }
       },
-      "InsiderTransactionsResponse": {
+      "InsiderTradesResponse": {
         "type": "object",
         "properties": {
-          "insider_transactions": {
+          "insider_trades": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/InsiderTransaction"
+              "$ref": "#/components/schemas/InsiderTrade"
+            }
+          }
+        }
+      },
+      "InstitutionalOwnershipResponse": {
+        "type": "object",
+        "properties": {
+          "institutional_ownership": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InstitutionalOwnership"
             }
           }
         }
@@ -1331,7 +1401,7 @@
           }
         }
       },
-      "InsiderTransaction": {
+      "InsiderTrade": {
         "type": "object",
         "properties": {
           "ticker": {
@@ -1387,6 +1457,32 @@
             "type": "string",
             "format": "date",
             "description": "The date the transaction was filed."
+          }
+        }
+      },
+      "InstitutionalOwnership": {
+        "type": "object",
+        "properties": {
+          "ticker": {
+            "type": "string",
+            "description": "The ticker symbol."
+          },
+          "report_period": {
+            "type": "string",
+            "format": "date",
+            "description": "The reporting period of the institutional ownership."
+          },
+          "price": {
+            "type": "number",
+            "description": "The estimated purchase price of the equity position."
+          },
+          "shares": {
+            "type": "number",
+            "description": "The number of shares held by the investment manager."
+          },
+          "market_value": {
+            "type": "number",
+            "description": "The market value of the equity position."
           }
         }
       },
