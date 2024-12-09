@@ -51,14 +51,6 @@
           ]
         },
         {
-          "group": "Financial Metrics",
-          "icon": "calculator",
-          "pages": [
-            "api-reference/endpoint/financial-metrics/historical",
-            "api-reference/endpoint/financial-metrics/snapshot"
-          ]
-        },
-        {
           "group": "Financial Statements",
           "icon": "dollar-sign",
           "pages": [
@@ -74,6 +66,14 @@
           "icon": "briefcase",
           "pages": [
             "api-reference/endpoint/insider-transactions/insider-transactions"
+          ]
+        },
+        {
+          "group": "Metrics",
+          "icon": "calculator",
+          "pages": [
+            "api-reference/endpoint/financial-metrics/historical",
+            "api-reference/endpoint/financial-metrics/snapshot"
           ]
         },
         {
