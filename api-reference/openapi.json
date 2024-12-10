@@ -199,13 +199,20 @@
         ],
         "operationId": "getInstitutionalOwnership",
         "summary": "Get the equity holdings of an investment manager",
-        "description": "Get the equity holdings of an investment manager",
+        "description": "Get institutional ownership by investor or ticker. Requires either investor or ticker parameter, but not both.",
         "parameters": [
           {
             "name": "investor",
             "in": "query",
             "description": "The name of the investment manager",
-            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol, if queried by investor.",
             "schema": {
               "type": "string"
             }
@@ -1465,7 +1472,11 @@
         "properties": {
           "ticker": {
             "type": "string",
-            "description": "The ticker symbol."
+            "description": "The ticker symbol, if queried by investor."
+          },
+          "investor": {
+            "type": "string",
+            "description": "The investor name, if queried by ticker."
           },
           "report_period": {
             "type": "string",
