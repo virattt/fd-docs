@@ -29,7 +29,21 @@ There are only 3 steps for making a successful API call:
 2. Add query params like `ticker` and `limit` to filter the data.
 3. Execute the API request.
 
-**Note**: `ticker` is required required.  By default, `limit` is `100`.
+### 🔎  Filtering the Data
+You can filter the data by `ticker`, `limit`, and `filing_date`.
+
+**Note**: `ticker` is required required.  By default, `limit` is `100` and `filing_date` is `null`.
+
+The `limit` parameter is used to specify the number of trades to return.
+
+The `filing_date` parameter is used to specify the date of the trades.  For example, you can include filters like `filing_date_lte=2024-09-30` and `filing_date_gte=2024-01-01` to get trades between January 1, 2024 and September 30, 2024.
+
+The available `filing_date` operations are:
+- `filing_date_lte` 
+- `filing_date_lt`
+- `filing_date_gte`
+- `filing_date_gt`
+- `filing_date`
 
 ### 💻  Example
 
@@ -50,6 +64,36 @@ url = (
     f'https://api.financialdatasets.ai/insider-trades'
     f'?ticker={ticker}'
     f'&limit={limit}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse insider_trades from the response
+insider_trades = response.json().get('insider_trades')
+```
+
+### 💻  Example (with filing_date)
+
+```python Insider Trades
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'NVDA'     
+filing_date_lte = '2024-01-01' # end date
+filing_date_gte = '2020-01-01' # start date
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/insider-trades'
+    f'?ticker={ticker}'
+    f'&filing_date_lte={filing_date_lte}'
+    f'&filing_date_gte={filing_date_gte}'
 )
 
 # make API request
