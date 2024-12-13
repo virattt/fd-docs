@@ -1,0 +1,53 @@
+---
+title: 'Facts (by CIK)'
+openapi: 'GET /company/facts'
+---
+
+### 👋  Overview
+Company facts includes data like name, CIK, market cap, total employees, website URL, and more.
+
+The company facts API provides a simple way to access the most important high-level information about a company.
+
+Please note: This API is experimental and free to use.
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+### 📊 Available CIKs
+You can fetch a list of available CIKs with a `GET` request to:
+https://api.financialdatasets.ai/company/facts/ciks/
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `cik` filter the data.
+3. Execute the API request.
+
+**Note**: You must include the `cik` in your query params.
+
+### 💻  Example
+
+```python Company Facts
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+cik = '0000320193'
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/company/facts'
+    f'?cik={cik}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse company_facts from the response
+company_facts = response.json().get('company_facts')
+```

@@ -267,7 +267,16 @@
             "name": "ticker",
             "in": "query",
             "description": "The ticker symbol.",
-            "required": true,
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cik",
+            "in": "query",
+            "description": "The CIK of the company.",
+            "required": false,
             "schema": {
               "type": "string"
             }

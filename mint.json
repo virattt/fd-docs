@@ -47,7 +47,8 @@
           "group": "Company",
           "icon": "building",
           "pages": [
-            "api-reference/endpoint/company/facts"
+            "api-reference/endpoint/company/facts/cik",
+            "api-reference/endpoint/company/facts/ticker"
           ]
         },
         {
