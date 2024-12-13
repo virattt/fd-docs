@@ -26,7 +26,23 @@ There are only 3 steps for making a successful API call:
 2. Add query params like `ticker`, `period` and `limit` to filter the data.
 3. Execute the API request.
 
-**Note**: `ticker` and `period` are required. Alternatively, you can use `cik` instead of `ticker` as a company identifier in your request.  By default, `limit` is `4`.
+### 🔎  Filtering the Data
+You can filter the data by `ticker`, `period`, `limit`, and `report_period`.
+
+**Note**: `ticker` and `period` are required. Alternatively, you can use `cik` instead of `ticker` as a company identifier in your request.  
+
+By default, `period` is `ttm`,`limit` is `4`, and `report_period` is `null`.
+
+The `period` parameter can be set to `annual`, `quarterly`, or `ttm` (trailing twelve months). The `limit` parameter is used to specify the number of periods to return.
+
+The `report_period` parameter is used to specify the date of the statement.  For example, you can include filters like `report_period_lte=2024-09-30` and `report_period_gte=2024-01-01` to get statements between January 1, 2024 and September 30, 2024.
+
+The available `report_period` operations are:
+- `report_period_lte` 
+- `report_period_lt`
+- `report_period_gte`
+- `report_period_gt`
+- `report_period`
 
 ### 💻  Example
 ```python Cash Flow Statements
@@ -48,6 +64,39 @@ url = (
     f'?ticker={ticker}'
     f'&period={period}'
     f'&limit={limit}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse cash_flow_statements from the response
+cash_flow_statements = response.json().get('cash_flow_statements')
+```
+
+### 💻  Example (with report_period)
+
+```python Cash Flow Statements
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'NVDA'     
+limit = 100      
+report_period_lte = '2024-01-01' # end date
+report_period_gte = '2020-01-01' # start date
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/financials/cash-flow-statements'
+    f'?ticker={ticker}'
+    f'&period={period}'
+    f'&limit={limit}'
+    f'&report_period_lte={report_period_lte}'
+    f'&report_period_gte={report_period_gte}'
 )
 
 # make API request
