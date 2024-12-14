@@ -1894,10 +1894,10 @@
             "type": "string",
             "description": "The currency in which the financial data is reported."
           },
-          "net_cash_flow_from_operations": {
+          "net_income": {
             "type": "number",
             "nullable": false,
-            "description": "The net cash flow from operations of the company."
+            "description": "The net income of the company."
           },
           "depreciation_and_amortization": {
             "type": "number",
@@ -1909,10 +1909,10 @@
             "nullable": false,
             "description": "The share-based compensation of the company."
           },
-          "net_cash_flow_from_investing": {
+          "net_cash_flow_from_operations": {
             "type": "number",
             "nullable": false,
-            "description": "The net cash flow from investing of the company."
+            "description": "The net cash flow from operations of the company."
           },
           "capital_expenditure": {
             "type": "number",
@@ -1929,10 +1929,10 @@
             "nullable": false,
             "description": "The investment acquisitions and disposals of the company."
           },
-          "net_cash_flow_from_financing": {
+          "net_cash_flow_from_investing": {
             "type": "number",
             "nullable": false,
-            "description": "The net cash flow from financing of the company."
+            "description": "The net cash flow from investing of the company."
           },
           "issuance_or_repayment_of_debt_securities": {
             "type": "number",
@@ -1949,6 +1949,11 @@
             "nullable": false,
             "description": "The dividends and other cash distributions of the company."
           },
+          "net_cash_flow_from_financing": {
+            "type": "number",
+            "nullable": false,
+            "description": "The net cash flow from financing of the company."
+          },
           "change_in_cash_and_equivalents": {
             "type": "number",
             "nullable": false,
@@ -1958,6 +1963,16 @@
             "type": "number",
             "nullable": false,
             "description": "The effect of exchange rate changes of the company."
+          },
+          "ending_cash_balance": {
+            "type": "number",
+            "nullable": false,
+            "description": "The ending cash balance of the company."
+          },
+          "free_cash_flow": {
+            "type": "number",
+            "nullable": false,
+            "description": "The free cash flow of the company."
           }
         }
       },
