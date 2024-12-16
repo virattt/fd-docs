@@ -819,7 +819,6 @@
                 "day",
                 "week",
                 "month",
-                "quarter",
                 "year"
               ]
             }
