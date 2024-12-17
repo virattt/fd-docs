@@ -1,0 +1,57 @@
+---
+title: 'Prices'
+openapi: 'GET /options'
+---
+
+### 👋  Overview
+We have historical option prices for <b>20,000+</b> stocks.
+
+Any data that you receive from our API is yours to keep. You may save the data to minimize repeat API calls.
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `ticker` to filter the data.
+3. Execute the API request.
+
+*Important:* the ticker should be the underlying *option* ticker, not the underlying stock ticker.
+
+To get the option ticker, you can use the [Options Chain](/endpoint/options/chain) endpoint to see what options are available for a given stock.
+
+### 💻  Example
+
+```python Prices
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'NVDA241220C00235000' # the option ticker
+interval = 'minute'           # possible values are {'second', 'minute', 'day', 'week', 'month', 'year'}
+interval_multiplier = 5        # every 5 minutes
+start_date = '2024-06-30'
+end_date = '2024-12-15'
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/options/'
+    f'?ticker={ticker}'
+    f'&interval={interval}'
+    f'&interval_multiplier={interval_multiplier}'
+    f'&start_date={start_date}'
+    f'&end_date={end_date}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse prices from the response
+prices = response.json().get('prices')
+```

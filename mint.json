@@ -89,15 +89,8 @@
           "group": "Options",
           "icon": "money-bill-transfer",
           "pages": [
-            "api-reference/endpoint/options/chain"
-          ]
-        },
-        {
-          "group": "Prices",
-          "icon": "chart-line",
-          "pages": [
-            "api-reference/endpoint/prices/historical",
-            "api-reference/endpoint/prices/snapshot"
+            "api-reference/endpoint/options/chain",
+            "api-reference/endpoint/options/historical"
           ]
         },
         {
@@ -114,6 +107,14 @@
           "pages": [
             "api-reference/endpoint/filings/ticker",
             "api-reference/endpoint/filings/cik"
+          ]
+        },
+        {
+          "group": "Stock Prices",
+          "icon": "chart-line",
+          "pages": [
+            "api-reference/endpoint/prices/historical",
+            "api-reference/endpoint/prices/snapshot"
           ]
         }
       ]

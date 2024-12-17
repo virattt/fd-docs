@@ -892,6 +892,110 @@
         }
       }
     },
+    "/options": {
+      "get": {
+        "tags": [
+          "Market Data"
+        ],
+        "operationId": "getOptionPrices",
+        "summary": "Get historical option price data",
+        "description": "Get ranged option price data for a ticker to power option charts and analyze option price movements.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The option ticker symbol.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "interval",
+            "in": "query",
+            "description": "The time interval for the option price data.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "second",
+                "minute",
+                "day",
+                "week",
+                "month",
+                "year"
+              ]
+            }
+          },
+          {
+            "name": "interval_multiplier",
+            "in": "query",
+            "description": "The multiplier for the interval.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "The start date for the option price data (format: YYYY-MM-DD).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "The end date for the option price data (format: YYYY-MM-DD).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of option price records to return (default: 5000, max: 5000).",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5000,
+              "default": 5000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Option price data response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OptionPricesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
     "/options/chain": {
       "get": {
         "tags": [
@@ -1412,6 +1516,17 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Price"
+            }
+          }
+        }
+      },
+      "OptionPricesResponse": {
+        "type": "object",
+        "properties": {
+          "prices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OptionPrice"
             }
           }
         }
@@ -2105,6 +2220,36 @@
             "type": "integer",
             "format": "number",
             "description": "The volume of the ticker in the given time period."
+          },
+          "time": {
+            "type": "string",
+            "description": "The human-readable time format of the price in UTC."
+          }
+        }
+      },
+      "OptionPrice": {
+        "type": "object",
+        "properties": {
+          "open": {
+            "type": "number",
+            "description": "The open price of the option in the given time period."
+          },
+          "close": {
+            "type": "number",
+            "description": "The close price of the option in the given time period."
+          },
+          "high": {
+            "type": "number",
+            "description": "The high price of the option in the given time period."
+          },
+          "low": {
+            "type": "number",
+            "description": "The low price of the option in the given time period."
+          },
+          "volume": {
+            "type": "integer",
+            "format": "number",
+            "description": "The volume of the option in the given time period."
           },
           "time": {
             "type": "string",
