@@ -66,8 +66,7 @@
             "api-reference/endpoint/financials/income-statements",
             "api-reference/endpoint/financials/balance-sheets",
             "api-reference/endpoint/financials/cash-flow-statements",
-            "api-reference/endpoint/financials/all-financial-statements",
-            "api-reference/endpoint/financials/segmented-revenues"
+            "api-reference/endpoint/financials/all-financial-statements"
           ]
         },
         {
@@ -107,6 +106,13 @@
           "pages": [
             "api-reference/endpoint/filings/ticker",
             "api-reference/endpoint/filings/cik"
+          ]
+        },
+        {
+          "group": "Segmented Financials",
+          "icon": "chart-simple",
+          "pages": [
+            "api-reference/endpoint/financials/segmented-revenues"
           ]
         },
         {
