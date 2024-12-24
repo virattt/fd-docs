@@ -2366,6 +2366,14 @@
             "type": "number",
             "description": "Enterprise value to revenue ratio."
           },
+          "free_cash_flow_yield": {
+            "type": "number",
+            "description": "Free cash flow yield."
+          },
+          "peg_ratio": {
+            "type": "number",
+            "description": "Price to earnings growth ratio."
+          },
           "gross_margin": {
             "type": "number",
             "description": "Gross profit as a percentage of revenue."
@@ -2398,6 +2406,22 @@
             "type": "number",
             "description": "Cost of goods sold divided by average inventory."
           },
+          "receivables_turnover": {
+            "type": "number",
+            "description": "Revenue divided by average accounts receivable."
+          },
+          "days_sales_outstanding": {
+            "type": "number",
+            "description": "Average accounts receivable divided by revenue over the period."
+          },
+          "operating_cycle": {
+            "type": "number",
+            "description": "Inventory turnover + receivables turnover."
+          },
+          "working_capital_turnover": {
+            "type": "number",
+            "description": "Revenue divided by average working capital."
+          },
           "current_ratio": {
             "type": "number",
             "description": "Current assets divided by current liabilities."
@@ -2410,6 +2434,10 @@
             "type": "number",
             "description": "Cash and cash equivalents divided by current liabilities."
           },
+          "operating_cash_flow_ratio": {
+            "type": "number",
+            "description": "Operating cash flow divided by current liabilities."
+          },
           "debt_to_equity": {
             "type": "number",
             "description": "Total debt divided by shareholders' equity."
@@ -2417,6 +2445,10 @@
           "debt_to_assets": {
             "type": "number",
             "description": "Total debt divided by total assets."
+          },
+          "interest_coverage": {
+            "type": "number",
+            "description": "EBIT divided by interest expense."
           },
           "revenue_growth": {
             "type": "number",
@@ -2429,6 +2461,22 @@
           "book_value_growth": {
             "type": "number",
             "description": "Year-over-year growth in book value."
+          },
+          "earnings_per_share_growth": {
+            "type": "number",
+            "description": "Growth in earnings per share over the period."
+          },
+          "free_cash_flow_growth": {
+            "type": "number",
+            "description": "Growth in free cash flow over the period."
+          },
+          "operating_income_growth": {
+            "type": "number",
+            "description": "Growth in operating income over the period."
+          },
+          "ebitda_growth": {
+            "type": "number",
+            "description": "Growth in EBITDA over the period."
           },
           "payout_ratio": {
             "type": "number",
