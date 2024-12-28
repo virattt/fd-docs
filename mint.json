@@ -52,14 +52,6 @@
           ]
         },
         {
-          "group": "Financial Metrics",
-          "icon": "calculator",
-          "pages": [
-            "api-reference/endpoint/financial-metrics/historical",
-            "api-reference/endpoint/financial-metrics/snapshot"
-          ]
-        },
-        {
           "group": "Financial Statements",
           "icon": "dollar-sign",
           "pages": [
@@ -85,11 +77,27 @@
           ]
         },
         {
+          "group": "Metrics",
+          "icon": "calculator",
+          "pages": [
+            "api-reference/endpoint/financial-metrics/historical",
+            "api-reference/endpoint/financial-metrics/snapshot"
+          ]
+        },
+        {
           "group": "Options",
           "icon": "money-bill-transfer",
           "pages": [
             "api-reference/endpoint/options/chain",
             "api-reference/endpoint/options/historical"
+          ]
+        },
+        {
+          "group": "Prices",
+          "icon": "chart-line",
+          "pages": [
+            "api-reference/endpoint/prices/historical",
+            "api-reference/endpoint/prices/snapshot"
           ]
         },
         {
@@ -113,14 +121,6 @@
           "icon": "chart-simple",
           "pages": [
             "api-reference/endpoint/financials/segmented-revenues"
-          ]
-        },
-        {
-          "group": "Stock Prices",
-          "icon": "chart-line",
-          "pages": [
-            "api-reference/endpoint/prices/historical",
-            "api-reference/endpoint/prices/snapshot"
           ]
         }
       ]
