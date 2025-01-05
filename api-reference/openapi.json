@@ -2105,39 +2105,68 @@
             "type": "string",
             "description": "The Central Index Key (CIK) of the company."
           },
-          "market_cap": {
-            "type": "number",
-            "description": "The market capitalization of the company."
-          },
-          "weighted_average_shares": {
-            "type": "number",
-            "description": "The weighted average shares of the company."
-          },
-          "number_of_employees": {
-            "type": "number",
-            "description": "The number of employees at the company."
-          },
-          "sic_code": {
+          "industry": {
             "type": "string",
-            "description": "The Standard Industrial Classification (SIC) code of the company."
+            "description": "The industry of the company."
           },
-          "sic_description": {
+          "sector": {
             "type": "string",
-            "description": "The description of the Standard Industrial Classification (SIC) code."
+            "description": "The sector of the company."
           },
-          "website_url": {
+          "category": {
             "type": "string",
-            "format": "uri",
-            "description": "The URL of the company's website."
+            "description": "The category of the company."
+          },
+          "exchange": {
+            "type": "string",
+            "description": "The exchange of the company."
+          },
+          "is_active": {
+            "type": "boolean",
+            "description": "Whether the company is currently active."
           },
           "listing_date": {
             "type": "string",
             "format": "date",
             "description": "The date the company was listed on the stock exchange."
           },
-          "is_active": {
-            "type": "boolean",
-            "description": "Whether the company is currently active."
+          "location": {
+            "type": "string",
+            "description": "The location of the company."
+          },
+          "market_cap": {
+            "type": "number",
+            "description": "The market capitalization of the company."
+          },
+          "number_of_employees": {
+            "type": "number",
+            "description": "The number of employees at the company."
+          },
+          "sec_filings_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the company's SEC filings."
+          },
+          "sic_code": {
+            "type": "string",
+            "description": "The Standard Industrial Classification (SIC) code of the company."
+          },
+          "sic_industry": {
+            "type": "string",
+            "description": "The industry of the company based on the SIC code."
+          },
+          "sic_sector": {
+            "type": "string",
+            "description": "The sector of the company based on the SIC code."
+          },
+          "website_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the company's website."
+          },
+          "weighted_average_shares": {
+            "type": "number",
+            "description": "The weighted average shares of the company."
           }
         }
       },
