@@ -1,0 +1,91 @@
+---
+title: 'Items'
+openapi: 'GET /filings/items'
+---
+
+### 👋  Overview
+The Items endpoint allows you to extract specific sections (called items) from a given 10-K or 10-Q filing.
+
+This lets you easily extract data from a filing without having to parse the entire document.
+
+All you need to provide is the `filing_type` and the `year` of the filing.  If you want to extract a specific set of items, then you can pass in multiple `item` parameters (example below)
+
+We have SEC filings for <b>10,000+</b> public companies.
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+### 📊 Available Tickers
+You can fetch a list of available tickers with a `GET` request to:
+https://api.financialdatasets.ai/filings/tickers/
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `ticker` to filter the data.
+3. Execute the API request.
+
+**Note**: You must include either the `ticker` in your query params.
+
+### 💻  Example
+
+```python Filings
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'AAPL'
+filing_type = '10-K'
+year = 2023
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/filings/items'
+    f'?ticker={ticker}'
+    f'&filing_type={filing_type}'
+    f'&year={year}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse filings from the response
+items = response.json().get('items')
+```
+
+### 💻  Example (get specific items)
+
+```python Filings
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'AAPL'
+filing_type = '10-K'
+year = 2023
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/filings/items'
+    f'?ticker={ticker}'
+    f'&filing_type={filing_type}'
+    f'&year={year}'
+    f'&item=Item-1'
+    f'&item=Item-7A'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse items from the response
+items = response.json().get('items')
+```

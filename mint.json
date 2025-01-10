@@ -105,7 +105,7 @@
           "icon": "file",
           "pages": [
             "api-reference/endpoint/filings/ticker",
-            "api-reference/endpoint/filings/cik"
+            "api-reference/endpoint/filings/items"
           ]
         },
         {

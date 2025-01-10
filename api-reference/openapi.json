@@ -308,7 +308,7 @@
     "/filings": {
       "get": {
         "tags": [
-          "Company Information"
+          "SEC Filings"
         ],
         "operationId": "getFilings",
         "summary": "Get SEC filings",
@@ -340,6 +340,115 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FilingsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
+
+    "/filings/items": {
+      "get": {
+        "tags": [
+          "SEC Filings"
+        ],
+        "operationId": "getFilingItems",
+        "summary": "Get SEC filing items",
+        "description": "Get SEC filing items for a company.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filing_type",
+            "in": "query",
+            "description": "The type of filing.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "10-K",
+                "10-Q"
+              ]
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "The year of the filing.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "quarter",
+            "in": "query",
+            "description": "The quarter of the filing if 10-Q.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "item",
+            "in": "query",
+            "description": "The item to get.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Item-1",
+                "Item-1A",
+                "Item-1B",
+                "Item-2",
+                "Item-3",
+                "Item-4",
+                "Item-5",
+                "Item-6",
+                "Item-7",
+                "Item-7A",
+                "Item-8",
+                "Item-9",
+                "Item-9A",
+                "Item-9B",
+                "Item-10",
+                "Item-11",
+                "Item-12",
+                "Item-13",
+                "Item-14",
+                "Item-15",
+                "Item-16"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SEC filing items response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FilingItemsResponse"
                 }
               }
             }
@@ -1501,6 +1610,42 @@
           }
         }
       },
+      "FilingItemsResponse": {
+        "type": "object",
+        "properties": {
+          "ticker": {
+            "type": "string",
+            "description": "The ticker symbol of the company."
+          },
+          "cik": {
+            "type": "string",
+            "description": "The Central Index Key (CIK) of the company."
+          },
+          "filing_type": {
+            "type": "string",
+            "description": "The type of filing."
+          },
+          "accession_number": {
+            "type": "string",
+            "description": "The accession number of the filing."
+          },
+          "year": {
+            "type": "integer",
+            "description": "The year of the filing."
+          },
+          "quarter": {
+            "type": "integer",
+            "description": "The quarter of the filing."
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FilingItem"
+            }
+          }
+        }
+      },
+      
       "PriceSnapshotResponse": {
         "type": "object",
         "properties": {
@@ -2198,6 +2343,23 @@
             "type": "string",
             "format": "uri",
             "description": "The URL of the SEC filing."
+          }
+        }
+      },
+      "FilingItem": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string",
+            "description": "The item number."
+          },
+          "name": {
+            "type": "string",
+            "description": "The item name."
+          },
+          "text": {
+            "type": "string",
+            "description": "The item text."
           }
         }
       },
