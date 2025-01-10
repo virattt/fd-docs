@@ -7,6 +7,12 @@
     "href": "https://financialdatasets.ai"
   },
   "favicon": "/favicon.svg",
+  "openGraph": {
+    "image": "/images/new-docs.png",
+    "type": "website",
+    "title": "Financial Datasets - API Documentation",
+    "description": "Financial Datasets is a stock market API with financial data for 30,000+ tickers over 30+ years, including financial statements, equity prices, insider transactions, SEC filings, and more."
+  },
   "colors": {
     "primary": "#2383F4",
     "light": "#4e9bf6",
