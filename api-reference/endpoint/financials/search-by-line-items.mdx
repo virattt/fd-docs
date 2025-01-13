@@ -5,9 +5,17 @@ openapi: 'POST /financials/search/line-items'
 ---
 
 ### 👋  Overview
-This endpoint lets you search for <b>specific</b> financial metrics by specifying a set of `line_items` in your request.
+This Line Items Search API lets you pull <b>specific</b> line items for a list of tickers by specifying a set of `line_items` in your request.
 
-You can search by any line item that is listed below in the [Line Items](#line-items) section.
+Line items are financial data points that are found in the income statement, balance sheet, and cash flow statement.
+
+Examples of line items are revenue, net income, total debt, free cash flow, and so on.
+
+The purpose of this API is to let you easily get specific data points for a list of tickers in a single API request.
+
+You can also specify a `start_date` and `end_date` to filter the line items by a specific date range.
+
+Finally, you can specify a `period`, which must be one of `"ttm"`, `"annual"`, or `"quarterly"`.
 
 For example, you can search for `net_income` and `total_debt` for NVDA and AAPL and receive the following response:
 
@@ -35,9 +43,6 @@ For example, you can search for `net_income` and `total_debt` for NVDA and AAPL 
 To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
 
 You will use the API key to authenticate your API requests.
-
-The Financials Search API lets you search for financial data across income statements, balance sheets,
-and cash flow statements for <b>16,000+</b> public companies, going back <b>30+</b> years.
 
 ###  🚀  Getting Started
 There are 3 steps for making a successful API call:
