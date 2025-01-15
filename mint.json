@@ -91,6 +91,13 @@
           ]
         },
         {
+          "group": "News",
+          "icon": "newspaper",
+          "pages": [
+            "api-reference/endpoint/news/company"
+          ]
+        },
+        {
           "group": "Prices",
           "icon": "chart-line",
           "pages": [

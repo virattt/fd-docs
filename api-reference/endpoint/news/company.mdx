@@ -1,0 +1,54 @@
+---
+title: 'Company News'
+openapi: 'GET /news'
+---
+
+### 👋  Overview
+The News API lets you pull recent and historical news articles for a given ticker.  
+
+The data is great for understanding the latest news for a given ticker and how the sentiment for a ticker has changed over time.
+
+Our news articles are sourced directly from publishers like The Motley Fool, Investing.com, Reuters, and more.  The articles are sourced from RSS feeds.
+
+We are actively adding more publishers to our network.  If you have a publisher that you would like us to add, please reach out to us [here](https://discord.gg/hTtb8wzgSQ).
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `ticker` to filter the data.
+3. Execute the API request.
+
+### 💻  Example
+
+```python News
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'AAPL'
+start_date = '2024-01-02' # optional
+end_date = '2024-01-05'   # optional
+limit = 10                # optional, max is 100
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/news/'
+    f'?ticker={ticker}'
+    f'&start_date={start_date}'
+    f'&end_date={end_date}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse news from the response
+news = response.json().get('news')
+```

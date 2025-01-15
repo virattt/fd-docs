@@ -897,6 +897,83 @@
         }
       }
     },
+    "/news": {
+      "get": {
+        "tags": [
+          "Market Data"
+        ],
+        "operationId": "getNews",
+        "summary": "Get real-time and historical news",
+        "description": "Get real-time and historical news for a ticker.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "The start date for the news data (format: YYYY-MM-DD).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "The end date for the news data (format: YYYY-MM-DD).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of news articles to return (default: 100, max: 100).",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "News response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NewsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
     "/prices": {
       "get": {
         "tags": [
@@ -1654,6 +1731,17 @@
           }
         }
       },
+      "NewsResponse": {
+        "type": "object",
+        "properties": {
+          "news": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/News"
+            }
+          }
+        }
+      },
       "PricesResponse": {
         "type": "object",
         "properties": {
@@ -2385,6 +2473,41 @@
           "time": {
             "type": "string",
             "description": "The timestamp of the price snapshot in human-readable format in UTC."
+          }
+        }
+      },
+      "News": {
+        "type": "object",
+        "properties": {
+          "ticker": {
+            "type": "string",
+            "description": "The ticker symbol."
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the news article."
+          },
+          "author": {
+            "type": "string",
+            "description": "The author of the news article."
+          },
+          "source": {
+            "type": "string",
+            "description": "The source of the news article."
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "The date the news article was published."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the news article."
+          },
+          "sentiment": {
+            "type": "string",
+            "description": "The sentiment of the news article."
           }
         }
       },
