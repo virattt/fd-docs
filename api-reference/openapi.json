@@ -1431,6 +1431,11 @@
             ],
             "description": "The currency of the financial data."
           },
+          "historical": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether to return historical financial data."
+          },
           "filters": {
             "type": "array",
             "items": {
