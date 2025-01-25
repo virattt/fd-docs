@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="70" height="11" fill="none" viewBox="0 0 105 11">
   <defs>
     <linearGradient id="text-gradient" x1="105" y1="5.5" x2="0" y2="5.5" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stop-color="#8F00FF"/>
+      <stop offset="0" stop-color="#8F00FF"/>
       <stop offset="1" stop-color="#2383F4"/>
     </linearGradient>
   </defs>
