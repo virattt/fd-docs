@@ -68,18 +68,18 @@
           ]
         },
         {
+          "group": "Insider Trades",
+          "icon": "briefcase",
+          "pages": [
+            "api-reference/endpoint/insider-trades/insider-trades"
+          ]
+        },
+        {
           "group": "Institutional Ownership",
           "icon": "chart-pie",
           "pages": [
             "api-reference/endpoint/institutional-ownership/investor",
             "api-reference/endpoint/institutional-ownership/ticker"
-          ]
-        },
-        {
-          "group": "Insider Trades",
-          "icon": "briefcase",
-          "pages": [
-            "api-reference/endpoint/insider-trades/insider-trades"
           ]
         },
         {
