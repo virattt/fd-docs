@@ -1,20 +1,24 @@
 ---
 title: 'Prices'
-openapi: 'GET /prices'
+openapi: 'GET /crypto/prices'
 ---
 
 ### 👋  Overview
-The Prices API lets you pull historical prices for a given ticker like Apple, Microsoft, and more.  
+The Crypto Prices API lets you pull historical prices for a given cryptocurrency like Bitcoin, Ethereum, and more.  
 
-You can get prices by the second, minute, day, week, month, or year.
+You can get prices by the minute, day, week, month, or year.
 
-The prices are pulled directly from the exchanges like NASDAQ, NYSE, and AMEX.
+The prices are pulled directly from Coinbase, Kraken, and Bitfinex.
 
 The data is perfect for backtesting trading strategies, analyzing price patterns, rendering charts, and more.
 
 To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
 
 You will use the API key to authenticate your API requests.
+
+### 📊 Available Tickers
+You can fetch a list of available tickers with a `GET` request to:
+https://api.financialdatasets.ai/crypto/prices/tickers/
 
 ###  🚀  Getting Started
 There are only 3 steps for making a successful API call:
@@ -33,15 +37,15 @@ headers = {
 }
 
 # set your query params
-ticker = 'AAPL'
-interval = 'minute'         # possible values are {'second', 'minute', 'day', 'week', 'month', 'year'}
+ticker = 'BTC-USD'
+interval = 'minute'         # possible values are {'minute', 'day', 'week', 'month', 'year'}
 interval_multiplier = 5     # every 5 minutes
 start_date = '2025-01-02'
 end_date = '2025-01-05'
 
 # create the URL
 url = (
-    f'https://api.financialdatasets.ai/prices/'
+    f'https://api.financialdatasets.ai/crypto/prices/'
     f'?ticker={ticker}'
     f'&interval={interval}'
     f'&interval_multiplier={interval_multiplier}'

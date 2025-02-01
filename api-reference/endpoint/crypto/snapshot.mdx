@@ -1,0 +1,51 @@
+---
+title: 'Snapshot'
+openapi: 'GET /crypto/prices/snapshot'
+---
+
+### 👋  Overview
+The Crypto Snapshot API lets you pull the latest real-time price for a given cryptocurrency.
+
+The real-time price is the last price that was traded for the ticker on exchanges like Coinbase, Kraken, and Bitfinex.
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+### 📊 Available Tickers
+You can fetch a list of available tickers with a `GET` request to:
+https://api.financialdatasets.ai/crypto/prices/tickers/
+
+###  🚀  Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `ticker` to filter the data.
+3. Execute the API request.
+
+**Note**: You must provide the `ticker`.
+
+### 💻  Example
+
+```python Price Snapshot
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'BTC-USD'
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/crypto/prices/snapshot'
+    f'?ticker={ticker}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse snapshot from the response
+snapshot = response.json().get('snapshot')
+```

@@ -61,6 +61,14 @@
           ]
         },
         {
+          "group": "Crypto",
+          "icon": "link",
+          "pages": [
+            "api-reference/endpoint/crypto/historical",
+            "api-reference/endpoint/crypto/snapshot"
+          ]
+        },
+        {
           "group": "Financial Statements",
           "icon": "dollar-sign",
           "pages": [

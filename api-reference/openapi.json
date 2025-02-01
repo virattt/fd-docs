@@ -820,6 +820,51 @@
         }
       }
     },
+    "/crypto/prices/snapshot": {
+      "get": {
+        "tags": [
+          "Market Data"
+        ],
+        "operationId": "getCryptoPriceSnapshot",
+        "summary": "Get crypto price snapshot",
+        "description": "Get the real-time price snapshot for a cryptocurrency.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The cryptocurrency ticker symbol.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Price snapshot response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CryptoPriceSnapshotResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
     "/financials": {
       "get": {
         "tags": [
@@ -1059,6 +1104,109 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PricesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
+    "/crypto/prices": {
+      "get": {
+        "tags": [
+          "Market Data"
+        ],
+        "operationId": "getCryptoPrices",
+        "summary": "Get historical crypto price data",
+        "description": "Get ranged price data for a cryptocurrency to power crypto charts and analyze price movements.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The cryptocurrency ticker symbol.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "interval",
+            "in": "query",
+            "description": "The time interval for the price data.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "minute",
+                "day",
+                "week",
+                "month",
+                "year"
+              ]
+            }
+          },
+          {
+            "name": "interval_multiplier",
+            "in": "query",
+            "description": "The multiplier for the interval.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "The start date for the price data (format: YYYY-MM-DD).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "The end date for the price data (format: YYYY-MM-DD).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of price records to return (default: 5000, max: 5000).",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5000,
+              "default": 5000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Price data response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CryptoPricesResponse"
                 }
               }
             }
@@ -1736,6 +1884,14 @@
           }
         }
       },
+      "CryptoPriceSnapshotResponse": {
+        "type": "object",
+        "properties": {
+          "snapshot": {
+            "$ref": "#/components/schemas/CryptoPriceSnapshot"
+          }
+        }
+      },
       "NewsResponse": {
         "type": "object",
         "properties": {
@@ -1748,6 +1904,17 @@
         }
       },
       "PricesResponse": {
+        "type": "object",
+        "properties": {
+          "prices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Price"
+            }
+          }
+        }
+      },
+      "CryptoPricesResponse": {
         "type": "object",
         "properties": {
           "prices": {
@@ -2474,6 +2641,35 @@
           "day_change_percent": {
             "type": "number",
             "description": "The percentage price change since the previous trading day's close."
+          },
+          "market_cap": {
+            "type": "number",
+            "description": "The market capitalization of the company."
+          },
+          "time": {
+            "type": "string",
+            "description": "The timestamp of the price snapshot in human-readable format in UTC."
+          }
+        }
+      },
+      "CryptoPriceSnapshot": {
+        "type": "object",
+        "properties": {
+          "price": {
+            "type": "number",
+            "description": "The current price of the cryptocurrency."
+          },
+          "ticker": {
+            "type": "string",
+            "description": "The ticker symbol."
+          },
+          "day_change": {
+            "type": "number",
+            "description": "The price change over the last 24 hours."
+          },
+          "day_change_percent": {
+            "type": "number",
+            "description": "The percentage price change over the last 24 hours."
           },
           "time": {
             "type": "string",
