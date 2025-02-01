@@ -1130,7 +1130,7 @@
         ],
         "operationId": "getCryptoPrices",
         "summary": "Get historical crypto price data",
-        "description": "Get ranged price data for a cryptocurrency to power crypto charts and analyze price movements.",
+        "description": "Get ranged price data for a cryptocurrency to power price charts and analyze price movements.",
         "parameters": [
           {
             "name": "ticker",
