@@ -2051,21 +2051,19 @@
             "items": {
               "type": "object",
               "properties": {
-                "axis": {
+                "name": {
                   "type": "string",
-                  "description": "Represents the dimensional context of the reported data, often used by companies to categorize or segment information according to SEC reporting requirements."
+                  "description": "The name of the revenue segment."
                 },
-                "key": {
-                  "type": "string",
-                  "description": "A unique identifier for the financial metric, typically using the XBRL taxonomy. It specifies the particular financial concept being reported."
-                },
-                "value": {
+                "amount": {
                   "type": "number",
                   "description": "The numerical amount reported for the specified financial metric, expressed in the company's reporting currency; default is USD."
                 },
-                "segment": {
+                "end_period": {
                   "type": "string",
-                  "description": "The label for the revenue segment."
+                  "format": "date",
+                  "nullable": true,
+                  "description": "The end period of the revenue segment.  Only provided for quarterly data."
                 },
                 "start_period": {
                   "type": "string",
@@ -2073,11 +2071,21 @@
                   "nullable": true,
                   "description": "The start period of the revenue segment.  Only provided for quarterly data."
                 },
-                "end_period": {
-                  "type": "string",
-                  "format": "date",
-                  "nullable": true,
-                  "description": "The end period of the revenue segment.  Only provided for quarterly data."
+                "segments": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "description": "The label for the revenue segment."
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "The type of revenue segment."
+                      }
+                    }
+                  }
                 }
               }
             }
