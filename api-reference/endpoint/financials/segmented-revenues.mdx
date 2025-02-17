@@ -28,42 +28,42 @@ The segmented revenues API lets you easily access this data in a structured form
       "items": [
         "...",
         {
-          "key": "aapl:IPhoneMember",
-          "axis": "srt:ProductOrServiceAxis",
-          "value": 200583000000,
-          "segment": "IPhone"
+          "line_item": "Revenue From Contract With Customer Excluding Assessed Tax",
+          "amount": 201183000000.0,
+          "end_period": "2024-09-28",
+          "start_period": "2023-10-01",
+          "segments": [
+              {
+                  "label": "IPhone",
+                  "type": "Product or Service"
+              }
+          ]
         },
         {
-          "key": "aapl:MacMember",
-          "axis": "srt:ProductOrServiceAxis",
-          "value": 29357000000,
-          "segment": "Mac"
+          "line_item": "Revenue From Contract With Customer Excluding Assessed Tax",
+          "amount": 29984000000.0,
+          "end_period": "2024-09-28",
+          "start_period": "2023-10-01",
+          "segments": [
+              {
+                  "label": "Mac",
+                  "type": "Product or Service"
+              }
+          ]
         },
         {
-          "key": "aapl:IPadMember",
-          "axis": "srt:ProductOrServiceAxis",
-          "value": 28300000000,
-          "segment": "IPad"
+          "line_item": "Revenue From Contract With Customer Excluding Assessed Tax",
+          "amount": 101328000000.0,
+          "end_period": "2024-09-28",
+          "start_period": "2023-10-01",
+          "segments": [
+              {
+                  "label": "Europe",
+                  "type": "Statement Business Segments"
+              }
+          ]
         },
-        {
-          "key": "aapl:AmericasSegmentMember",
-          "axis": "us-gaap:StatementBusinessSegmentsAxis",
-          "value": 60508000000,
-          "segment": "AmericasSegment"
-        },
-        {
-          "key": "aapl:EuropeSegmentMember",
-          "axis": "us-gaap:StatementBusinessSegmentsAxis",
-          "value": 36098000000,
-          "segment": "EuropeSegment"
-        },
-        {
-          "key": "aapl:GreaterChinaSegmentMember",
-          "axis": "us-gaap:StatementBusinessSegmentsAxis",
-          "value": 30328000000,
-          "segment": "GreaterChinaSegment"
-        },
-        "..."
+        ...
       ]
     }
   ]
