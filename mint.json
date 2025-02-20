@@ -69,6 +69,21 @@
           ]
         },
         {
+          "group": "Earnings",
+          "icon": "money-bill",
+          "pages": [
+            "api-reference/endpoint/earnings/press-releases"
+          ]
+        },
+        {
+          "group": "Financial Metrics",
+          "icon": "calculator",
+          "pages": [
+            "api-reference/endpoint/financial-metrics/historical",
+            "api-reference/endpoint/financial-metrics/snapshot"
+          ]
+        },
+        {
           "group": "Financial Statements",
           "icon": "dollar-sign",
           "pages": [
@@ -91,14 +106,6 @@
           "pages": [
             "api-reference/endpoint/institutional-ownership/investor",
             "api-reference/endpoint/institutional-ownership/ticker"
-          ]
-        },
-        {
-          "group": "Metrics",
-          "icon": "calculator",
-          "pages": [
-            "api-reference/endpoint/financial-metrics/historical",
-            "api-reference/endpoint/financial-metrics/snapshot"
           ]
         },
         {

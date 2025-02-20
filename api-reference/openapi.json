@@ -775,6 +775,51 @@
         }
       }
     },
+    "/earnings/press-releases": {
+      "get": {
+        "tags": [
+          "Earnings"
+        ],
+        "operationId": "getEarningsPressReleases",
+        "summary": "Get earnings press releases",
+        "description": "Get earnings press releases for a ticker.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Earnings press releases response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PressReleasesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
     "/prices/snapshot": {
       "get": {
         "tags": [
@@ -1875,7 +1920,17 @@
           }
         }
       },
-      
+      "PressReleasesResponse": {
+        "type": "object",
+        "properties": {
+          "press_releases": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PressRelease"
+            }
+          }
+        }
+      },
       "PriceSnapshotResponse": {
         "type": "object",
         "properties": {
@@ -2628,6 +2683,33 @@
           "text": {
             "type": "string",
             "description": "The item text."
+          }
+        }
+      },
+      "PressRelease": {
+        "type": "object",
+        "properties": {
+          "ticker": {
+            "type": "string",
+            "description": "The ticker symbol of the company."
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the press release."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the press release."
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "The date the press release was published."
+          },
+          "text": {
+            "type": "string",
+            "description": "The full text of the press release."
           }
         }
       },
