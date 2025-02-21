@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Financial Datasets API",
-    "description": "Stock market API with real-time and historical financial data for 50,000+ tickers over 30+ years. Financial statements, equity prices, insider trades, SEC filings, and more.",
+    "description": "Stock market API with real-time and historical financial data for 30,000+ tickers over 30+ years. Financial statements, equity prices, insider trades, SEC filings, and more.",
     "version": "1.0.0",
     "license": {
       "name": "MIT",
