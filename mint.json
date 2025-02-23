@@ -37,6 +37,16 @@
   },
   "anchors": [
     {
+      "name": "Dashboard",
+      "icon": "user",
+      "url": "https://financialdatasets.ai"
+    },
+    {
+      "name": "Pricing",
+      "icon": "dollar-sign",
+      "url": "https://financialdatasets.ai/pricing"
+    },
+    {
       "name": "Questions?",
       "icon": "discord",
       "url": "https://discord.gg/hTtb8wzgSQ"
