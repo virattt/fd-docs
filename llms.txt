@@ -1,0 +1,55 @@
+# Financial Datasets API
+
+## Overview
+
+Financial Datasets is a comprehensive stock market API providing financial data for 30,000+ tickers spanning over 30 years. The API includes financial statements, equity prices, insider transactions, SEC filings, and more.
+
+## Documentation Structure
+
+### Core APIs
+
+- [Company Data](https://docs.financialdatasets.ai/api-reference/endpoint/company/facts/cik): Access company facts and information by CIK or ticker
+- [Crypto](https://docs.financialdatasets.ai/api-reference/endpoint/crypto/historical): Historical and snapshot data for cryptocurrencies
+- [Earnings](https://docs.financialdatasets.ai/api-reference/endpoint/earnings/press-releases): Company earnings press releases
+- [Financial Metrics](https://docs.financialdatasets.ai/api-reference/endpoint/financial-metrics/historical): Historical and snapshot views of key financial metrics
+- [Financial Statements](https://docs.financialdatasets.ai/api-reference/endpoint/financials/income-statements): Complete financial statements including income statements, balance sheets, and cash flow statements
+- [Insider Trades](https://docs.financialdatasets.ai/api-reference/endpoint/insider-trades/insider-trades): Track insider trading activity
+- [Institutional Ownership](https://docs.financialdatasets.ai/api-reference/endpoint/institutional-ownership/investor): Monitor institutional investors and their holdings
+- [News](https://docs.financialdatasets.ai/api-reference/endpoint/news/company): Company-specific news coverage
+- [Prices](https://docs.financialdatasets.ai/api-reference/endpoint/prices/historical): Historical and real-time price data
+- [Search](https://docs.financialdatasets.ai/api-reference/endpoint/financials/search-by-filters): Advanced search capabilities for financial data
+- [SEC Filings](https://docs.financialdatasets.ai/api-reference/endpoint/filings/ticker): Access to SEC filing documents and data
+- [Segmented Financials](https://docs.financialdatasets.ai/api-reference/endpoint/financials/segmented-revenues): Detailed segmented financial information
+
+### Getting Started
+
+- [Introduction](https://docs.financialdatasets.ai/introduction): Overview and key concepts
+- [Quick Start](https://docs.financialdatasets.ai/quickstart): Get up and running quickly
+- [Development Guide](https://docs.financialdatasets.ai/development): Detailed development instructions
+
+## Support
+
+For questions and support, join our [Discord community](https://discord.gg/hTtb8wzgSQ).
+
+## Base URL
+
+The base URL for all API endpoints is: https://financialdatasets.ai/api
+
+## Authentication
+
+API requests require authentication using an API key. Include your API key in the request headers.
+
+## Rate Limits
+
+Please refer to your subscription plan for specific rate limit information.
+
+## Data Coverage
+
+- 30,000+ tickers
+- 30+ years of historical data
+- Real-time and delayed data options
+- Comprehensive financial statements
+- SEC filings and documents
+- Insider trading data
+- Institutional ownership information
+- Market prices and metrics 
