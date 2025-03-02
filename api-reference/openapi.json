@@ -2154,11 +2154,6 @@
             "type": "string",
             "description": "The ticker symbol."
           },
-          "calendar_date": {
-            "type": "string",
-            "format": "date",
-            "description": "The date of the income statement."
-          },
           "report_period": {
             "type": "string",
             "format": "date",
@@ -2290,11 +2285,6 @@
           "ticker": {
             "type": "string",
             "description": "The ticker symbol."
-          },
-          "calendar_date": {
-            "type": "string",
-            "format": "date",
-            "description": "The date of the balance sheet."
           },
           "report_period": {
             "type": "string",
@@ -2452,11 +2442,6 @@
           "ticker": {
             "type": "string",
             "description": "The ticker symbol."
-          },
-          "calendar_date": {
-            "type": "string",
-            "format": "date",
-            "description": "The date of the cash flow statement."
           },
           "report_period": {
             "type": "string",
