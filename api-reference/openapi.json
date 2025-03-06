@@ -1967,7 +1967,7 @@
               "$ref": "#/components/schemas/Price"
             }
           },
-          "next_url": {
+          "next_page_url": {
             "type": "string",
             "description": "The URL to the next page of results."
           }
