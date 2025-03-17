@@ -2728,6 +2728,10 @@
           "time": {
             "type": "string",
             "description": "The timestamp of the price snapshot in human-readable format in UTC."
+          },
+          "time_milliseconds": {
+            "type": "number",
+            "description": "The timestamp of the price snapshot in milliseconds since epoch."
           }
         }
       },
@@ -2818,6 +2822,10 @@
           "time": {
             "type": "string",
             "description": "The human-readable time format of the price in UTC."
+          },
+          "time_milliseconds": {
+            "type": "number",
+            "description": "The timestamp of the price in milliseconds since epoch."
           }
         }
       },
