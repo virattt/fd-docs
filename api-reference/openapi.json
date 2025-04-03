@@ -2163,6 +2163,10 @@
             "format": "date",
             "description": "The reporting period of the income statement."
           },
+          "fiscal_period": {
+            "type": "string",
+            "description": "The fiscal period of the income statement."
+          },
           "period": {
             "type": "string",
             "enum": [
@@ -2294,6 +2298,10 @@
             "type": "string",
             "format": "date",
             "description": "The reporting period of the balance sheet."
+          },
+          "fiscal_period": {
+            "type": "string",
+            "description": "The fiscal period of the balance sheet."
           },
           "period": {
             "type": "string",
@@ -2451,6 +2459,10 @@
             "type": "string",
             "format": "date",
             "description": "The reporting period of the cash flow statement."
+          },
+          "fiscal_period": {
+            "type": "string",
+            "description": "The fiscal period of the cash flow statement."
           },
           "period": {
             "type": "string",
