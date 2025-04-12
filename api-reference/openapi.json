@@ -331,6 +331,19 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "filing_type",
+            "in": "query",
+            "description": "The type of filing.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "10-K",
+                "10-Q"
+              ]
+            }
           }
         ],
         "responses": {
