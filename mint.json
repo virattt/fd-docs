@@ -56,7 +56,9 @@
     {
       "group": "Get Started",
       "pages": [
-        "introduction"
+        "introduction",
+        "market-coverage"
+
       ]
     },
     {
