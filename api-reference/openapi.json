@@ -1802,7 +1802,7 @@
       "InstitutionalOwnershipResponse": {
         "type": "object",
         "properties": {
-          "institutional_ownership": {
+          "institutional-ownership": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/InstitutionalOwnership"
