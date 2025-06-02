@@ -2672,6 +2672,31 @@
           "weighted_average_shares": {
             "type": "number",
             "description": "The weighted average shares of the company."
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "ticker_change",
+                    "ticker_listing"
+                  ],
+                  "description": "The type of event."
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "The date of the event."
+                },
+                "ticker": {
+                  "type": "string",
+                  "description": "The ticker symbol of the event."
+                }
+              }
+            }
           }
         }
       },
