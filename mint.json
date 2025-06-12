@@ -121,6 +121,13 @@
           ]
         },
         {
+          "group": "Macroeconomics",
+          "icon": "globe",
+          "pages": [
+            "api-reference/endpoint/macro/interest-rates/snapshot"
+          ]
+        },
+        {
           "group": "News",
           "icon": "newspaper",
           "pages": [

@@ -1,0 +1,42 @@
+---
+title: 'Interest Rates (Snapshot)'
+openapi: 'GET /macro/interest-rates/snapshot'
+---
+
+### 👋  Overview
+The Interest Rates Snapshot API lets you pull the latest published interest rate data for all major central banks in the world.
+
+We source our data directly from global central banks like the Federal Reserve, People's Bank of China, European Central Bank, Bank of Japan, and other major monetary authorities.  The real-time interest rate data comes from official monetary policy announcements.
+
+To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
+
+You will use the API key to authenticate your API requests.
+
+### 📊 Available Central Banks
+You can fetch a list of available central banks with a `GET` request to:
+https://api.financialdatasets.ai/macro/interest-rates/symbols/
+
+###  🚀  Getting Started
+There are only 2 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Execute the API request.
+
+### 💻  Example
+
+```python Interest Rates Snapshot
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# create the URL
+url = 'https://api.financialdatasets.ai/macro/interest-rates/snapshot'
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse snapshot from the response
+interest_rates = response.json().get('interest_rates')
+```

@@ -61,6 +61,10 @@
     {
       "name": "Financial Metrics",
       "description": "Financial ratios, metrics, and key performance indicators"
+    },
+    {
+      "name": "Macroeconomics",
+      "description": "Real-time and historical macroeconomic data like interest rates"
     }
   ],
   "security": [
@@ -69,6 +73,40 @@
     }
   ],
   "paths": {
+    "/macro/interest-rates/snapshot": {
+      "get": {
+        "tags": [
+          "Macroeconomics"
+        ],
+        "operationId": "getInterestRatesSnapshot",
+        "summary": "Get interest rates snapshot",
+        "description": "Get the latest interest rates for all major central banks in the world.",
+        "responses": {
+          "200": {
+            "description": "Interest rates snapshot response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterestRatesSnapshotResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
     "/financials/search": {
       "post": {
         "tags": [
@@ -1994,6 +2032,14 @@
           }
         }
       },
+      "InterestRatesSnapshotResponse": {
+        "type": "object",
+        "properties": {
+          "interest_rates": {
+            "$ref": "#/components/schemas/InterestRate"
+          }
+        }
+      },
       "PricesResponse": {
         "type": "object",
         "properties": {
@@ -3168,6 +3214,27 @@
           "free_cash_flow_per_share": {
             "type": "number",
             "description": "Free cash flow divided by shares outstanding."
+          }
+        }
+      },
+      "InterestRate": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "description": "The symbol of the central bank."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the central bank."
+          },
+          "rate": {
+            "type": "number",
+            "description": "The interest rate of the central bank."
+          },
+          "date": {
+            "type": "string",
+            "description": "The date of the interest rate in YYYY-MM-DD format."
           }
         }
       }
