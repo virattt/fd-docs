@@ -79,8 +79,8 @@
           "Macroeconomics"
         ],
         "operationId": "getInterestRatesSnapshot",
-        "summary": "Get interest rates snapshot",
-        "description": "Get the latest interest rates for all major central banks in the world.",
+        "summary": "Interest Rates (Snapshot)",
+        "description": "Latest interest rates for all major central banks in the world.",
         "responses": {
           "200": {
             "description": "Interest rates snapshot response",
