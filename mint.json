@@ -124,6 +124,7 @@
           "group": "Macroeconomics",
           "icon": "globe",
           "pages": [
+            "api-reference/endpoint/macro/interest-rates/historical",
             "api-reference/endpoint/macro/interest-rates/snapshot"
           ]
         },

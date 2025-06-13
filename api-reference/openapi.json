@@ -73,6 +73,69 @@
     }
   ],
   "paths": {
+    "/macro/interest-rates": {
+      "get": {
+        "tags": [
+          "Macroeconomics"
+        ],
+        "operationId": "getInterestRates",
+        "summary": "Interest Rates (Historical)",
+        "description": "Historical interest rates for all major central banks in the world.",
+        "parameters": [
+          {
+            "name": "bank",
+            "in": "query",
+            "description": "The bank whose interest rates to return. Use the /macro/interest-rates/banks endpoint to get a list of available banks.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "The start date of the interest rates to return in YYYY-MM-DD format.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "The end date of the interest rates to return in YYYY-MM-DD format.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Interest rates response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterestRatesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
     "/macro/interest-rates/snapshot": {
       "get": {
         "tags": [
@@ -2032,11 +2095,25 @@
           }
         }
       },
+      "InterestRatesResponse": {
+        "type": "object",
+        "properties": {
+          "interest_rates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InterestRate"
+            }
+          }
+        }
+      },
       "InterestRatesSnapshotResponse": {
         "type": "object",
         "properties": {
           "interest_rates": {
-            "$ref": "#/components/schemas/InterestRate"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InterestRate"
+            }
           }
         }
       },
@@ -3220,7 +3297,7 @@
       "InterestRate": {
         "type": "object",
         "properties": {
-          "symbol": {
+          "bank": {
             "type": "string",
             "description": "The symbol of the central bank."
           },
