@@ -1,0 +1,173 @@
+---
+title: MCP Server
+description: 'Access the official remote MCP server for Financial Datasets.'
+icon: 'bolt'
+---
+
+## Financial Datasets MCP Server
+
+Your AI models and agents can use our official remote MCP server to access real-time financial data in a simple and secure way.
+
+Connect to our MCP server natively as a new Claude Integration, or by using the mcp-remote module in Cursor, Windsurf, and other clients.
+
+Our MCP server provides authenticated access to:
+- **[Stock Prices](/api-reference/endpoint/prices)** - Real-time and historical price data
+- **[Financial Statements](/api-reference/endpoint/financials)** - Income statements, balance sheets, cash flow statements  
+- **[Company Information](/api-reference/endpoint/company)** - Company profiles and metadata
+- **[SEC Filings](/api-reference/endpoint/filings)** - 10-K, 10-Q, 8-K and other regulatory filings
+- **[Earnings Data](/api-reference/endpoint/earnings)** - Earnings press releases
+
+## Setup Instructions
+
+<Tabs>
+  <Tab title="Claude">
+    **Team, Enterprise (Claude.ai)**
+    
+    1. Navigate to **Settings** in the sidebar on web or desktop
+    2. Scroll to **Integrations** at the bottom and click **Add more**
+    3. In the prompt enter:
+       - Integration name: `Financial Datasets`
+       - Integration URL: `https://mcp.financialdatasets.ai/sse`
+    4. Click **Connect** and complete OAuth authentication
+    5. Make sure to enable the tools in any new chats
+    
+    **Free, Pro (Claude for Desktop)**
+    
+    1. Open the file `~/Library/Application Support/Claude/claude_desktop_config.json`
+    2. Add the following and restart the Claude desktop app:
+    
+    ```json
+    {
+      "mcpServers": {
+        "financial-datasets": {
+          "command": "npx",
+          "args": ["-y", "mcp-remote", "https://mcp.financialdatasets.ai/sse"],
+          "icon": "https://www.financialdatasets.ai/favicon.ico"
+        }
+      }
+    }
+    ```
+  </Tab>
+  
+  <Tab title="Cursor">
+    Click here to open Cursor and automatically add the Financial Datasets MCP server.
+    
+    Alternatively, add the following to your `~/.cursor/mcp.json` file:
+    
+    ```json
+    {
+      "mcpServers": {
+        "financial-datasets": {
+          "command": "npx",
+          "args": ["-y", "mcp-remote", "https://mcp.financialdatasets.ai/sse"]
+        }
+      }
+    }
+    ```
+    
+    The code editor agent automatically detects all available tools and calls the relevant tool when you ask financial data questions in the chat.
+  </Tab>
+  
+  <Tab title="VS Code">
+    1. Press `Ctrl/Cmd + P` and search for **MCP: Add Server**
+    2. Select **Command (stdio)**
+    3. Enter the following configuration:
+    
+    ```bash
+    npx mcp-remote https://mcp.financialdatasets.ai/sse
+    ```
+    
+    4. Enter the name **Financial Datasets** and hit enter
+    5. Activate the server using **MCP: List Servers** and selecting **Financial Datasets**, then **Start Server**
+  </Tab>
+  
+  <Tab title="Windsurf">
+    1. Press `Ctrl/Cmd + ,` to open Windsurf settings
+    2. Scroll to **Cascade -> MCP servers**
+    3. Select **Add Server -> Add custom server**
+    4. Add the following configuration:
+    
+    ```json
+    {
+      "mcpServers": {
+        "financial-datasets": {
+          "command": "npx",
+          "args": ["-y", "mcp-remote", "https://mcp.financialdatasets.ai/sse"]
+        }
+      }
+    }
+    ```
+  </Tab>
+  
+  <Tab title="Zed">
+    1. Press `Cmd + ,` to open Zed settings
+    2. Add the following configuration:
+    
+    ```json
+    {
+      "context_servers": {
+        "financial-datasets": {
+          "command": {
+            "path": "npx",
+            "args": ["-y", "mcp-remote", "https://mcp.financialdatasets.ai/sse"],
+            "env": {}
+          },
+          "settings": {}
+        }
+      }
+    }
+    ```
+  </Tab>
+  
+  <Tab title="CLI">
+    You can interact with our MCP server directly via command line using the MCP protocol:
+    
+    ```bash
+    # Install mcp-remote if not already installed
+    npm install -g mcp-remote
+    
+    # Connect to the server
+    mcp-remote https://mcp.financialdatasets.ai/sse
+    ```
+    
+    Note: Direct CLI access requires OAuth authentication through a browser flow.
+  </Tab>
+</Tabs>
+
+## Available Tools
+
+Once connected, your AI assistant will have access to these tools:
+
+- **`getPriceSnapshot`** - Get current price data for any stock ticker
+- **`getFinancials`** - Access income statements, balance sheets, and cash flow data
+- **`getCompanyInfo`** - Retrieve company profiles and business descriptions
+
+## Authentication
+
+Our MCP server uses OAuth 2.1 for secure authentication. When you first connect, you'll be redirected to authenticate with your Financial Datasets account. If you don't have an account, you can [sign up for free](https://financialdatasets.ai/register).
+
+## Example Usage
+
+After connecting, you can ask your AI assistant questions like:
+
+- "What's the current stock price of Apple?"
+- "Show me Tesla's latest income statement"
+- "Find recent SEC filings for Microsoft"
+- "Compare the revenue growth of Google vs Amazon over the past 5 years"
+
+## Rate Limits
+
+Our MCP server respects the same rate limits as our [REST API](https://www.financialdatasets.ai/pricing):
+- **Free tier**: 60 requests per minute
+- **Standard tier**: 200 requests per minute 
+- **Advanced tier**: Unlimited requests
+
+## Support
+
+If you have questions, feedback, or requests for new MCP tools:
+
+- Join our [Discord community](https://discord.gg/hTtb8wzgSQ)
+- Email us at [support@financialdatasets.ai](mailto:support@financialdatasets.ai)
+- Check [Our APIs](/api-reference) for detailed endpoint information
+
+We're excited to see how your agents use Financial Datasets to power your workflows! 🚀

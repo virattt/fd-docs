@@ -58,7 +58,8 @@
       "pages": [
         "introduction",
         "market-coverage",
-        "api-schema"
+        "api-schema",
+        "mcp-server"
       ]
     },
     {
