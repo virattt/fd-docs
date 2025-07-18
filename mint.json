@@ -137,14 +137,6 @@
           ]
         },
         {
-          "group": "Prices",
-          "icon": "chart-line",
-          "pages": [
-            "api-reference/endpoint/prices/historical",
-            "api-reference/endpoint/prices/snapshot"
-          ]
-        },
-        {
           "group": "Search",
           "icon": "magnifying-glass",
           "pages": [
@@ -165,6 +157,14 @@
           "icon": "chart-simple",
           "pages": [
             "api-reference/endpoint/financials/segmented-revenues"
+          ]
+        },
+        {
+          "group": "Stock Prices",
+          "icon": "chart-line",
+          "pages": [
+            "api-reference/endpoint/prices/historical",
+            "api-reference/endpoint/prices/snapshot"
           ]
         }
       ]
