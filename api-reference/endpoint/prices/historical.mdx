@@ -6,7 +6,7 @@ openapi: 'GET /prices'
 ### 👋  Overview
 The Prices API lets you pull historical prices for a given ticker like Apple, Microsoft, and more.  
 
-You can get prices by the second, minute, day, week, month, or year.
+You can get prices by the day, week, month, or year.
 
 The prices are pulled directly from verified exchanges like NASDAQ, NYSE, and AMEX.
 
@@ -38,8 +38,8 @@ headers = {
 
 # set your query params
 ticker = 'AAPL'
-interval = 'minute'         # possible values are {'second', 'minute', 'day', 'week', 'month', 'year'}
-interval_multiplier = 5     # every 5 minutes
+interval = 'day'         # possible values are {'day', 'week', 'month', 'year'}
+interval_multiplier = 5     # every 5 days
 start_date = '2025-01-02'
 end_date = '2025-01-05'
 

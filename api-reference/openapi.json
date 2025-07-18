@@ -1227,8 +1227,6 @@
             "schema": {
               "type": "string",
               "enum": [
-                "second",
-                "minute",
                 "day",
                 "week",
                 "month",
