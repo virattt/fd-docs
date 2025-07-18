@@ -74,7 +74,7 @@
           ]
         },
         {
-          "group": "Crypto",
+          "group": "Crypto Prices",
           "icon": "chart-line",
           "pages": [
             "api-reference/endpoint/crypto/historical",
@@ -122,7 +122,7 @@
           ]
         },
         {
-          "group": "Macroeconomics",
+          "group": "Interest Rates",
           "icon": "globe",
           "pages": [
             "api-reference/endpoint/macro/interest-rates/historical",
