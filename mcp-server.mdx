@@ -8,7 +8,7 @@ icon: 'database'
 
 Your AI models and agents can use our official remote MCP server to access real-time financial data in a simple and secure way.
 
-Streamable HTTP server URL: `https://mcp.financialdatasets.ai/`
+Streamable HTTP server URL: `https://mcp.financialdatasets.ai/mcp`
 
 SSE server URL:  `https://mcp.financialdatasets.ai/sse`
 
@@ -32,7 +32,7 @@ You can connect to our MCP server natively as a new Claude Integration, or by us
     2. Scroll to **Integrations** at the bottom and click **Add more**
     3. In the prompt enter:
        - Integration name: `Financial Datasets`
-       - Integration URL: `https://mcp.financialdatasets.ai/`
+       - Integration URL: `https://mcp.financialdatasets.ai/mcp`
     4. Click **Connect** and complete OAuth authentication
     5. Make sure to enable the tools in any new chats
     
@@ -46,7 +46,7 @@ You can connect to our MCP server natively as a new Claude Integration, or by us
       "mcpServers": {
         "financial-datasets": {
           "command": "npx",
-          "args": ["-y", "mcp-remote", "https://mcp.financialdatasets.ai/"],
+          "args": ["-y", "mcp-remote", "https://mcp.financialdatasets.ai/mcp"],
           "icon": "https://www.financialdatasets.ai/favicon.ico"
         }
       }
@@ -64,7 +64,7 @@ You can connect to our MCP server natively as a new Claude Integration, or by us
       "mcpServers": {
         "financial-datasets": {
           "command": "npx",
-          "args": ["-y", "mcp-remote", "https://mcp.financialdatasets.ai/"]
+          "args": ["-y", "mcp-remote", "https://mcp.financialdatasets.ai/mcp"]
         }
       }
     }
@@ -79,7 +79,7 @@ You can connect to our MCP server natively as a new Claude Integration, or by us
     3. Enter the following configuration:
     
     ```bash
-    npx mcp-remote https://mcp.financialdatasets.ai/
+    npx mcp-remote https://mcp.financialdatasets.ai/mcp
     ```
     
     4. Enter the name **Financial Datasets** and hit enter
@@ -97,7 +97,7 @@ You can connect to our MCP server natively as a new Claude Integration, or by us
       "mcpServers": {
         "financial-datasets": {
           "command": "npx",
-          "args": ["-y", "mcp-remote", "https://mcp.financialdatasets.ai/"]
+          "args": ["-y", "mcp-remote", "https://mcp.financialdatasets.ai/mcp"]
         }
       }
     }
@@ -114,7 +114,7 @@ You can connect to our MCP server natively as a new Claude Integration, or by us
         "financial-datasets": {
           "command": {
             "path": "npx",
-            "args": ["-y", "mcp-remote", "https://mcp.financialdatasets.ai/"],
+            "args": ["-y", "mcp-remote", "https://mcp.financialdatasets.ai/mcp"],
             "env": {}
           },
           "settings": {}
@@ -132,7 +132,7 @@ You can connect to our MCP server natively as a new Claude Integration, or by us
     npm install -g mcp-remote
     
     # Connect to the server
-    mcp-remote https://mcp.financialdatasets.ai/
+    mcp-remote https://mcp.financialdatasets.ai/mcp
     ```
     
     Note: Direct CLI access requires OAuth authentication through a browser flow.
