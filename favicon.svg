@@ -1,24 +1,22 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Centered 3D Cube icon for favicon -->
-  <g transform="translate(4, 4)">
-    <!-- 3D Cube paths matching LucideBox -->
-    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" 
-          stroke="#2383F4" 
-          stroke-width="2.5" 
-          fill="none" 
-          stroke-linecap="round" 
-          stroke-linejoin="round"/>
-    <path d="m3.29 7 8.71 5 8.71-5" 
-          stroke="#2383F4" 
-          stroke-width="2.5" 
-          fill="none" 
-          stroke-linecap="round" 
-          stroke-linejoin="round"/>
-    <path d="m12 22 0-10" 
-          stroke="#2383F4" 
-          stroke-width="2.5" 
-          fill="none" 
-          stroke-linecap="round" 
-          stroke-linejoin="round"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" fill="none" viewBox="0 0 24 24">
+  <rect x="0" y="0" width="24" height="24" fill="#000"/>
+  <!-- 3D Cube icon in white -->
+  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" 
+        stroke="#fff" 
+        stroke-width="1.5" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+  <path d="m3.29 7 8.71 5 8.71-5" 
+        stroke="#fff" 
+        stroke-width="1.5" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+  <path d="m12 22 0-10" 
+        stroke="#fff" 
+        stroke-width="1.5" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
 </svg>
