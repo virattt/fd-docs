@@ -1708,7 +1708,7 @@
         ],
         "operationId": "getAnalystEstimates",
         "summary": "Analyst Estimates",
-        "description": "Analyst estimates for a given ticker.",
+        "description": "Forward-looking estimates like earnings per share",
         "parameters": [
           {
             "name": "ticker",
