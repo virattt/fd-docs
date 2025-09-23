@@ -1,0 +1,41 @@
+---
+title: 'Analyst Estimates'
+openapi: 'GET /analyst-estimates'
+---
+
+### 👋 Overview
+The Analyst Estimates API provides consensus earnings per share estimates for a given ticker.
+
+The data is generated from our own internal machine learning models and should be considered as probabilistic forecasts, not guarantees of future performance.
+
+### 📊 Available Tickers
+You can fetch a list of available tickers with a `GET` request to:
+https://api.financialdatasets.ai/analyst-estimates/tickers/
+
+### 💻 Example
+
+```python Analyst Estimates
+import requests
+
+# add your API key to the headers
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+# set your query params
+ticker = 'AAPL'
+period = 'annual'         # possible values are {'annual', 'quarterly'}
+
+# create the URL
+url = (
+    f'https://api.financialdatasets.ai/analyst-estimates/'
+    f'?ticker={ticker}'
+    f'&period={period}'
+)
+
+# make API request
+response = requests.get(url, headers=headers)
+
+# parse estimates from the response
+estimates = response.json().get('estimates')
+```

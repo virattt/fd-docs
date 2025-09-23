@@ -66,6 +66,13 @@
       "group": "APIs",
       "pages": [
         {
+          "group": "Analyst Estimates",
+          "icon": "crystal-ball",
+          "pages": [
+            "api-reference/endpoint/analyst-estimates/ticker"
+          ]
+        },
+        {
           "group": "Company",
           "icon": "building",
           "pages": [
