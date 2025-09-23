@@ -73,65 +73,6 @@
     }
   ],
   "paths": {
-    "/analyst-estimates": {
-      "get": {
-        "tags": [
-          "Analyst Estimates"
-        ],
-        "operationId": "getAnalystEstimates",
-        "summary": "Analyst Estimates",
-        "description": "Analyst estimates for a given ticker.",
-        "parameters": [
-          {
-            "name": "ticker",
-            "in": "query",
-            "description": "The ticker to get analyst estimates for.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "period",
-            "in": "query",
-            "description": "The period to get analyst estimates for. Use the /analyst-estimates/periods endpoint to get a list of available periods. Defaults to 'annual'.",
-            "required": false,
-            "default": "annual",
-            "schema": {
-              "type": "string"
-            },
-            "enum": [
-              "annual",
-              "quarterly"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Analyst estimates response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AnalystEstimatesResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequestError"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "402": {
-            "$ref": "#/components/responses/PaymentRequiredError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        }
-      }
-    },
     "/macro/interest-rates": {
       "get": {
         "tags": [
@@ -555,7 +496,6 @@
         }
       }
     },
-
     "/filings/items": {
       "get": {
         "tags": [
@@ -1759,6 +1699,65 @@
           }
         }
       }
+    },
+
+    "/analyst-estimates": {
+      "get": {
+        "tags": [
+          "Analyst Estimates"
+        ],
+        "operationId": "getAnalystEstimates",
+        "summary": "Analyst Estimates",
+        "description": "Analyst estimates for a given ticker.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker to get analyst estimates for.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "description": "The period to get analyst estimates for. Use the /analyst-estimates/periods endpoint to get a list of available periods. Defaults to 'annual'.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "annual",
+                "quarterly"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Analyst estimates response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalystEstimatesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1777,12 +1776,12 @@
           "analyst_estimates": {
             "type": "array",
             "items": {
-              
+              "$ref": "#/components/schemas/AnalystEstimate"
             }
           }
         }
       },
-      "AnalystEstimates": {
+      "AnalystEstimate": {
         "type": "object",
         "properties": {
           "fiscal_period": {
