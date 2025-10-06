@@ -573,8 +573,48 @@
                 "Item-13",
                 "Item-14",
                 "Item-15",
-                "Item-16"
+                "Item-16",
+                "Item-1.01",
+                "Item-1.02",
+                "Item-1.03",
+                "Item-1.04",
+                "Item-2.01",
+                "Item-2.02",
+                "Item-2.03",
+                "Item-2.04",
+                "Item-2.05",
+                "Item-2.06",
+                "Item-3.01",
+                "Item-3.02",
+                "Item-3.03",
+                "Item-4.01",
+                "Item-4.02",
+                "Item-5.01",
+                "Item-5.02",
+                "Item-5.03",
+                "Item-5.04",
+                "Item-5.05",
+                "Item-5.06",
+                "Item-5.07",
+                "Item-5.08",
+                "Item-6.01",
+                "Item-6.02",
+                "Item-6.03",
+                "Item-6.04",
+                "Item-6.05",
+                "Item-7.01",
+                "Item-8.01",
+                "Item-9.01"
               ]
+            }
+          },
+          {
+            "name": "accession_number",
+            "in": "query",
+            "description": "The accession number of the filing if 8-K.",
+            "required": false,
+            "schema": {
+              "type": "string"
             }
           }
         ],

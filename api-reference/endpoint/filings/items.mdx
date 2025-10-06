@@ -4,88 +4,138 @@ openapi: 'GET /filings/items'
 ---
 
 ### 👋  Overview
-The Items endpoint allows you to extract specific sections (called items) from a given 10-K or 10-Q filing.
+The Items endpoint allows you to extract specific sections (called items) from a given 10-K, 10-Q, or 8-K filing.
 
-This lets you easily extract data from a filing without having to parse the entire document.
-
-All you need to provide is the `filing_type` and the `year` of the filing.  If you want to extract a specific set of items, then you can pass in multiple `item` parameters (example below)
-
-We have SEC filings for <b>10,000+</b> public companies.
-
-To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
-
-You will use the API key to authenticate your API requests.
+This lets you easily extract data from a filing without having to parse the entire document on your own.
 
 ### 📊 Available Tickers
 You can fetch a list of available tickers with a `GET` request to:
 https://api.financialdatasets.ai/filings/tickers/
 
-###  🚀  Getting Started
-There are only 3 steps for making a successful API call:
-1. Add your API key to the header of the request as `X-API-KEY`.
-2. Add query params like `ticker` to filter the data.
-3. Execute the API request.
+### 💻  Examples
 
-**Note**: You must include either the `ticker` in your query params.
+<Tabs>
+  <Tab title="10-K Filing">
+    ```python
+    import requests
 
-### 💻  Example
+    # add your API key to the headers
+    headers = {
+        "X-API-KEY": "your_api_key_here"
+    }
 
-```python Filings
-import requests
+    # set your query params
+    ticker = 'AAPL'
+    filing_type = '10-K'
+    year = 2023
 
-# add your API key to the headers
-headers = {
-    "X-API-KEY": "your_api_key_here"
-}
+    # create the URL
+    url = (
+        f'https://api.financialdatasets.ai/filings/items'
+        f'?ticker={ticker}'
+        f'&filing_type={filing_type}'
+        f'&year={year}'
+    )
 
-# set your query params
-ticker = 'AAPL'
-filing_type = '10-K'
-year = 2023
+    # make API request
+    response = requests.get(url, headers=headers)
 
-# create the URL
-url = (
-    f'https://api.financialdatasets.ai/filings/items'
-    f'?ticker={ticker}'
-    f'&filing_type={filing_type}'
-    f'&year={year}'
-)
+    # parse filings from the response
+    items = response.json().get('items')
+    ```
+  </Tab>
 
-# make API request
-response = requests.get(url, headers=headers)
+  <Tab title="10-Q Filing">
+    ```python
+    import requests
 
-# parse filings from the response
-items = response.json().get('items')
-```
+    # add your API key to the headers
+    headers = {
+        "X-API-KEY": "your_api_key_here"
+    }
 
-### 💻  Example (get specific items)
+    # set your query params
+    ticker = 'AAPL'
+    filing_type = '10-Q'
+    year = 2023
+    quarter = 1
 
-```python Filings
-import requests
+    # create the URL
+    url = (
+        f'https://api.financialdatasets.ai/filings/items'
+        f'?ticker={ticker}'
+        f'&filing_type={filing_type}'
+        f'&year={year}'
+        f'&quarter={quarter}'
+    )
 
-# add your API key to the headers
-headers = {
-    "X-API-KEY": "your_api_key_here"
-}
+    # make API request
+    response = requests.get(url, headers=headers)
 
-# set your query params
-ticker = 'AAPL'
-filing_type = '10-K'
-year = 2023
+    # parse filings from the response
+    items = response.json().get('items')
+    ```
+  </Tab>
 
-# create the URL
-url = (
-    f'https://api.financialdatasets.ai/filings/items'
-    f'?ticker={ticker}'
-    f'&filing_type={filing_type}'
-    f'&year={year}'
-    f'&item=Item-1'
-    f'&item=Item-7A'
-)
+  <Tab title="8-K Filing">
+    ```python
+    import requests
 
-# make API request
-response = requests.get(url, headers=headers)
+    # add your API key to the headers
+    headers = {
+        "X-API-KEY": "your_api_key_here"
+    }
 
-# parse items from the response
-items = response.json().get('items')
-```
+    # set your query params (all required)
+    ticker = 'AAPL' 
+    filing_type = '8-K'
+    accession_number = '0001277902-25-000182'
+
+    # create the URL
+    url = (
+        f'https://api.financialdatasets.ai/filings/items'
+        f'?ticker={ticker}'
+        f'&filing_type={filing_type}'
+        f'&accession_number={accession_number}'
+    )
+
+    # make API request
+    response = requests.get(url, headers=headers)
+
+    # parse filings from the response
+    items = response.json().get('items')
+    ```
+  </Tab>
+
+  <Tab title="Specific Items">
+    ```python
+    import requests
+
+    # add your API key to the headers
+    headers = {
+        "X-API-KEY": "your_api_key_here"
+    }
+
+    # set your query params
+    ticker = 'AAPL'
+    filing_type = '10-K'
+    year = 2023
+
+    # create the URL
+    url = (
+        f'https://api.financialdatasets.ai/filings/items'
+        f'?ticker={ticker}'
+        f'&filing_type={filing_type}'
+        f'&year={year}'
+        f'&item=Item-1'  # Item 1
+        f'&item=Item-7A' # Item 7A
+    )
+
+    # make API request
+    response = requests.get(url, headers=headers)
+
+    # parse items from the response
+    items = response.json().get('items')
+    ```
+  </Tab>
+</Tabs>
