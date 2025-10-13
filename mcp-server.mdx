@@ -62,6 +62,30 @@ You can connect to our MCP server natively as a new Claude Integration, or by us
     
     **Free, Pro (Claude for Desktop)**
     
+    *Option 1: API Key (Recommended)*
+    
+    1. Get your API key from your [Financial Datasets account dashboard](https://financialdatasets.ai/account)
+    2. Open the file `~/Library/Application Support/Claude/claude_desktop_config.json`
+    3. Add the following configuration (replace `YOUR_API_KEY_HERE` with your actual API key):
+    
+    ```json
+    {
+      "mcpServers": {
+        "financial-datasets-api": {
+          "command": "npx",
+          "args": ["-y", "mcp-remote", "https://mcp.financialdatasets.ai/api"],
+          "headers": {
+            "X-API-KEY": "YOUR_API_KEY_HERE"
+          }
+        }
+      }
+    }
+    ```
+    
+    4. Restart the Claude desktop app
+    
+    *Option 2: OAuth*
+    
     1. Open the file `~/Library/Application Support/Claude/claude_desktop_config.json`
     2. Add the following and restart the Claude desktop app:
     
