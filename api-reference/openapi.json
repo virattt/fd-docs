@@ -170,14 +170,14 @@
         }
       }
     },
-    "/financials/search": {
+    "/financials/search/screener": {
       "post": {
         "tags": [
           "Financial Statements"
         ],
         "operationId": "searchFinancials",
         "summary": "Search financial statements",
-        "description": "Search for financial data across income statements, balance sheets, and cash flow statements using filters.",
+        "description": "Search for stocks by filtering across financial metrics from income statements, balance sheets, and cash flow statements.",
         "requestBody": {
           "required": true,
           "content": {
@@ -221,7 +221,7 @@
         ],
         "operationId": "searchLineItems",
         "summary": "Search specific financial metrics",
-        "description": "Search for specific financial metrics across income statements, balance sheets, and cash flow statements.",
+        "description": "Search for specific financial metrics across income statements, balance sheets, and cash flow statements for a list of tickers.",
         "requestBody": {
           "required": true,
           "content": {
@@ -1848,52 +1848,12 @@
           "filters"
         ],
         "properties": {
-          "period": {
-            "type": "string",
-            "enum": [
-              "annual",
-              "quarterly",
-              "ttm"
-            ],
-            "default": "ttm",
-            "description": "The time period for the financial data."
-          },
           "limit": {
             "type": "integer",
             "minimum": 1,
             "maximum": 100,
             "default": 100,
             "description": "The maximum number of results to return."
-          },
-          "order_by": {
-            "type": "string",
-            "enum": [
-              "ticker",
-              "-ticker",
-              "report_period",
-              "-report_period"
-            ],
-            "default": "ticker",
-            "description": "The field to order the results by.  Use -field to order in descending order."
-          },
-          "currency": {
-            "type": "string",
-            "enum": [
-              "USD",
-              "EUR",
-              "GBP",
-              "JPY",
-              "CHF",
-              "AUD",
-              "CAD",
-              "SEK"
-            ],
-            "description": "The currency of the financial data."
-          },
-          "historical": {
-            "type": "boolean",
-            "default": false,
-            "description": "Whether to return historical financial data."
           },
           "filters": {
             "type": "array",

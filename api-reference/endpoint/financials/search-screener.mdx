@@ -1,0 +1,272 @@
+---
+title: 'Stock Screener'
+openapi: 'POST /financials/search/screener'
+---
+
+### Overview
+
+This endpoint lets you screen for companies that match your investment criteria by filtering on fundamental financial metrics. You can combine multiple conditions—such as revenue thresholds, valuation ratios, profitability margins, and debt levels—to screen for stocks that fit your strategy. All available metrics are listed in the [Available Filters](#available-filters) section below.
+
+For example, you can search for companies with revenue greater than $100 million and a P/E ratio less than 20 with the following request body:
+```json
+// Send JSON Request
+{
+  "results": [
+    {
+      "ticker": "AA",
+      "pe_ratio": 8.376094625219894,
+      "report_period": "2025-09-30",
+      "currency": "USD",
+      "revenue": 12868000000.0
+    },
+    {
+      "ticker": "AAL",
+      "pe_ratio": 14.648857462898672,
+      "report_period": "2025-09-30",
+      "currency": "USD",
+      "revenue": 54294000000.0
+    }
+  ]
+}
+```
+
+And receive the following search results, sorted by ticker:
+
+
+```json
+// Receive JSON Response
+{
+  "results": [
+    {
+      "ticker": "A",
+      "pe_ratio": 33.566438732137705,
+      "report_period": "2025-07-31",
+      "currency": "USD",
+      "revenue": 6788000000.0
+    },
+    {
+      "ticker": "AAPL",
+      "pe_ratio": 35.39355507383269,
+      "report_period": "2025-09-27",
+      "currency": "USD",
+      "revenue": 416161000000.0
+    }
+  ]
+}
+```
+
+### Request Body
+
+A JSON object with the following properties:
+
+- `filters` (array, required): An array of filter objects to apply.
+- `limit` (integer, optional): The maximum number of results to return. Defaults to 10.
+
+**Filters**
+
+Each filter object in the `filters` array must contain:
+
+- `field` (string): The financial metric to filter on.
+- `operator` (string): The comparison operator.
+- `value` (integer or decimal): The value to compare against.
+
+**Operators**
+
+The `operator` must be one of the following:
+- `"eq"` (equal to)
+- `"gt"` (greater than)
+- `"gte"` (greater than or equal to)
+- `"lt"` (less than)
+- `"lte"` (less than or equal to)
+- `"in"` (value is in the provided array)
+
+### Available Filters
+
+You can filter by any of the fields below, which are grouped by their source.
+
+<CodeGroup>
+
+```python Income Statement
+# List of valid filter fields for the income statement
+fields = [
+    "consolidated_income",
+    "cost_of_revenue",
+    "dividends_per_common_share",
+    "earnings_per_share",
+    "earnings_per_share_diluted",
+    "ebit",
+    "ebit_usd",
+    "earnings_per_share_usd",
+    "gross_profit",
+    "income_tax_expense",
+    "interest_expense",
+    "net_income",
+    "net_income_common_stock",
+    "net_income_common_stock_usd",
+    "net_income_discontinued_operations",
+    "net_income_non_controlling_interests",
+    "operating_expense",
+    "operating_income",
+    "preferred_dividends_impact",
+    "research_and_development",
+    "revenue",
+    "revenue_usd",
+    "selling_general_and_administrative_expenses",
+    "weighted_average_shares",
+    "weighted_average_shares_diluted",
+]
+```
+
+```python Balance Sheet
+# List of valid filter fields for the balance sheet
+fields = [
+    "accumulated_other_comprehensive_income",
+    "cash_and_equivalents",
+    "cash_and_equivalents_usd",
+    "current_assets",
+    "current_debt",
+    "current_investments",
+    "current_liabilities",
+    "deferred_revenue",
+    "deposit_liabilities",
+    "goodwill_and_intangible_assets",
+    "inventory",
+    "investments",
+    "non_current_assets",
+    "non_current_debt",
+    "non_current_investments",
+    "non_current_liabilities",
+    "outstanding_shares",
+    "property_plant_and_equipment",
+    "retained_earnings",
+    "shareholders_equity",
+    "shareholders_equity_usd",
+    "tax_assets",
+    "tax_liabilities",
+    "total_assets",
+    "total_debt",
+    "total_debt_usd",
+    "total_liabilities",
+    "trade_and_non_trade_payables",
+    "trade_and_non_trade_receivables",
+]
+```
+
+```python Cash Flow Statement
+# List of valid filter fields for the cash flow statement
+fields = [
+    "business_acquisitions_and_disposals",
+    "capital_expenditure",
+    "change_in_cash_and_equivalents",
+    "depreciation_and_amortization",
+    "dividends_and_other_cash_distributions",
+    "effect_of_exchange_rate_changes",
+    "investment_acquisitions_and_disposals",
+    "issuance_or_purchase_of_equity_shares",
+    "issuance_or_repayment_of_debt_securities",
+    "net_cash_flow_from_financing",
+    "net_cash_flow_from_investing",
+    "net_cash_flow_from_operations",
+    "share_based_compensation",
+    "net_income",
+    "free_cash_flow",
+    "ending_cash_balance",
+    "property_plant_and_equipment",
+]
+```
+
+```python Financial Metrics
+# List of valid filter fields for financial metrics
+fields = [
+    "stock_price",
+    "market_cap",
+    "enterprise_value",
+    "pe_ratio",
+    "pb_ratio",
+    "ps_ratio",
+    "ev_ebitda_ratio",
+    "ev_revenue_ratio",
+    "free_cash_flow_yield",
+    "peg_ratio",
+    "gross_margin",
+    "operating_margin",
+    "net_margin",
+    "return_on_equity",
+    "return_on_assets",
+    "return_on_invested_capital",
+    "asset_turnover",
+    "inventory_turnover",
+    "receivables_turnover",
+    "days_sales_outstanding",
+    "operating_cycle",
+    "working_capital_turnover",
+    "current_ratio",
+    "quick_ratio",
+    "cash_ratio",
+    "operating_cash_flow_ratio",
+    "debt_to_equity",
+    "debt_to_assets",
+    "interest_coverage",
+    "revenue_growth",
+    "earnings_growth",
+    "book_value_growth",
+    "earnings_per_share_growth",
+    "free_cash_flow_growth",
+    "operating_income_growth",
+    "ebitda_growth",
+    "dividend_yield",
+    "payout_ratio",
+    "earnings_per_share",
+    "book_value_per_share",
+    "free_cash_flow_per_share",
+]
+```
+</CodeGroup>
+
+### Code Example
+
+<CodeGroup>
+```python Filter by Metrics
+import requests
+import json
+
+headers = {
+    "X-API-KEY": "your_api_key_here",
+    "Content-Type": "application/json"
+}
+
+body = {
+    "limit": 5,
+    "currency": "USD",
+    "filters": [
+        {
+            "field": "pe_ratio",      # from financial metrics
+            "operator": "lt",
+            "value": 20
+        },
+        {
+            "field": "revenue",       # from income statement
+            "operator": "gte",
+            "value": 1000000000
+        },
+        {
+            "field": "total_debt",    # from balance sheet
+            "operator": "lt",
+            "value": 500000000
+        },
+    ]
+}
+
+url = 'https://api.financialdatasets.ai/financials/search/screener'
+response = requests.post(url, headers=headers, data=json.dumps(body))
+
+results = response.json().get('results')
+
+for result in results:
+    print(f"Ticker: {result['ticker']}")
+    print(f"P/E Ratio: {result.get('pe_ratio')}")
+    print(f"Revenue: {result.get('revenue')}")
+    print(f"Total Debt: {result.get('total_debt')}")
+    print("---")
+```
+</CodeGroup>

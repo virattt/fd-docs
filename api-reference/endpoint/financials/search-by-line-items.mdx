@@ -1,10 +1,10 @@
 ---
-title: 'Search (by line items)'
+title: 'Search Financials'
 
 openapi: 'POST /financials/search/line-items'
 ---
 
-### 👋  Overview
+### Overview
 This Line Items Search API lets you pull <b>specific</b> line items for a list of tickers by specifying a set of `line_items` in your request.
 
 Line items are financial data points that are found in the income statement, balance sheet, and cash flow statement.
@@ -40,32 +40,7 @@ For example, you can search for `net_income` and `total_debt` for NVDA and AAPL 
 }
 ```
 
-To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
-
-You will use the API key to authenticate your API requests.
-
-###  🚀  Getting Started
-There are 3 steps for making a successful API call:
-1. Add your API key to the header of the request as `X-API-KEY`.
-2. Prepare a JSON body with your search criteria, including `tickers`, `line_items`, `period`, and `limit`.
-3. Execute the API request to the /financials/search endpoint using a POST method.
-
-The `period` can be one of `"ttm"` (trailing twelve months), `"annual"`, or `"quarterly"`.
-
-The `limit` is the maximum number of data points to return per ticker.  For example, if you have 2 tickers and set the limit to 3, you will get 6 data points in total, 3 per ticker.
-
-Note: `tickers` and `line_items` are required. By default, `period` is `"ttm"` and `limit` is 1.
-
-### 🔎  Line Items
-This endpoint lets you request data for specific `line_items` for a list of tickers.
-
-You may specify multiple `line_items` to narrow down the search results.
-
-You can also mix-and-match `line_items` from different financial statements. For example, you can search for `net_income` from the income statement and `total_debt` from the balance sheet.
-
-Each line item consists of a key. The key is the name of the financial metric that you want to search for.
-
-We charge \$0.01 per 10 line items per search. For example, 5 line items costs \$0.01, 15 line items costs \$0.02, and so on.
+### Available Line Items
 <CodeGroup>
 
 ```python Income Statement
@@ -155,9 +130,7 @@ line_items = [
 
 </CodeGroup>
 
-
-
-### 💻  Example
+### Code Example
 
 ```python Financials Search
 import requests

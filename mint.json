@@ -147,7 +147,7 @@
           "group": "Search",
           "icon": "magnifying-glass",
           "pages": [
-            "api-reference/endpoint/financials/search-by-filters",
+            "api-reference/endpoint/financials/search-screener",
             "api-reference/endpoint/financials/search-by-line-items"
           ]
         },
