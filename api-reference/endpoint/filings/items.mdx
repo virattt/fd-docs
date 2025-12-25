@@ -4,9 +4,11 @@ openapi: 'GET /filings/items'
 ---
 
 ### 👋  Overview
-The Items endpoint allows you to extract specific sections (called items) from a given 10-K, 10-Q, or 8-K filing.
+The Items endpoint allows you to retrieve the raw text from the sections (called items) from a given 10-K, 10-Q, or 8-K filing.
 
 This lets you easily extract data from a filing without having to parse the entire document on your own.
+
+For 8-K filings, items may include an `exhibits` array when exhibits are present. Use the `include_exhibits` parameter to retrieve the raw text content of linked exhibits.
 
 ### 📊 Available Tickers
 You can fetch a list of available tickers with a `GET` request to:
@@ -90,6 +92,7 @@ https://api.financialdatasets.ai/filings/tickers/
     ticker = 'AAPL' 
     filing_type = '8-K'
     accession_number = '0001277902-25-000182'
+    include_exhibits = True
 
     # create the URL
     url = (
@@ -97,6 +100,7 @@ https://api.financialdatasets.ai/filings/tickers/
         f'?ticker={ticker}'
         f'&filing_type={filing_type}'
         f'&accession_number={accession_number}'
+        f'&include_exhibits={include_exhibits}'
     )
 
     # make API request

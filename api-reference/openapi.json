@@ -503,7 +503,7 @@
         ],
         "operationId": "getFilingItems",
         "summary": "Get SEC filing items",
-        "description": "Get SEC filing items for a company.",
+        "description": "Get the raw text Items from an SEC filing.",
         "parameters": [
           {
             "name": "ticker",
@@ -523,7 +523,8 @@
               "type": "string",
               "enum": [
                 "10-K",
-                "10-Q"
+                "10-Q",
+                "8-K"
               ]
             }
           },
@@ -615,6 +616,16 @@
             "required": false,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "include_exhibits",
+            "in": "query",
+            "description": "Whether to include the raw text from linked exhibits. Only applicable for 8-K filings. When true, exhibit objects will include the 'text' field containing the full exhibit content.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
             }
           }
         ],
@@ -2113,6 +2124,10 @@
       "FilingItemsResponse": {
         "type": "object",
         "properties": {
+          "resource": {
+            "type": "string",
+            "description": "The resource type identifier."
+          },
           "ticker": {
             "type": "string",
             "description": "The ticker symbol of the company."
@@ -2956,6 +2971,35 @@
           "text": {
             "type": "string",
             "description": "The item text."
+          },
+          "exhibits": {
+            "type": "array",
+            "description": "An array of exhibits linked to this item. Only present for 8-K filings when exhibits exist.",
+            "items": {
+              "$ref": "#/components/schemas/Exhibit"
+            }
+          }
+        }
+      },
+      "Exhibit": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string",
+            "description": "The exhibit number (e.g., '99.1')."
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the exhibit."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL to the exhibit document on the SEC website."
+          },
+          "text": {
+            "type": "string",
+            "description": "The raw text content of the exhibit. Only included when 'include_exhibits' parameter is set to true."
           }
         }
       },
