@@ -14,15 +14,16 @@
     "description": "Financial Datasets is a stock market API with financial data for 30,000+ tickers over 30+ years, including financial statements, equity prices, insider transactions, SEC filings, and more."
   },
   "colors": {
-    "primary": "#2383F4",
-    "light": "#4e9bf6",
-    "dark": "#2383F4",
+    "primary": "#26251E",
+    "light": "#F7F7F4",
+    "dark": "#14120B",
     "anchors": {
-      "from": "#2383F4",
-      "to": "#4e9bf6"
+      "from": "#26251E",
+      "to": "#EDECEC"
     },
     "background": {
-      "dark": "#000000"
+      "light": "#F7F7F4",
+      "dark": "#14120B"
     }
   },
   "topbarLinks": [
@@ -181,7 +182,7 @@
     "x": "https://x.com/virattt",
     "github": "https://github.com/virattt"
   },
-  "modeToggle": {
-    "default": "dark"
+  "appearance": {
+    "default": "system"
   }
 }
