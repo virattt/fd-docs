@@ -6,7 +6,7 @@ openapi: 'GET /crypto/prices'
 ### 👋  Overview
 The Crypto Prices API lets you pull historical prices for a given cryptocurrency like Bitcoin, Ethereum, and more.  
 
-You can get prices by the minute, day, week, month, or year.
+You can get prices by the day, week, month, or year.
 
 The prices are pulled directly from Coinbase, Kraken, and Bitfinex.
 
@@ -38,8 +38,8 @@ headers = {
 
 # set your query params
 ticker = 'BTC-USD'
-interval = 'minute'         # possible values are {'minute', 'day', 'week', 'month', 'year'}
-interval_multiplier = 5     # every 5 minutes
+interval = 'day'         # possible values are {'day', 'week', 'month', 'year'}
+interval_multiplier = 1     # daily
 start_date = '2025-01-02'
 end_date = '2025-01-05'
 
