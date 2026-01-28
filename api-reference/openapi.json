@@ -1277,7 +1277,6 @@
             "schema": {
               "type": "string",
               "enum": [
-                "minute",
                 "day",
                 "week",
                 "month",
@@ -1380,7 +1379,6 @@
             "schema": {
               "type": "string",
               "enum": [
-                "minute",
                 "day",
                 "week",
                 "month",
@@ -1483,8 +1481,6 @@
             "schema": {
               "type": "string",
               "enum": [
-                "second",
-                "minute",
                 "day",
                 "week",
                 "month",
