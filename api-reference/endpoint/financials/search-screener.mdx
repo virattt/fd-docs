@@ -8,23 +8,20 @@ openapi: 'POST /financials/search/screener'
 This endpoint lets you screen for companies that match your investment criteria by filtering on fundamental financial metrics. You can combine multiple conditions—such as revenue thresholds, valuation ratios, profitability margins, and debt levels—to screen for stocks that fit your strategy. All available metrics are listed in the [Available Filters](#available-filters) section below.
 
 For example, you can search for companies with revenue greater than $100 million and a P/E ratio less than 20 with the following request body:
+
 ```json
 // Send JSON Request
 {
-  "results": [
+  "filters": [
     {
-      "ticker": "AA",
-      "pe_ratio": 8.376094625219894,
-      "report_period": "2025-09-30",
-      "currency": "USD",
-      "revenue": 12868000000.0
+      "field": "revenue",
+      "operator": "gt",
+      "value": 100000000
     },
     {
-      "ticker": "AAL",
-      "pe_ratio": 14.648857462898672,
-      "report_period": "2025-09-30",
-      "currency": "USD",
-      "revenue": 54294000000.0
+      "field": "pe_ratio",
+      "operator": "lt",
+      "value": 20
     }
   ]
 }
@@ -32,24 +29,23 @@ For example, you can search for companies with revenue greater than $100 million
 
 And receive the following search results, sorted by ticker:
 
-
 ```json
 // Receive JSON Response
 {
   "results": [
     {
-      "ticker": "A",
-      "pe_ratio": 33.566438732137705,
-      "report_period": "2025-07-31",
+      "ticker": "AA",
+      "pe_ratio": 8.37,
+      "report_period": "2025-09-30",
       "currency": "USD",
-      "revenue": 6788000000.0
+      "revenue": 12868000000.0
     },
     {
-      "ticker": "AAPL",
-      "pe_ratio": 35.39355507383269,
-      "report_period": "2025-09-27",
+      "ticker": "AAL",
+      "pe_ratio": 14.65,
+      "report_period": "2025-09-30",
       "currency": "USD",
-      "revenue": 416161000000.0
+      "revenue": 54294000000.0
     }
   ]
 }
