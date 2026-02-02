@@ -2855,10 +2855,6 @@
             "type": "number",
             "description": "The percentage price change since the previous trading day's close."
           },
-          "market_cap": {
-            "type": "number",
-            "description": "The market capitalization of the company."
-          },
           "time": {
             "type": "string",
             "description": "The timestamp of the price snapshot in human-readable format in UTC."
