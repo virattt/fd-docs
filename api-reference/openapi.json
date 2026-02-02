@@ -2970,10 +2970,6 @@
             "type": "string",
             "description": "The ticker symbol of the company."
           },
-          "market_cap": {
-            "type": "number",
-            "description": "The market capitalization of the company."
-          },
           "enterprise_value": {
             "type": "number",
             "description": "The total value of the company (market cap + debt - cash)."
