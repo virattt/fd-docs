@@ -3,7 +3,7 @@ title: 'Segmented Revenues'
 openapi: 'GET /financials/segmented-revenues'
 ---
 
-### 👋  Overview
+### Overview
 The segmented revenues API provides as-reported, granular revenue data for a given stock ticker.
 
 I finally launched the segmented revenues API, which lets your AI financial agent access segmented revenue data by product lines, business segments, and geographical regions for a given stock ticker.
@@ -100,11 +100,11 @@ To get started, please create an account and grab your <b>API key</b> at [financ
 
 You will use the API key to authenticate your API requests.
 
-### 📊 Available Tickers
+### Available Tickers
 You can fetch a list of available tickers with a `GET` request to:
 https://api.financialdatasets.ai/financials/segmented-revenues/tickers/
 
-###  🚀  Getting Started
+### Getting Started
 There are only 3 steps for making a successful API call:
 1. Add your API key to the header of the request as `X-API-KEY`.
 2. Add query params like `ticker`, `period` and `limit` to filter the data.
@@ -116,7 +116,7 @@ The `period` parameter can be set to `"annual"` or `"quarterly"`. The `limit` pa
 
 **Note**: `ticker` and `period` are required. Alternatively, you can use `cik` instead of `ticker` as a company identifier in your request.  By default, `limit` is `4`.
 
-### 💻  Example
+### Example
 ```python Segmented Revenues
 import requests
 

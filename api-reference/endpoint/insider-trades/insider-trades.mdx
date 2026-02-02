@@ -3,7 +3,7 @@ title: 'Insider Trades (by ticker)'
 openapi: 'GET /insider-trades'
 ---
 
-### 👋  Overview
+### Overview
 The insider trades API lets you access the stock buys and sales of public company insiders like CEOs, CFOs, and Directors.
 
 In addition to the stock buys and sales, you can also access the current ownership stakes of insiders.
@@ -17,17 +17,17 @@ To get started, please create an account and grab your <b>API key</b> at [financ
 
 You will use the API key to authenticate your API requests.
 
-### 📊 Available Tickers
+### Available Tickers
 You can fetch a list of available tickers with a `GET` request to:
 https://api.financialdatasets.ai/insider-trades/tickers/
 
-###  🚀  Getting Started
+### Getting Started
 There are only 3 steps for making a successful API call:
 1. Add your API key to the header of the request as `X-API-KEY`.
 2. Add query params like `ticker` and `limit` to filter the data.
 3. Execute the API request.
 
-### 🔎  Filtering the Data
+### Filtering the Data
 You can filter the data by `ticker`, `limit`, and `filing_date`.
 
 **Note**: `ticker` is required required.  By default, `limit` is `100` and `filing_date` is `null`.
@@ -43,7 +43,7 @@ The available `filing_date` operations are:
 - `filing_date_gt`
 - `filing_date`
 
-### 💻  Example
+### Example
 
 ```python Insider Trades
 import requests
@@ -71,7 +71,7 @@ response = requests.get(url, headers=headers)
 insider_trades = response.json().get('insider_trades')
 ```
 
-### 💻  Example (with filing_date)
+### Example (with filing_date)
 
 ```python Insider Trades
 import requests

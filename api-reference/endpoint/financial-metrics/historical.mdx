@@ -3,7 +3,7 @@ title: 'Historical'
 openapi: 'GET /financial-metrics'
 ---
 
-### 👋  Overview
+### Overview
 The historical financial metrics API provides historical financial metrics and ratios for a given stock ticker.
 
 Financial metrics include a company's valuation, profitability, efficiency, liquidity, leverage, growth, and per share metrics over a specified period.
@@ -12,17 +12,17 @@ To get started, please create an account and grab your <b>API key</b> at [financ
 
 You will use the API key to authenticate your API requests.
 
-### 📊 Available Tickers
+### Available Tickers
 You can fetch a list of available tickers with a `GET` request to:
 https://api.financialdatasets.ai/financial-metrics/tickers/
 
-###  🚀  Getting Started
+### Getting Started
 There are only 3 steps for making a successful API call:
 1. Add your API key to the header of the request as `X-API-KEY`.
 2. Add query params like `ticker` to filter the data.
 3. Execute the API request.
 
-### 🔎  Filtering the Data
+### Filtering the Data
 You can filter the data by `ticker`, `period`, `limit`, and `report_period`.
 
 **Note**: `ticker` and `period` are required. By default, `limit` is `4` and `report_period` is `null`.
@@ -39,7 +39,7 @@ The available `report_period` operations are:
 - `report_period`
 
 
-### 💻  Example
+### Example
 
 ```python Financial Metrics
 import requests
@@ -69,7 +69,7 @@ response = requests.get(url, headers=headers)
 financial_metrics = response.json().get('financial_metrics')
 ```
 
-### 💻  Example (with report_period)
+### Example (with report_period)
 
 ```python Financial Metrics
 import requests

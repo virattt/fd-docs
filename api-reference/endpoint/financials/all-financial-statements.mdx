@@ -3,7 +3,7 @@ title: 'All Financial Statements'
 openapi: 'GET /financials'
 ---
 
-### 👋  Overview
+### Overview
 This endpoint aggregates all financial statements for a ticker into a single API call.
 
 So, instead of calling 3 endpoints to get income statements, balance sheets, and cash flow statements, you can call this endpoint once and get all financial statements in one go.
@@ -17,17 +17,17 @@ To get started, please create an account and grab your <b>API key</b> at [financ
 
 You will use the API key to authenticate your API requests.
 
-### 📊 Available Tickers
+### Available Tickers
 You can fetch a list of available tickers with a `GET` request to:
 https://api.financialdatasets.ai/financials/tickers/
 
-###  🚀  Getting Started
+### Getting Started
 There are only 3 steps for making a successful API call:
 1. Add your API key to the header of the request as `X-API-KEY`.
 2. Add query params like `ticker`, `period` and `limit` to filter the data.
 3. Execute the API request.
 
-### 🔎  Filtering the Data
+### Filtering the Data
 You can filter the data by `ticker`, `period`, `limit`, and `report_period`.
 
 **Note**: `ticker` and `period` are required. Alternatively, you can use `cik` instead of `ticker` as a company identifier in your request.  
@@ -45,7 +45,7 @@ The available `report_period` operations are:
 - `report_period_gt`
 - `report_period`
 
-### 💻  Example
+### Example
 ```python All Financial Statements
 import requests
 
@@ -83,7 +83,7 @@ balance_sheets = financials.get('balance_sheets')
 cash_flow_statements = financials.get('cash_flow_statements')
 ```
 
-### 💻  Example (with report_period)
+### Example (with report_period)
 
 ```python All Financial Statements
 import requests

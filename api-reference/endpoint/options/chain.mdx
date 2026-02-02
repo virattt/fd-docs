@@ -3,7 +3,7 @@ title: 'Chain'
 openapi: 'GET /options/chain'
 ---
 
-### 👋  Overview
+### Overview
 We provide real-time options chain data for all actively traded US equities.
 
 An options chain is a list of all available options contracts for a given stock ticker, organized by expiration dates and strike prices. Each option contract includes key data like bid/ask prices, open interest, and volume.
@@ -16,7 +16,7 @@ To get started, please create an account and grab your <b>API key</b> at [financ
 
 You will use the API key to authenticate your API requests.
 
-###  🚀  Getting Started
+### Getting Started
 There are only 3 steps for making a successful API call:
 1. Add your API key to the header of the request as `X-API-KEY`.
 2. Add query params like `ticker`, `strike_price`, `option_type`, and `expiration_date` to filter the data.
@@ -24,7 +24,7 @@ There are only 3 steps for making a successful API call:
 
 **Note**: You must provide the `ticker`.
 
-### 💻  Example
+### Example
 
 ```python Options Chain
 import requests

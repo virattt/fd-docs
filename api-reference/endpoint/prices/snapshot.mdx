@@ -3,18 +3,18 @@ title: 'Snapshot'
 openapi: 'GET /prices/snapshot'
 ---
 
-### 👋  Overview
+### Overview
 The Snapshot API lets you pull a price snapshot for a given ticker.  We cover all actively traded US stocks.
 
 To get started, please create an account and grab your <b>API key</b> at [financialdatasets.ai](https://financialdatasets.ai).
 
 You will use the API key to authenticate your API requests.
 
-### 📊 Available Tickers
+### Available Tickers
 You can fetch a list of available tickers with a `GET` request to:
 https://api.financialdatasets.ai/prices/snapshot/tickers/
 
-###  🚀  Getting Started
+### Getting Started
 There are only 3 steps for making a successful API call:
 1. Add your API key to the header of the request as `X-API-KEY`.
 2. Add query params like `ticker` to filter the data.
@@ -22,7 +22,7 @@ There are only 3 steps for making a successful API call:
 
 **Note**: You must provide the `ticker`.
 
-### 💻  Example
+### Example
 
 ```python Price Snapshot
 import requests

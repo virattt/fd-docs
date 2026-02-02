@@ -4,7 +4,7 @@ title: 'Search (by filters)'
 openapi: 'POST /financials/search'
 ---
 
-### 👋  Overview
+### Overview
 This endpoint lets you search for companies based on a set of `filters` that you specify. You can filter by any financial metric that is listed below in the [Filters](#filters) section.
 
 For example, you can search for companies with revenue greater than \$100 million and capital expenditure less than \$10 million and receive the following response:
@@ -38,7 +38,7 @@ You will use the API key to authenticate your API requests.
 The Financials Search API lets you search for financial data across income statements, balance sheets,
 and cash flow statements for <b>16,000+</b> public companies, going back <b>30+</b> years.
 
-###  🚀  Getting Started
+### Getting Started
 There are 3 steps for making a successful API call:
 1. Add your API key to the header of the request as `X-API-KEY`.
 2. Prepare a JSON body with your search criteria, including `period`, `limit`, and `filters`.
@@ -48,7 +48,7 @@ The `period` can be one of `"ttm"` (trailing twelve months), `"annual"`, or `"qu
 
 Note: `filters` is required. By default, `period` is `"ttm"` and `limit` is 100.
 
-### 🔎  Filters
+### Filters
 You can filter the search results by adding one or more `filters`.
 
 You may specify multiple `filters` to narrow down the search results.
@@ -159,7 +159,7 @@ fields = [
 
 
 
-### 💻  Examples
+### Examples
 
 <CodeGroup>
 ```python Filter by Metrics

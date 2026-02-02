@@ -3,7 +3,7 @@ title: 'Ownership (by ticker)'
 openapi: 'GET /institutional-ownership'
 ---
 
-### 👋  Overview
+### Overview
 The institutional ownership API provides access to the equity holdings of investment managers overseeing $100M+ in assets. 
 
 This quarterly data comes directly from Form 13F filings and includes tickers, share quantities, estimated holding prices, and market values.
@@ -22,17 +22,17 @@ To get started, please create an account and grab your <b>API key</b> at [financ
 
 You will use the API key to authenticate your API requests.
 
-### 📊 Available Tickers
+### Available Tickers
 You can fetch a list of available tickers with a `GET` request to:
 https://api.financialdatasets.ai/institutional-ownership/tickers/
 
-###  🚀  Getting Started
+### Getting Started
 There are only 3 steps for making a successful API call:
 1. Add your API key to the header of the request as `X-API-KEY`.
 2. Add query params like `ticker` and `limit` to filter the data.
 3. Execute the API request.
 
-### 🔎  Filtering the Data
+### Filtering the Data
 You can filter the data by `ticker`, `limit`, and `report_period`.
 
 **Note**: `ticker` is required required.  By default, `limit` is `10` and `report_period` is `null`.
@@ -49,7 +49,7 @@ The available `report_period` operations are:
 - `report_period`
 
 
-### 💻  Example
+### Example
 
 ```python Institutional Ownership
 import requests
@@ -77,7 +77,7 @@ response = requests.get(url, headers=headers)
 institutional_ownership = response.json().get('institutional_ownership')
 ```
 
-### 💻  Example (with report_period)
+### Example (with report_period)
 
 ```python Institutional Ownership
 import requests

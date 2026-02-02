@@ -3,7 +3,7 @@ title: 'Balance Sheets'
 openapi: 'GET /financials/balance-sheets'
 ---
 
-### 👋  Overview
+### Overview
 The balance sheets API provides balance sheet data for a given stock ticker.
 
 Balance sheets are financial statements that summarize a company's assets, liabilities, and shareholders' equity at a specific point in time.
@@ -16,17 +16,17 @@ To get started, please create an account and grab your <b>API key</b> at [financ
 
 You will use the API key to authenticate your API requests.
 
-### 📊 Available Tickers
+### Available Tickers
 You can fetch a list of available tickers with a `GET` request to:
 https://api.financialdatasets.ai/financials/balance-sheets/tickers/
 
-###  🚀  Getting Started
+### Getting Started
 There are only 3 steps for making a successful API call:
 1. Add your API key to the header of the request as `X-API-KEY`.
 2. Add query params like `ticker`, `period` and `limit` to filter the data.
 3. Execute the API request.
 
-### 🔎  Filtering the Data
+### Filtering the Data
 You can filter the data by `ticker`, `period`, `limit`, and `report_period`.
 
 **Note**: `ticker` and `period` are required. Alternatively, you can use `cik` instead of `ticker` as a company identifier in your request.  
@@ -44,7 +44,7 @@ The available `report_period` operations are:
 - `report_period_gt`
 - `report_period`
 
-### 💻  Example
+### Example
 ```python Balance Sheets
 import requests
 
@@ -73,7 +73,7 @@ response = requests.get(url, headers=headers)
 balance_sheets = response.json().get('balance_sheets')
 ```
 
-### 💻  Example (with report_period)
+### Example (with report_period)
 
 ```python Balance Sheets
 import requests
