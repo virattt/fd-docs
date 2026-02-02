@@ -2063,17 +2063,6 @@
           }
         }
       },
-      "OptionPricesResponse": {
-        "type": "object",
-        "properties": {
-          "prices": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OptionPrice"
-            }
-          }
-        }
-      },
       "InsiderTrade": {
         "type": "object",
         "properties": {
@@ -2971,110 +2960,6 @@
           "time_milliseconds": {
             "type": "number",
             "description": "The timestamp of the price in milliseconds since epoch."
-          }
-        }
-      },
-      "OptionPrice": {
-        "type": "object",
-        "properties": {
-          "open": {
-            "type": "number",
-            "description": "The open price of the option in the given time period."
-          },
-          "close": {
-            "type": "number",
-            "description": "The close price of the option in the given time period."
-          },
-          "high": {
-            "type": "number",
-            "description": "The high price of the option in the given time period."
-          },
-          "low": {
-            "type": "number",
-            "description": "The low price of the option in the given time period."
-          },
-          "volume": {
-            "type": "integer",
-            "format": "number",
-            "description": "The volume of the option in the given time period."
-          },
-          "time": {
-            "type": "string",
-            "description": "The human-readable time format of the price in UTC."
-          }
-        }
-      },
-      "OptionsChainResponse": {
-        "type": "object",
-        "properties": {
-          "options_chain": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "ticker": {
-                  "type": "string",
-                  "description": "The option contract identifier."
-                },
-                "type": {
-                  "type": "string",
-                  "enum": [
-                    "Call",
-                    "Put"
-                  ],
-                  "description": "The type of option contract."
-                },
-                "strike_price": {
-                  "type": "number",
-                  "description": "The strike price of the option contract."
-                },
-                "expiration_date": {
-                  "type": "string",
-                  "format": "date",
-                  "description": "The expiration date of the option contract."
-                },
-                "shares_per_contract": {
-                  "type": "integer",
-                  "description": "The number of shares per contract."
-                },
-                "volume": {
-                  "type": "integer",
-                  "description": "The trading volume of the option contract."
-                },
-                "open_interest": {
-                  "type": "integer",
-                  "description": "The number of open contracts."
-                },
-                "bid_price": {
-                  "type": "number",
-                  "description": "The highest price a buyer is willing to pay."
-                },
-                "bid_size": {
-                  "type": "integer",
-                  "description": "The quantity of contracts at the bid price."
-                },
-                "ask_price": {
-                  "type": "number",
-                  "description": "The lowest price a seller is willing to accept."
-                },
-                "ask_size": {
-                  "type": "integer",
-                  "description": "The quantity of contracts at the ask price."
-                },
-                "last_trade_price": {
-                  "type": "number",
-                  "description": "The price of the last executed trade."
-                },
-                "last_trade_size": {
-                  "type": "integer",
-                  "description": "The size of the last executed trade."
-                },
-                "last_trade_time": {
-                  "type": "string",
-                  "description": "The time of the last trade in human-readable format in UTC."
-                }
-              }
-            }
           }
         }
       },
