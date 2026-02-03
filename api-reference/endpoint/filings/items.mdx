@@ -14,6 +14,16 @@ For 8-K filings, items may include an `exhibits` array when exhibits are present
 You can fetch a list of available tickers with a `GET` request to:
 https://api.financialdatasets.ai/filings/tickers/
 
+### Valid Item Types
+You can fetch a list of valid item types for 10-K and 10-Q filings with a `GET` request to:
+https://api.financialdatasets.ai/filings/items/types/
+
+You can optionally filter by filing type using the `filing_type` query parameter:
+- `https://api.financialdatasets.ai/filings/items/types/?filing_type=10-K` - returns only 10-K item types
+- `https://api.financialdatasets.ai/filings/items/types/?filing_type=10-Q` - returns only 10-Q item types
+
+The response includes the item name and title for each valid item type.
+
 ### Examples
 
 <Tabs>
