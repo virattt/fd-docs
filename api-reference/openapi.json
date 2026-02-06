@@ -347,6 +347,21 @@
               "type": "integer",
               "default": 10
             }
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriod"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGt"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLt"
           }
         ],
         "responses": {
@@ -703,6 +718,21 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriod"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGt"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLt"
           }
         ],
         "responses": {
@@ -780,6 +810,21 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriod"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGt"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLt"
           }
         ],
         "responses": {
@@ -857,6 +902,21 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriod"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGt"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLt"
           }
         ],
         "responses": {
@@ -934,6 +994,21 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriod"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGt"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLt"
           }
         ],
         "responses": {
@@ -1146,6 +1221,21 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriod"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGt"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLt"
           }
         ],
         "responses": {
@@ -1495,6 +1585,21 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriod"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLte"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodGt"
+          },
+          {
+            "$ref": "#/components/parameters/ReportPeriodLt"
           }
         ],
         "responses": {
@@ -1634,6 +1739,58 @@
         "name": "X-API-KEY",
         "description": "API key for authentication.",
         "in": "header"
+      }
+    },
+    "parameters": {
+      "ReportPeriod": {
+        "name": "report_period",
+        "in": "query",
+        "description": "Filter by exact report period date in YYYY-MM-DD format.",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "ReportPeriodGte": {
+        "name": "report_period_gte",
+        "in": "query",
+        "description": "Filter by report period greater than or equal to date in YYYY-MM-DD format.",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "ReportPeriodLte": {
+        "name": "report_period_lte",
+        "in": "query",
+        "description": "Filter by report period less than or equal to date in YYYY-MM-DD format.",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "ReportPeriodGt": {
+        "name": "report_period_gt",
+        "in": "query",
+        "description": "Filter by report period greater than date in YYYY-MM-DD format.",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "ReportPeriodLt": {
+        "name": "report_period_lt",
+        "in": "query",
+        "description": "Filter by report period less than date in YYYY-MM-DD format.",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date"
+        }
       }
     },
     "schemas": {
