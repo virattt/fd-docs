@@ -1127,6 +1127,51 @@
         }
       }
     },
+    "/prices/beta": {
+      "get": {
+        "tags": [
+          "Market Data"
+        ],
+        "operationId": "getPriceBeta",
+        "summary": "Get market beta snapshot",
+        "description": "Get a single beta snapshot for a ticker using SPY benchmark, 5-year lookback, monthly interval, and adjusted close returns.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Beta snapshot response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BetaResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
     "/crypto/prices/snapshot": {
       "get": {
         "tags": [
@@ -2150,6 +2195,74 @@
         "properties": {
           "snapshot": {
             "$ref": "#/components/schemas/PriceSnapshot"
+          }
+        }
+      },
+      "Beta": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "nullable": true,
+            "description": "Beta coefficient of stock monthly returns vs benchmark monthly returns."
+          },
+          "ticker": {
+            "type": "string",
+            "description": "The requested ticker symbol."
+          },
+          "benchmark": {
+            "type": "string",
+            "description": "Benchmark ticker used for beta calculation."
+          },
+          "requested_lookback": {
+            "type": "string",
+            "description": "Requested lookback window."
+          },
+          "interval": {
+            "type": "string",
+            "description": "Interval used for returns alignment."
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date",
+            "nullable": true,
+            "description": "First aligned month-end date used."
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date",
+            "nullable": true,
+            "description": "Last aligned month-end date used."
+          },
+          "n_observations": {
+            "type": "integer",
+            "description": "Number of overlapping monthly observations used."
+          },
+          "r_squared": {
+            "type": "number",
+            "nullable": true,
+            "description": "Coefficient of determination for the OLS fit."
+          },
+          "method": {
+            "type": "string",
+            "description": "Computation method used."
+          },
+          "price_type": {
+            "type": "string",
+            "description": "Price type used to compute returns."
+          },
+          "reason": {
+            "type": "string",
+            "nullable": true,
+            "description": "Present when value is null due to insufficient or invalid input data."
+          }
+        }
+      },
+      "BetaResponse": {
+        "type": "object",
+        "properties": {
+          "beta": {
+            "$ref": "#/components/schemas/Beta"
           }
         }
       },

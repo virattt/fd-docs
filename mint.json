@@ -172,7 +172,8 @@
           "icon": "chart-line",
           "pages": [
             "api-reference/endpoint/prices/historical",
-            "api-reference/endpoint/prices/snapshot"
+            "api-reference/endpoint/prices/snapshot",
+            "api-reference/endpoint/prices/beta"
           ]
         }
       ]

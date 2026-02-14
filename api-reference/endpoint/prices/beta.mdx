@@ -1,0 +1,70 @@
+---
+title: 'Beta'
+openapi: 'GET /prices/beta'
+---
+
+### Overview
+The Beta API returns a single market beta snapshot for a ticker using canonical defaults:
+
+- Benchmark: `SPY` (S&P 500 proxy)
+- Lookback: `5y`
+- Interval: `month` (month-end)
+- Price type: `adjusted_close`
+- Method: OLS slope of stock returns vs benchmark returns
+
+If a ticker has less than 5 years of history, the endpoint uses all available overlapping history.
+
+If there are fewer than 3 overlapping monthly observations, `value` is returned as `null`.
+
+### Available Tickers
+You can fetch a list of available tickers with a `GET` request to:
+https://api.financialdatasets.ai/prices/tickers/
+
+### Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add query params like `ticker` to filter the data.
+3. Execute the API request.
+
+### Example
+
+```python Beta
+import requests
+
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+ticker = "AAPL"
+url = f"https://api.financialdatasets.ai/prices/beta?ticker={ticker}"
+
+response = requests.get(url, headers=headers)
+data = response.json()
+beta_snapshot = data["beta"]
+```
+
+### Example Response
+
+```json
+{
+  "beta": {
+    "value": 1.18,
+    "ticker": "AAPL",
+    "benchmark": "SPY",
+    "requested_lookback": "5y",
+    "interval": "month",
+    "start_date": "2021-02-26",
+    "end_date": "2026-01-30",
+    "n_observations": 59,
+    "r_squared": 0.62,
+    "method": "ols",
+    "price_type": "adjusted_close"
+  }
+}
+```
+
+### Response Fields
+- `beta`: Object containing the beta calculation result.
+  - `value`: Market beta (float) or `null` when data is insufficient.
+  - `n_observations`: Number of overlapping monthly return points used after date alignment.
+  - `r_squared`: Goodness-of-fit for the OLS relationship between stock and benchmark returns.
