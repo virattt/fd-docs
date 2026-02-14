@@ -471,18 +471,23 @@
           {
             "name": "filing_type",
             "in": "query",
-            "description": "The type of filing.",
+            "description": "Filter by one or more filing types. Repeat the query parameter to pass multiple values (e.g. filing_type=10-Q&filing_type=10-K).",
             "required": false,
             "schema": {
-              "type": "string",
-              "enum": [
-                "10-K",
-                "10-Q",
-                "8-K",
-                "4",
-                "144"
-              ]
-            }
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "10-K",
+                  "10-Q",
+                  "8-K",
+                  "20-F",
+                  "6-K"
+                ]
+              }
+            },
+            "style": "form",
+            "explode": true
           }
         ],
         "responses": {

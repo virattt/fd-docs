@@ -53,3 +53,25 @@ response = requests.get(url, headers=headers)
 # parse filings from the response
 filings = response.json().get('filings')
 ```
+
+### Filtering by Filing Type
+
+Use the `filing_type` query param to filter filings.
+
+- Single type: `?ticker=AAPL&filing_type=10-K`
+- Multiple types: repeat the param (same pattern as multi-`item` filtering), e.g. `?ticker=AAPL&filing_type=10-Q&filing_type=10-K`
+
+```python FilingsWithMultipleTypes
+import requests
+
+headers = {"X-API-KEY": "your_api_key_here"}
+url = "https://api.financialdatasets.ai/filings"
+params = [
+    ("ticker", "AAPL"),
+    ("filing_type", "10-Q"),
+    ("filing_type", "10-K"),
+]
+
+response = requests.get(url, headers=headers, params=params)
+filings = response.json().get("filings")
+```
