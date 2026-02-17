@@ -69,111 +69,111 @@
           "group": "Analyst Estimates",
           "icon": "crystal-ball",
           "pages": [
-            "api-reference/endpoint/analyst-estimates/ticker"
+            "api/analyst-estimates/ticker"
           ]
         },
         {
           "group": "Company",
           "icon": "building",
           "pages": [
-            "api-reference/endpoint/company/facts/cik",
-            "api-reference/endpoint/company/facts/ticker"
+            "api/company/facts/cik",
+            "api/company/facts/ticker"
           ]
         },
         {
           "group": "Crypto Prices",
           "icon": "chart-line",
           "pages": [
-            "api-reference/endpoint/crypto/historical",
-            "api-reference/endpoint/crypto/snapshot"
+            "api/crypto/historical",
+            "api/crypto/snapshot"
           ]
         },
         {
           "group": "Earnings",
           "icon": "money-bill",
           "pages": [
-            "api-reference/endpoint/earnings/earnings",
-            "api-reference/endpoint/earnings/press-releases"
+            "api/earnings/earnings",
+            "api/earnings/press-releases"
           ]
         },
         {
           "group": "Financial Metrics",
           "icon": "calculator",
           "pages": [
-            "api-reference/endpoint/financial-metrics/historical",
-            "api-reference/endpoint/financial-metrics/snapshot"
+            "api/financial-metrics/historical",
+            "api/financial-metrics/snapshot"
           ]
         },
         {
           "group": "Financial Statements",
           "icon": "dollar-sign",
           "pages": [
-            "api-reference/endpoint/financials/income-statements",
-            "api-reference/endpoint/financials/balance-sheets",
-            "api-reference/endpoint/financials/cash-flow-statements",
-            "api-reference/endpoint/financials/all-financial-statements"
+            "api/financials/income-statements",
+            "api/financials/balance-sheets",
+            "api/financials/cash-flow-statements",
+            "api/financials/all-financial-statements"
           ]
         },
         {
           "group": "Insider Trades",
           "icon": "briefcase",
           "pages": [
-            "api-reference/endpoint/insider-trades/insider-trades"
+            "api/insider-trades/insider-trades"
           ]
         },
         {
           "group": "Institutional Ownership",
           "icon": "chart-pie",
           "pages": [
-            "api-reference/endpoint/institutional-ownership/investor",
-            "api-reference/endpoint/institutional-ownership/ticker"
+            "api/institutional-ownership/investor",
+            "api/institutional-ownership/ticker"
           ]
         },
         {
           "group": "Interest Rates",
           "icon": "globe",
           "pages": [
-            "api-reference/endpoint/macro/interest-rates/historical",
-            "api-reference/endpoint/macro/interest-rates/snapshot"
+            "api/macro/interest-rates/historical",
+            "api/macro/interest-rates/snapshot"
           ]
         },
         {
           "group": "News",
           "icon": "newspaper",
           "pages": [
-            "api-reference/endpoint/news/company"
+            "api/news/company"
           ]
         },
         {
           "group": "Search",
           "icon": "magnifying-glass",
           "pages": [
-            "api-reference/endpoint/financials/search-screener",
-            "api-reference/endpoint/financials/search-by-line-items"
+            "api/financials/search-screener",
+            "api/financials/search-by-line-items"
           ]
         },
         {
           "group": "SEC Filings",
           "icon": "file",
           "pages": [
-            "api-reference/endpoint/filings/ticker",
-            "api-reference/endpoint/filings/items"
+            "api/filings/ticker",
+            "api/filings/items"
           ]
         },
         {
           "group": "Segmented Financials",
           "icon": "chart-simple",
           "pages": [
-            "api-reference/endpoint/financials/segmented-revenues"
+            "api/financials/segmented-revenues"
           ]
         },
         {
           "group": "Stock Prices",
           "icon": "chart-line",
           "pages": [
-            "api-reference/endpoint/prices/historical",
-            "api-reference/endpoint/prices/snapshot",
-            "api-reference/endpoint/prices/beta"
+            "api/prices/historical",
+            "api/prices/snapshot",
+            "api/prices/beta"
           ]
         }
       ]
