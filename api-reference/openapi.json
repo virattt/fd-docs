@@ -1871,9 +1871,13 @@
             ],
             "description": "The period of the analyst estimate."
           },
+          "revenue": {
+            "type": "integer",
+            "description": "The estimated revenue."
+          },
           "earnings_per_share": {
             "type": "number",
-            "description": "The earnings per share of the analyst estimate."
+            "description": "The estimated earnings per share."
           }
         }
       },
