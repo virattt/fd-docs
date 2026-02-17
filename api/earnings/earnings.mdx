@@ -15,6 +15,10 @@ The response can include both `quarterly` and `annual` data.
 
 **Free tier**: Requests for `AAPL`, `MSFT`, `NVDA`, `TSLA`, and `GOOGL` do not require credits.
 
+**Important**: This endpoint returns figures from a company's initial earnings release, typically filed as an 8-K with the SEC.
+Because an 8-K is a preliminary snapshot, some fields may be `null` — this simply means the company did not report that figure in its initial release.
+Full financial statements (income statements, balance sheets, and cash flow statements) are published later via 10-K and 10-Q filings and can be retrieved through our [/financials endpoint](/api-reference/endpoint/financials).
+
 ### Available Tickers
 You can fetch a list of available tickers with a `GET` request to:
 https://api.financialdatasets.ai/earnings/tickers/
@@ -104,6 +108,7 @@ earnings = data["earnings"]
 ```
 
 ### Notes
-- `quarterly` and `annual` may be omitted when data isn’t available for that time dimension.
+- This data is sourced from 8-K earnings releases, which are preliminary. Some fields may be `null` if not included in the initial release. For complete financials, use the [/financials endpoint](/api-reference/endpoint/financials) once 10-K or 10-Q filings are published.
+- `quarterly` and `annual` may be omitted when data isn't available for that time dimension.
 - `fiscal_period` and `currency` may appear at the top-level when shared across `quarterly` and `annual`.
 - Estimate fields (and BEAT/MISS/MEET) are returned only when analyst estimates are available.
