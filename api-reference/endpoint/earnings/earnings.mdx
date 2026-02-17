@@ -1,0 +1,109 @@
+---
+title: 'Earnings'
+openapi: 'GET /earnings'
+---
+
+### Overview
+The Earnings API returns the most recent earnings snapshot for a company, including:
+
+- Key income statement fields (e.g. revenue, net income, EPS)
+- Key balance sheet fields (e.g. cash, debt, assets, liabilities)
+- Key cash flow fields (e.g. operating cash flow, capex, free cash flow)
+- Analyst estimate comparisons when available (e.g. estimated revenue / EPS and BEAT/MISS/MEET)
+
+The response can include both `quarterly` and `annual` data.
+
+**Free tier**: Requests for `AAPL`, `MSFT`, `NVDA`, `TSLA`, and `GOOGL` do not require credits.
+
+### Available Tickers
+You can fetch a list of available tickers with a `GET` request to:
+https://api.financialdatasets.ai/earnings/tickers/
+
+### Getting Started
+There are only 3 steps for making a successful API call:
+1. Add your API key to the header of the request as `X-API-KEY`.
+2. Add the required query param `ticker`.
+3. Execute the API request.
+
+### Example
+
+```python Earnings
+import requests
+
+headers = {
+    "X-API-KEY": "your_api_key_here"
+}
+
+ticker = "AAPL"
+url = f"https://api.financialdatasets.ai/earnings?ticker={ticker}"
+
+response = requests.get(url, headers=headers)
+data = response.json()
+earnings = data["earnings"]
+```
+
+### Example Response
+
+```json
+{
+  "earnings": {
+    "ticker": "AAPL",
+    "report_period": "2025-12-31",
+    "fiscal_period": "2025-Q4",
+    "currency": "USD",
+    "quarterly": {
+      "revenue": 123456789.0,
+      "estimated_revenue": 120000000.0,
+      "revenue_surprise": "BEAT",
+      "earnings_per_share": 2.18,
+      "estimated_earnings_per_share": 2.10,
+      "eps_surprise": "BEAT",
+      "net_income": 32000000.0,
+      "gross_profit": 54000000.0,
+      "operating_income": 41000000.0,
+      "weighted_average_shares": 15500000.0,
+      "weighted_average_shares_diluted": 15600000.0,
+      "cash_and_equivalents": 63000000.0,
+      "total_debt": 98000000.0,
+      "total_assets": 350000000.0,
+      "total_liabilities": 290000000.0,
+      "shareholders_equity": 60000000.0,
+      "net_cash_flow_from_operations": 28000000.0,
+      "capital_expenditure": -2500000.0,
+      "net_cash_flow_from_investing": -5000000.0,
+      "net_cash_flow_from_financing": -12000000.0,
+      "change_in_cash_and_equivalents": 11000000.0,
+      "free_cash_flow": 25500000.0
+    },
+    "annual": {
+      "revenue": 500000000.0,
+      "estimated_revenue": null,
+      "revenue_surprise": null,
+      "earnings_per_share": 8.75,
+      "estimated_earnings_per_share": null,
+      "eps_surprise": null,
+      "net_income": 120000000.0,
+      "gross_profit": 210000000.0,
+      "operating_income": 170000000.0,
+      "weighted_average_shares": 15600000.0,
+      "weighted_average_shares_diluted": 15700000.0,
+      "cash_and_equivalents": 63000000.0,
+      "total_debt": 98000000.0,
+      "total_assets": 350000000.0,
+      "total_liabilities": 290000000.0,
+      "shareholders_equity": 60000000.0,
+      "net_cash_flow_from_operations": 105000000.0,
+      "capital_expenditure": -10000000.0,
+      "net_cash_flow_from_investing": -25000000.0,
+      "net_cash_flow_from_financing": -60000000.0,
+      "change_in_cash_and_equivalents": 20000000.0,
+      "free_cash_flow": 95000000.0
+    }
+  }
+}
+```
+
+### Notes
+- `quarterly` and `annual` may be omitted when data isn’t available for that time dimension.
+- `fiscal_period` and `currency` may appear at the top-level when shared across `quarterly` and `annual`.
+- Estimate fields (and BEAT/MISS/MEET) are returned only when analyst estimates are available.

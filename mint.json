@@ -92,6 +92,7 @@
           "group": "Earnings",
           "icon": "money-bill",
           "pages": [
+            "api-reference/endpoint/earnings/earnings",
             "api-reference/endpoint/earnings/press-releases"
           ]
         },

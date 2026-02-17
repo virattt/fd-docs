@@ -1087,6 +1087,51 @@
         }
       }
     },
+    "/earnings": {
+      "get": {
+        "tags": [
+          "Earnings"
+        ],
+        "operationId": "getEarnings",
+        "summary": "Get earnings snapshot",
+        "description": "Get the most recent earnings snapshot for a ticker.",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "The ticker symbol.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Earnings response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EarningsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequiredError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
     "/prices/snapshot": {
       "get": {
         "tags": [
@@ -2196,6 +2241,157 @@
             "items": {
               "$ref": "#/components/schemas/PressRelease"
             }
+          }
+        }
+      },
+      "EarningsTimeDimension": {
+        "type": "object",
+        "properties": {
+          "fiscal_period": {
+            "type": "string",
+            "nullable": true,
+            "description": "Fiscal period label (e.g. 2025-Q4 or 2025-FY)."
+          },
+          "currency": {
+            "type": "string",
+            "nullable": true,
+            "description": "ISO currency code (e.g. USD)."
+          },
+          "revenue": {
+            "type": "number",
+            "nullable": true
+          },
+          "estimated_revenue": {
+            "type": "number",
+            "nullable": true
+          },
+          "revenue_surprise": {
+            "type": "string",
+            "nullable": true,
+            "enum": [
+              "BEAT",
+              "MISS",
+              "MEET"
+            ]
+          },
+          "earnings_per_share": {
+            "type": "number",
+            "nullable": true
+          },
+          "estimated_earnings_per_share": {
+            "type": "number",
+            "nullable": true
+          },
+          "eps_surprise": {
+            "type": "string",
+            "nullable": true,
+            "enum": [
+              "BEAT",
+              "MISS",
+              "MEET"
+            ]
+          },
+          "net_income": {
+            "type": "number",
+            "nullable": true
+          },
+          "gross_profit": {
+            "type": "number",
+            "nullable": true
+          },
+          "operating_income": {
+            "type": "number",
+            "nullable": true
+          },
+          "weighted_average_shares": {
+            "type": "number",
+            "nullable": true
+          },
+          "weighted_average_shares_diluted": {
+            "type": "number",
+            "nullable": true
+          },
+          "cash_and_equivalents": {
+            "type": "number",
+            "nullable": true
+          },
+          "total_debt": {
+            "type": "number",
+            "nullable": true
+          },
+          "total_assets": {
+            "type": "number",
+            "nullable": true
+          },
+          "total_liabilities": {
+            "type": "number",
+            "nullable": true
+          },
+          "shareholders_equity": {
+            "type": "number",
+            "nullable": true
+          },
+          "net_cash_flow_from_operations": {
+            "type": "number",
+            "nullable": true
+          },
+          "capital_expenditure": {
+            "type": "number",
+            "nullable": true
+          },
+          "net_cash_flow_from_investing": {
+            "type": "number",
+            "nullable": true
+          },
+          "net_cash_flow_from_financing": {
+            "type": "number",
+            "nullable": true
+          },
+          "change_in_cash_and_equivalents": {
+            "type": "number",
+            "nullable": true
+          },
+          "free_cash_flow": {
+            "type": "number",
+            "nullable": true
+          }
+        }
+      },
+      "Earnings": {
+        "type": "object",
+        "properties": {
+          "ticker": {
+            "type": "string",
+            "description": "The requested ticker symbol."
+          },
+          "report_period": {
+            "type": "string",
+            "format": "date",
+            "description": "Most recent report period found for the ticker."
+          },
+          "fiscal_period": {
+            "type": "string",
+            "nullable": true,
+            "description": "Fiscal period label (e.g. 2025-Q4 or 2025-FY)."
+          },
+          "currency": {
+            "type": "string",
+            "nullable": true,
+            "description": "ISO currency code (e.g. USD)."
+          },
+          "quarterly": {
+            "$ref": "#/components/schemas/EarningsTimeDimension"
+          },
+          "annual": {
+            "$ref": "#/components/schemas/EarningsTimeDimension"
+          }
+        }
+      },
+      "EarningsResponse": {
+        "type": "object",
+        "properties": {
+          "earnings": {
+            "$ref": "#/components/schemas/Earnings"
           }
         }
       },
