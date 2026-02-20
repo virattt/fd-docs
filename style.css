@@ -59,39 +59,68 @@
   color: #EDECEC !important;
 }
 
-/* ===== Code block backgrounds and borders (match frontend card colors) ===== */
-/* Doubled/tripled selectors for higher specificity to beat Tailwind important */
+/* ===== Code block backgrounds: Override Vitesse defaults with our card colors ===== */
+/* Shiki applies inline style="background:..." which requires aggressive overrides. */
 
-/* Light mode - outer wrappers */
-.code-group.code-group,
-.code-block.code-block {
+/* Light mode: all code block elements - same background, no gaps */
+.code-group.code-group.code-group,
+.code-block.code-block.code-block {
+  background: #F2F1ED !important;
   background-color: #F2F1ED !important;
   border-color: #D4D4D4 !important;
   padding: 0 !important;
+  overflow: hidden !important;
 }
 
-/* Light mode - all inner layers */
-.code-group.code-group *,
-.code-block.code-block *,
-pre, pre > code,
-[class*="shiki"] {
+.code-group.code-group > *,
+.code-block.code-block > *,
+.code-group.code-group div,
+.code-block.code-block div,
+.code-group.code-group pre,
+.code-block.code-block pre,
+.code-group.code-group pre[style],
+.code-block.code-block pre[style],
+.code-group.code-group code,
+.code-block.code-block code,
+.code-group.code-group [class*="shiki"],
+.code-block.code-block [class*="shiki"],
+.code-group.code-group [style*="background"],
+.code-block.code-block [style*="background"] {
+  background: #F2F1ED !important;
   background-color: #F2F1ED !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin: 0 !important;
 }
 
-/* Dark mode (class strategy) - outer wrappers */
-:is(.dark, [class~="dark"]) .code-group.code-group,
-:is(.dark, [class~="dark"]) .code-block.code-block {
+/* Dark mode: all code block elements - same background, no gaps */
+:is(.dark, [class~="dark"]) .code-group.code-group.code-group,
+:is(.dark, [class~="dark"]) .code-block.code-block.code-block {
+  background: #1B1913 !important;
   background-color: #1B1913 !important;
   border-color: transparent !important;
   padding: 0 !important;
+  overflow: hidden !important;
 }
 
-/* Dark mode (class strategy) - all inner layers */
-:is(.dark, [class~="dark"]) .code-group.code-group *,
-:is(.dark, [class~="dark"]) .code-block.code-block *,
-:is(.dark, [class~="dark"]) pre,
-:is(.dark, [class~="dark"]) pre > code,
-:is(.dark, [class~="dark"]) [class*="shiki"] {
+:is(.dark, [class~="dark"]) .code-group.code-group > *,
+:is(.dark, [class~="dark"]) .code-block.code-block > *,
+:is(.dark, [class~="dark"]) .code-group.code-group div,
+:is(.dark, [class~="dark"]) .code-block.code-block div,
+:is(.dark, [class~="dark"]) .code-group.code-group pre,
+:is(.dark, [class~="dark"]) .code-block.code-block pre,
+:is(.dark, [class~="dark"]) .code-group.code-group pre[style],
+:is(.dark, [class~="dark"]) .code-block.code-block pre[style],
+:is(.dark, [class~="dark"]) .code-group.code-group code,
+:is(.dark, [class~="dark"]) .code-block.code-block code,
+:is(.dark, [class~="dark"]) .code-group.code-group [class*="shiki"],
+:is(.dark, [class~="dark"]) .code-block.code-block [class*="shiki"],
+:is(.dark, [class~="dark"]) .code-group.code-group [style*="background"],
+:is(.dark, [class~="dark"]) .code-block.code-block [style*="background"] {
+  background: #1B1913 !important;
   background-color: #1B1913 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin: 0 !important;
 }
 
