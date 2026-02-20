@@ -2734,6 +2734,17 @@
             "type": "string",
             "description": "The currency in which the financial data is reported."
           },
+          "accession_number": {
+            "type": "string",
+            "nullable": true,
+            "description": "The SEC accession number of the filing."
+          },
+          "filing_url": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "description": "URL to the SEC filing."
+          },
           "revenue": {
             "type": "number",
             "nullable": false,
@@ -2869,6 +2880,17 @@
           "currency": {
             "type": "string",
             "description": "The currency in which the financial data is reported."
+          },
+          "accession_number": {
+            "type": "string",
+            "nullable": true,
+            "description": "The SEC accession number of the filing."
+          },
+          "filing_url": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "description": "URL to the SEC filing."
           },
           "total_assets": {
             "type": "number",
@@ -3030,6 +3052,17 @@
           "currency": {
             "type": "string",
             "description": "The currency in which the financial data is reported."
+          },
+          "accession_number": {
+            "type": "string",
+            "nullable": true,
+            "description": "The SEC accession number of the filing."
+          },
+          "filing_url": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "description": "URL to the SEC filing."
           },
           "net_income": {
             "type": "number",
@@ -3237,6 +3270,11 @@
             "type": "string",
             "format": "date",
             "description": "The date of the report."
+          },
+          "filing_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The date the filing was submitted to the SEC."
           },
           "ticker": {
             "type": "string",
@@ -3451,6 +3489,39 @@
           "ticker": {
             "type": "string",
             "description": "The ticker symbol of the company."
+          },
+          "report_period": {
+            "type": "string",
+            "format": "date",
+            "description": "The reporting period of the financial metrics."
+          },
+          "fiscal_period": {
+            "type": "string",
+            "description": "The fiscal period of the financial metrics."
+          },
+          "period": {
+            "type": "string",
+            "enum": [
+              "quarterly",
+              "ttm",
+              "annual"
+            ],
+            "description": "The time period of the financial metrics."
+          },
+          "currency": {
+            "type": "string",
+            "description": "The currency in which the financial data is reported."
+          },
+          "accession_number": {
+            "type": "string",
+            "nullable": true,
+            "description": "The SEC accession number of the filing."
+          },
+          "filing_url": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "description": "URL to the SEC filing."
           },
           "enterprise_value": {
             "type": "number",
