@@ -488,6 +488,17 @@
             },
             "style": "form",
             "explode": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of filings to return (default: 10).",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 10
+            }
           }
         ],
         "responses": {

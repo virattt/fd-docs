@@ -40,11 +40,13 @@ headers = {
 
 # set your query params
 ticker = 'AAPL'
+limit = 10
 
 # create the URL
 url = (
     f'https://api.financialdatasets.ai/filings'
     f'?ticker={ticker}'
+    f'&limit={limit}'
 )
 
 # make API request
