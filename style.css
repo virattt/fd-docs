@@ -1,0 +1,97 @@
+/* ===== "Try it" button ===== */
+
+/* Light mode */
+.tryit-button {
+  background-color: #14120B !important;
+  color: #F7F7F4 !important;
+  border-color: #14120B !important;
+}
+
+.tryit-button:hover {
+  background-color: #3b3a33 !important;
+}
+
+/* Arrow icon uses CSS mask-image, so background-color IS the visible color */
+.tryit-button svg {
+  background-color: #F7F7F4 !important;
+}
+
+/* Dark mode */
+:is(.dark, [class~="dark"]) .tryit-button {
+  background-color: #F7F7F4 !important;
+  color: #14120B !important;
+  border-color: #F7F7F4 !important;
+}
+
+:is(.dark, [class~="dark"]) .tryit-button:hover {
+  background-color: #d7d6d5 !important;
+}
+
+:is(.dark, [class~="dark"]) .tryit-button svg {
+  background-color: #14120B !important;
+}
+
+/* ===== Endpoint bar GET/POST method pill ===== */
+
+/* Light mode */
+.method-pill {
+  background-color: rgba(38, 37, 30, 0.15) !important;
+  color: #26251E !important;
+}
+
+/* Dark mode */
+:is(.dark, [class~="dark"]) .method-pill {
+  background-color: rgba(237, 236, 236, 0.2) !important;
+  color: #EDECEC !important;
+}
+
+/* ===== Sidebar nav pills (GET/POST chips) ===== */
+
+/* Light mode - non-active */
+.method-nav-pill > * {
+  background-color: rgba(38, 37, 30, 0.12) !important;
+  color: #26251E !important;
+}
+
+/* Dark mode - non-active */
+:is(.dark, [class~="dark"]) .method-nav-pill > * {
+  background-color: rgba(237, 236, 236, 0.15) !important;
+  color: #EDECEC !important;
+}
+
+/* ===== Code block backgrounds and borders (match frontend card colors) ===== */
+/* Doubled/tripled selectors for higher specificity to beat Tailwind important */
+
+/* Light mode - outer wrappers */
+.code-group.code-group,
+.code-block.code-block {
+  background-color: #F2F1ED !important;
+  border-color: #D4D4D4 !important;
+  padding: 0 !important;
+}
+
+/* Light mode - all inner layers */
+.code-group.code-group *,
+.code-block.code-block *,
+pre, pre > code,
+[class*="shiki"] {
+  background-color: #F2F1ED !important;
+}
+
+/* Dark mode (class strategy) - outer wrappers */
+:is(.dark, [class~="dark"]) .code-group.code-group,
+:is(.dark, [class~="dark"]) .code-block.code-block {
+  background-color: #1B1913 !important;
+  border-color: transparent !important;
+  padding: 0 !important;
+}
+
+/* Dark mode (class strategy) - all inner layers */
+:is(.dark, [class~="dark"]) .code-group.code-group *,
+:is(.dark, [class~="dark"]) .code-block.code-block *,
+:is(.dark, [class~="dark"]) pre,
+:is(.dark, [class~="dark"]) pre > code,
+:is(.dark, [class~="dark"]) [class*="shiki"] {
+  background-color: #1B1913 !important;
+}
+

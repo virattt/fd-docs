@@ -1,0 +1,208 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Financial Datasets",
+  "description": "Financial Datasets is a stock market API with financial data for 30,000+ tickers over 30+ years, including financial statements, equity prices, insider transactions, SEC filings, and more.",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg",
+    "href": "https://financialdatasets.ai"
+  },
+  "favicon": "/favicon.svg",
+  "seo": {
+    "metatags": {
+      "image": "/images/new-docs.png",
+      "type": "website",
+      "title": "Financial Datasets - API Documentation",
+      "description": "Financial Datasets is a stock market API with financial data for 30,000+ tickers over 30+ years, including financial statements, equity prices, insider transactions, SEC filings, and more."
+    }
+  },
+  "colors": {
+    "primary": "#26251E",
+    "light": "#F7F7F4",
+    "dark": "#14120B"
+  },
+  "background": {
+    "color": {
+      "light": "#F7F7F4",
+      "dark": "#14120B"
+    }
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "https://discord.gg/hTtb8wzgSQ"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://financialdatasets.ai"
+    }
+  },
+  "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Dashboard",
+          "icon": "user",
+          "href": "https://financialdatasets.ai"
+        },
+        {
+          "anchor": "Pricing",
+          "icon": "dollar-sign",
+          "href": "https://financialdatasets.ai/pricing"
+        },
+        {
+          "anchor": "Questions?",
+          "icon": "discord",
+          "href": "https://discord.gg/hTtb8wzgSQ"
+        }
+      ]
+    },
+    "groups": [
+      {
+        "group": "Get Started",
+        "pages": [
+          "introduction",
+          "market-coverage",
+          "mcp-server"
+        ]
+      },
+      {
+        "group": "APIs",
+        "pages": [
+          {
+            "group": "Analyst Estimates",
+            "icon": "crystal-ball",
+            "pages": [
+              "api/analyst-estimates/ticker"
+            ]
+          },
+          {
+            "group": "Company",
+            "icon": "building",
+            "pages": [
+              "api/company/facts/cik",
+              "api/company/facts/ticker"
+            ]
+          },
+          {
+            "group": "Crypto Prices",
+            "icon": "chart-line",
+            "pages": [
+              "api/crypto/historical",
+              "api/crypto/snapshot"
+            ]
+          },
+          {
+            "group": "Earnings",
+            "icon": "money-bill",
+            "pages": [
+              "api/earnings/earnings",
+              "api/earnings/press-releases"
+            ]
+          },
+          {
+            "group": "Financial Metrics",
+            "icon": "calculator",
+            "pages": [
+              "api/financial-metrics/historical",
+              "api/financial-metrics/snapshot"
+            ]
+          },
+          {
+            "group": "Financial Statements",
+            "icon": "dollar-sign",
+            "pages": [
+              "api/financials/income-statements",
+              "api/financials/balance-sheets",
+              "api/financials/cash-flow-statements",
+              "api/financials/all-financial-statements"
+            ]
+          },
+          {
+            "group": "Insider Trades",
+            "icon": "briefcase",
+            "pages": [
+              "api/insider-trades/insider-trades"
+            ]
+          },
+          {
+            "group": "Institutional Ownership",
+            "icon": "chart-pie",
+            "pages": [
+              "api/institutional-ownership/investor",
+              "api/institutional-ownership/ticker"
+            ]
+          },
+          {
+            "group": "Interest Rates",
+            "icon": "globe",
+            "pages": [
+              "api/macro/interest-rates/historical",
+              "api/macro/interest-rates/snapshot"
+            ]
+          },
+          {
+            "group": "News",
+            "icon": "newspaper",
+            "pages": [
+              "api/news/company"
+            ]
+          },
+          {
+            "group": "Search",
+            "icon": "magnifying-glass",
+            "pages": [
+              "api/financials/search-screener",
+              "api/financials/search-by-line-items"
+            ]
+          },
+          {
+            "group": "SEC Filings",
+            "icon": "file",
+            "pages": [
+              "api/filings/ticker",
+              "api/filings/items"
+            ]
+          },
+          {
+            "group": "Segmented Financials",
+            "icon": "chart-simple",
+            "pages": [
+              "api/financials/segmented-revenues"
+            ]
+          },
+          {
+            "group": "Stock Prices",
+            "icon": "chart-line",
+            "pages": [
+              "api/prices/historical",
+              "api/prices/snapshot",
+              "api/prices/beta"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/virattt",
+      "github": "https://github.com/virattt"
+    }
+  },
+  "appearance": {
+    "default": "system"
+  },
+  "styling": {
+    "codeblocks": {
+      "theme": {
+        "light": "vitesse-light",
+        "dark": "vitesse-dark"
+      }
+    }
+  }
+}
